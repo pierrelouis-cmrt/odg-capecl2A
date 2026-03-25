@@ -1245,9 +1245,14 @@
           summaryBlock?.style.removeProperty("height");
         }
 
+        function shouldLockSummaryDuringChapterSwap() {
+          return !mobileMenuQuery.matches;
+        }
+
         function primeChapterSwap(previousIndex, nextIndex) {
           const currentBlock = blocks[previousIndex];
           const nextBlock = blocks[nextIndex];
+          const lockSummaryHeight = shouldLockSummaryDuringChapterSwap();
           const currentProseHeight = Math.ceil(
             currentBlock?.getBoundingClientRect().height ||
               articleProseViewport?.getBoundingClientRect().height ||
@@ -1257,13 +1262,16 @@
             1,
             nextBlock ? measureHiddenBlockHeight(nextBlock) : currentProseHeight,
           );
-          const currentSummaryHeight = Math.ceil(
-            summaryBlock?.getBoundingClientRect().height || 0,
-          );
-          const nextSummaryHeight = Math.max(
-            1,
-            measureSummaryHeight(chapterMeta[nextIndex]) || currentSummaryHeight,
-          );
+          const currentSummaryHeight = lockSummaryHeight
+            ? Math.ceil(summaryBlock?.getBoundingClientRect().height || 0)
+            : 0;
+          const nextSummaryHeight = lockSummaryHeight
+            ? Math.max(
+                1,
+                measureSummaryHeight(chapterMeta[nextIndex]) ||
+                  currentSummaryHeight,
+              )
+            : 0;
 
           articlePage?.classList.add("is-chapter-transitioning");
 
@@ -1275,6 +1283,8 @@
           if (summaryBlock && currentSummaryHeight > 0) {
             summaryBlock.style.height = `${currentSummaryHeight}px`;
             summaryBlock.getBoundingClientRect();
+          } else {
+            summaryBlock?.style.removeProperty("height");
           }
 
           return {
@@ -1283,7 +1293,7 @@
                 if (articleProseViewport) {
                   articleProseViewport.style.height = `${nextProseHeight}px`;
                 }
-                if (summaryBlock) {
+                if (summaryBlock && nextSummaryHeight > 0) {
                   summaryBlock.style.height = `${nextSummaryHeight}px`;
                 }
               });

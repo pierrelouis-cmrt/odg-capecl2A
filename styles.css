@@ -792,6 +792,11 @@ html.has-motion-shell.is-ready .cta-read {
   text-decoration: none;
 }
 
+.point-text {
+  display: block;
+  color: inherit;
+}
+
 .point-index {
   margin: 0 0 8px 0;
   color: var(--text-muted);
@@ -1608,7 +1613,8 @@ html.has-motion-shell.is-ready .cta-read {
   }
 
   /* ── Inline point layout for single column ── */
-  .point-link {
+  .point-link,
+  .point-text {
     display: flex;
     align-items: baseline;
     gap: 10px;
