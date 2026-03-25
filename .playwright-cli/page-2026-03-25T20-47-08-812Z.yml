@@ -1,0 +1,67 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e7]: COMPTE-RENDU ODG
+      - navigation "Sections" [ref=e8]:
+        - link "DIAGRAMMES" [ref=e9] [cursor=pointer]:
+          - /url: ./diagram.html
+        - link "ARTICLES" [ref=e10] [cursor=pointer]:
+          - /url: ./index.html
+        - link "VISUALISATION" [ref=e11] [cursor=pointer]:
+          - /url: "#"
+      - generic [ref=e14]: CAPECL-GRP11-2026
+  - main [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - paragraph [ref=e19]: problème 1
+          - heading "À combien de g équivaut une claque ?" [level=1] [ref=e20]:
+            - generic [ref=e21]: À combien de g équivaut
+            - generic [ref=e22]: une claque ?
+          - link "Retour aux articles" [ref=e23] [cursor=pointer]:
+            - /url: ./index.html
+            - img [ref=e24]
+            - generic: Retour
+        - navigation "Chapitres" [ref=e27]:
+          - paragraph [ref=e28]: chapitres
+          - list [ref=e29]:
+            - listitem [ref=e30]:
+              - button "Afficher tout l'article sur une seule page" [ref=e31] [cursor=pointer]: Tout afficher
+            - listitem [ref=e32]:
+              - link "00. Introduction & Présentation" [ref=e33] [cursor=pointer]:
+                - /url: "#chapter-0"
+            - listitem [ref=e34]:
+              - link "01. Vitesse d'impact de la main" [ref=e35] [cursor=pointer]:
+                - /url: "#chapter-1"
+            - listitem [ref=e36]:
+              - link "02. Distance d'arrêt, temps de contact" [ref=e37] [cursor=pointer]:
+                - /url: "#chapter-2"
+            - listitem [ref=e38]:
+              - link "03. Force d'impact" [ref=e39] [cursor=pointer]:
+                - /url: "#chapter-3"
+            - listitem [ref=e40]:
+              - link "04. Masse accélérée" [ref=e41] [cursor=pointer]:
+                - /url: "#chapter-4"
+            - listitem [ref=e42]:
+              - link "05. Conclusion & Synthèse" [ref=e43] [cursor=pointer]:
+                - /url: "#chapter-5"
+        - generic [ref=e44]:
+          - paragraph [ref=e45]: abstract / TL;DR
+          - generic [ref=e46]:
+            - 'heading "Chapitre 0 : Introduction et présentation" [level=2] [ref=e47]':
+              - generic [ref=e48]: "Chapitre 0 :"
+              - generic [ref=e49]: Introduction et présentation
+            - paragraph [ref=e50]: Nous présenterons ici notre démarche de résolution de ce premier problème, accompagnée de son diagramme de raisonnement et des hypothèses retenues.
+      - region "Contenu de l'article" [ref=e51]:
+        - generic [ref=e56]:
+          - paragraph [ref=e57]: "Ce problème consiste à estimer l'accélération subie par la tête lors d'une claque, exprimée en multiples de \\(g \\approx 9{,}81\\;\\mathrm{m\\cdot s^{-2}}\\). Nous décomposerons le raisonnement en sous-questions indépendantes, chacune faisant l'objet d'un chapitre."
+          - paragraph [ref=e58]:
+            - text: "L'idée directrice est simple : estimer la"
+            - emphasis [ref=e59]: force d'impact
+            - text: ", en déduire l'accélération via la relation fondamentale de la dynamique, puis exprimer le résultat en \\(g\\)."
+          - generic [ref=e60]: "\\[ a = \\frac{F}{m} \\qquad\\Longrightarrow\\qquad n_g = \\frac{a}{g} \\]"
+          - paragraph [ref=e61]: Chaque grandeur intermédiaire sera encadrée par un ordre de grandeur bas et un ordre de grandeur haut afin de propager les incertitudes jusqu'au résultat final.
+        - navigation "Navigation entre chapitres" [ref=e62]:
+          - 'button "Continuer vers le chapitre 01 : Vitesse d''impact de la main" [ref=e65] [cursor=pointer]':
+            - generic [ref=e66]: "Continuer vers le chapitre 01 : Vitesse d'impact de la main"
+            - img [ref=e67]

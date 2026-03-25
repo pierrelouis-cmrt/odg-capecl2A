@@ -34,6 +34,10 @@
     return Math.min(parsed, total - 1);
   }
 
+  function normalizeViewMode(viewMode) {
+    return viewMode === "full" || viewMode === "chapter" ? viewMode : null;
+  }
+
   function readState() {
     if (!storage) return {};
 
@@ -65,9 +69,17 @@
       const entry = readState()[key];
       if (!entry || typeof entry !== "object") return null;
 
-      return normalizeChapter(entry.chapter, total);
+      const chapter = normalizeChapter(entry.chapter, total);
+      const viewMode = normalizeViewMode(entry.viewMode);
+
+      if (chapter === null && viewMode === null) return null;
+
+      return {
+        chapter,
+        viewMode,
+      };
     },
-    save({ articleKey, chapter, total } = {}) {
+    save({ articleKey, chapter, total, viewMode } = {}) {
       const normalizedChapter = normalizeChapter(chapter, total);
       if (normalizedChapter === null) return;
 
@@ -76,6 +88,7 @@
 
       state[key] = {
         chapter: normalizedChapter,
+        viewMode: normalizeViewMode(viewMode) ?? "chapter",
         updatedAt: Date.now(),
       };
 

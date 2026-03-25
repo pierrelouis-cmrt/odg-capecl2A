@@ -1,0 +1,638 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e7]: COMPTE-RENDU ODG
+      - navigation "Sections" [ref=e8]:
+        - link "DIAGRAMMES" [ref=e9] [cursor=pointer]:
+          - /url: ./diagram.html
+        - link "ARTICLES" [ref=e10] [cursor=pointer]:
+          - /url: ./index.html
+        - link "VISUALISATION" [ref=e11] [cursor=pointer]:
+          - /url: "#"
+      - generic [ref=e14]: CAPECL-GRP11-2026
+  - main [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - paragraph [ref=e19]: problème 1
+          - heading "À combien de g équivaut une claque ?" [level=1] [ref=e20]:
+            - generic [ref=e21]: À combien de g équivaut
+            - generic [ref=e22]: une claque ?
+          - link "Retour aux articles" [ref=e23] [cursor=pointer]:
+            - /url: ./index.html
+            - img [ref=e24]
+            - generic: Retour
+        - navigation "Chapitres" [ref=e27]:
+          - paragraph [ref=e28]: chapitres
+          - list [ref=e29]:
+            - listitem [ref=e30]:
+              - button "Revenir à l'affichage par chapitre" [pressed] [ref=e31] [cursor=pointer]: Vue par chapitre
+            - listitem [ref=e32]:
+              - link "00. Introduction & Présentation" [ref=e33] [cursor=pointer]:
+                - /url: "#chapter-0"
+            - listitem [ref=e34]:
+              - link "01. Vitesse d'impact de la main" [ref=e35] [cursor=pointer]:
+                - /url: "#chapter-1"
+            - listitem [ref=e36]:
+              - link "02. Distance d'arrêt, temps de contact" [ref=e37] [cursor=pointer]:
+                - /url: "#chapter-2"
+            - listitem [ref=e38]:
+              - link "03. Force d'impact" [ref=e39] [cursor=pointer]:
+                - /url: "#chapter-3"
+            - listitem [ref=e40]:
+              - link "04. Masse accélérée" [ref=e41] [cursor=pointer]:
+                - /url: "#chapter-4"
+            - listitem [ref=e42]:
+              - link "05. Conclusion & Synthèse" [ref=e43] [cursor=pointer]:
+                - /url: "#chapter-5"
+        - generic [ref=e44]:
+          - paragraph [ref=e45]: abstract / TL;DR
+          - generic [ref=e46]:
+            - heading "Article complet" [level=2] [ref=e47]:
+              - generic [ref=e48]: Article complet
+            - paragraph [ref=e49]: Tous les chapitres sont affichés sur une seule page pour une lecture continue, une exportation ou une capture intégrale.
+      - region "Contenu de l'article" [ref=e50]:
+        - generic [ref=e53]:
+          - 'generic "Chapitre 0 : Introduction et présentation" [ref=e54]':
+            - generic [ref=e55]:
+              - 'heading "Chapitre 0 : Introduction et présentation" [level=2] [ref=e56]'
+              - paragraph [ref=e57]:
+                - text: Ce problème consiste à estimer l'accélération subie par la tête lors d'une claque, exprimée en multiples de
+                - generic [ref=e58]:
+                  - generic [ref=e59]:
+                    - generic [ref=e61]: g
+                    - generic [ref=e63]: ≈
+                    - generic [ref=e65]: "9"
+                    - generic [ref=e68]: ","
+                    - generic [ref=e69]:
+                      - generic [ref=e70]: "8"
+                      - generic [ref=e71]: "1"
+                    - generic [ref=e72]:
+                      - generic [ref=e74]: m
+                      - generic [ref=e76]: ⋅
+                      - generic [ref=e77]:
+                        - generic [ref=e79]: s
+                        - generic [ref=e81]:
+                          - generic [ref=e83]: −
+                          - generic [ref=e85]: "2"
+                  - math [ref=e87]:
+                    - generic [ref=e88]: g
+                    - generic [ref=e89]: ≈
+                    - generic [ref=e90]: "9"
+                    - generic [ref=e92]: ","
+                    - generic [ref=e93]: "81"
+                    - generic [ref=e94]:
+                      - generic [ref=e95]: m
+                      - generic [ref=e96]: ⋅
+                      - generic [ref=e97]:
+                        - generic [ref=e98]: s
+                        - generic [ref=e99]:
+                          - generic [ref=e100]: −
+                          - generic [ref=e101]: "2"
+                - text: . Nous décomposerons le raisonnement en sous-questions indépendantes, chacune faisant l'objet d'un chapitre.
+              - paragraph [ref=e102]:
+                - text: "L'idée directrice est simple : estimer la"
+                - emphasis [ref=e103]: force d'impact
+                - text: ", en déduire l'accélération via la relation fondamentale de la dynamique, puis exprimer le résultat en"
+                - generic [ref=e104]:
+                  - generic [ref=e107]: g
+                  - math [ref=e109]:
+                    - generic [ref=e110]: g
+                - text: .
+              - generic [ref=e112]:
+                - generic [ref=e113]:
+                  - generic [ref=e115]: a
+                  - generic [ref=e117]: =
+                  - generic [ref=e119]:
+                    - generic [ref=e122]: F
+                    - generic [ref=e129]: m
+                  - generic [ref=e131]: ⟹
+                  - generic [ref=e132]:
+                    - generic [ref=e134]: "n"
+                    - generic [ref=e137]: g
+                  - generic [ref=e139]: =
+                  - generic [ref=e141]:
+                    - generic [ref=e144]: a
+                    - generic [ref=e151]: g
+                - math [ref=e153]:
+                  - generic [ref=e154]: a
+                  - generic [ref=e155]: =
+                  - generic [ref=e156]:
+                    - generic [ref=e157]: F
+                    - generic [ref=e158]: m
+                  - generic [ref=e159]: ⟹
+                  - generic [ref=e160]:
+                    - generic [ref=e161]: "n"
+                    - generic [ref=e162]: g
+                  - generic [ref=e163]: =
+                  - generic [ref=e164]:
+                    - generic [ref=e165]: a
+                    - generic [ref=e166]: g
+              - paragraph [ref=e167]: Chaque grandeur intermédiaire sera encadrée par un ordre de grandeur bas et un ordre de grandeur haut afin de propager les incertitudes jusqu'au résultat final.
+          - 'generic "Chapitre 1 : Vitesse d''impact de la main" [ref=e168]':
+            - generic [ref=e169]:
+              - 'heading "Chapitre 1 : Vitesse d''impact de la main" [level=2] [ref=e170]'
+              - paragraph [ref=e171]:
+                - text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. On modélise le bras comme un pendule de longueur
+                - generic [ref=e172]:
+                  - generic [ref=e175]: L
+                  - math [ref=e177]:
+                    - generic [ref=e178]: L
+                - text: "et on estime la vitesse tangentielle au bout :"
+              - generic [ref=e180]:
+                - generic [ref=e181]:
+                  - generic [ref=e183]: v
+                  - generic [ref=e185]: =
+                  - generic [ref=e187]: ω
+                  - generic [ref=e189]: ⋅
+                  - generic [ref=e191]: L
+                  - generic [ref=e193]: =
+                  - generic [ref=e195]:
+                    - generic [ref=e197]: ˙
+                    - generic [ref=e200]: θ
+                  - generic [ref=e202]: L
+                - math [ref=e204]:
+                  - generic [ref=e205]: v
+                  - generic [ref=e206]: =
+                  - generic [ref=e207]: ω
+                  - generic [ref=e208]: ⋅
+                  - generic [ref=e209]: L
+                  - generic [ref=e210]: =
+                  - generic [ref=e212]:
+                    - generic [ref=e213]: θ
+                    - generic [ref=e214]: ˙
+                  - generic [ref=e215]: L
+              - figure "Fig. 1 — Modèle simplifié du bras comme pendule rigide." [ref=e216]:
+                - img "Modèle bras-pendule" [ref=e217]
+                - generic [ref=e218]: Fig. 1 — Modèle simplifié du bras comme pendule rigide.
+              - paragraph [ref=e219]:
+                - text: Aenean ultricies mi vitae est. Mauris placerat eleifend leo. En prenant
+                - generic [ref=e220]:
+                  - generic [ref=e221]:
+                    - generic [ref=e223]:
+                      - generic [ref=e225]: ˙
+                      - generic [ref=e228]: θ
+                    - generic [ref=e230]: ≈
+                    - generic [ref=e231]:
+                      - generic [ref=e232]: "1"
+                      - generic [ref=e233]: "5"
+                    - generic [ref=e234]:
+                      - generic [ref=e235]:
+                        - generic [ref=e236]: r
+                        - generic [ref=e237]: a
+                        - generic [ref=e238]: d
+                      - generic [ref=e241]: /
+                      - generic [ref=e243]: s
+                  - math [ref=e245]:
+                    - generic [ref=e247]:
+                      - generic [ref=e248]: θ
+                      - generic [ref=e249]: ˙
+                    - generic [ref=e250]: ≈
+                    - generic [ref=e251]: "15"
+                    - generic [ref=e252]:
+                      - generic [ref=e253]: rad
+                      - generic [ref=e255]: /
+                      - generic [ref=e256]: s
+                - text: et
+                - generic [ref=e257]:
+                  - generic [ref=e258]:
+                    - generic [ref=e260]: L
+                    - generic [ref=e262]: ≈
+                    - generic [ref=e264]: "0"
+                    - generic [ref=e267]: ","
+                    - generic [ref=e269]: "6"
+                    - generic [ref=e272]: m
+                  - math [ref=e274]:
+                    - generic [ref=e275]: L
+                    - generic [ref=e276]: ≈
+                    - generic [ref=e277]: "0"
+                    - generic [ref=e279]: ","
+                    - generic [ref=e280]: "6"
+                    - generic [ref=e282]: m
+                - text: ", on obtient"
+                - generic [ref=e283]:
+                  - generic [ref=e284]:
+                    - generic [ref=e286]: v
+                    - generic [ref=e288]: ≈
+                    - generic [ref=e290]: "9"
+                    - generic [ref=e291]:
+                      - generic [ref=e293]: m
+                      - generic [ref=e296]: /
+                      - generic [ref=e298]: s
+                  - math [ref=e300]:
+                    - generic [ref=e301]: v
+                    - generic [ref=e302]: ≈
+                    - generic [ref=e303]: "9"
+                    - generic [ref=e304]:
+                      - generic [ref=e305]: m
+                      - generic [ref=e307]: /
+                      - generic [ref=e308]: s
+                - text: .
+              - paragraph [ref=e309]: Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.
+          - 'generic "Chapitre 2 : Distance d''arrêt, temps de contact" [ref=e310]':
+            - generic [ref=e311]:
+              - 'heading "Chapitre 2 : Distance d''arrêt, temps de contact" [level=2] [ref=e312]'
+              - paragraph [ref=e313]: Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+              - figure "Fig. 2 — Déformation de la joue lors du contact." [ref=e314]:
+                - img "Contact distance" [ref=e315]
+                - generic [ref=e316]: Fig. 2 — Déformation de la joue lors du contact.
+              - paragraph [ref=e317]:
+                - text: En supposant une décélération uniforme sur une distance
+                - generic [ref=e318]:
+                  - generic [ref=e321]: d
+                  - math [ref=e323]:
+                    - generic [ref=e324]: d
+                - text: ", le temps de contact vaut :"
+              - generic [ref=e326]:
+                - generic [ref=e327]:
+                  - generic [ref=e329]: Δ
+                  - generic [ref=e331]: t
+                  - generic [ref=e333]: =
+                  - generic [ref=e335]:
+                    - generic [ref=e337]:
+                      - generic [ref=e339]: "2"
+                      - generic [ref=e341]: d
+                    - generic [ref=e348]: v
+                - math [ref=e350]:
+                  - generic [ref=e351]: Δ
+                  - generic [ref=e352]: t
+                  - generic [ref=e353]: =
+                  - generic [ref=e354]:
+                    - generic [ref=e355]:
+                      - generic [ref=e356]: "2"
+                      - generic [ref=e357]: d
+                    - generic [ref=e358]: v
+              - paragraph [ref=e359]:
+                - text: Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Pour
+                - generic [ref=e360]:
+                  - generic [ref=e361]:
+                    - generic [ref=e363]: d
+                    - generic [ref=e365]: ≈
+                    - generic [ref=e367]: "2"
+                    - generic [ref=e369]:
+                      - generic [ref=e370]: c
+                      - generic [ref=e371]: m
+                  - math [ref=e373]:
+                    - generic [ref=e374]: d
+                    - generic [ref=e375]: ≈
+                    - generic [ref=e376]: "2"
+                    - generic [ref=e378]: cm
+                - text: et
+                - generic [ref=e379]:
+                  - generic [ref=e380]:
+                    - generic [ref=e382]: v
+                    - generic [ref=e384]: ≈
+                    - generic [ref=e386]: "9"
+                    - generic [ref=e387]:
+                      - generic [ref=e389]: m
+                      - generic [ref=e392]: /
+                      - generic [ref=e394]: s
+                  - math [ref=e396]:
+                    - generic [ref=e397]: v
+                    - generic [ref=e398]: ≈
+                    - generic [ref=e399]: "9"
+                    - generic [ref=e400]:
+                      - generic [ref=e401]: m
+                      - generic [ref=e403]: /
+                      - generic [ref=e404]: s
+                - text: ", on trouve"
+                - generic [ref=e405]:
+                  - generic [ref=e406]:
+                    - generic [ref=e408]: Δ
+                    - generic [ref=e410]: t
+                    - generic [ref=e412]: ≈
+                    - generic [ref=e414]: "4"
+                    - generic [ref=e417]: ","
+                    - generic [ref=e419]: "4"
+                    - generic [ref=e421]:
+                      - generic [ref=e422]: m
+                      - generic [ref=e423]: s
+                  - math [ref=e425]:
+                    - generic [ref=e426]: Δ
+                    - generic [ref=e427]: t
+                    - generic [ref=e428]: ≈
+                    - generic [ref=e429]: "4"
+                    - generic [ref=e431]: ","
+                    - generic [ref=e432]: "4"
+                    - generic [ref=e434]: ms
+                - text: .
+          - 'generic "Chapitre 3 : Force d''impact" [ref=e435]':
+            - generic [ref=e436]:
+              - 'heading "Chapitre 3 : Force d''impact" [level=2] [ref=e437]'
+              - paragraph [ref=e438]: "Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc. D'après le théorème de l'impulsion :"
+              - generic [ref=e440]:
+                - generic [ref=e441]:
+                  - generic [ref=e443]: F
+                  - generic [ref=e445]: =
+                  - generic [ref=e447]:
+                    - generic [ref=e449]:
+                      - generic [ref=e450]:
+                        - generic [ref=e452]: m
+                        - generic [ref=e455]:
+                          - generic [ref=e456]: m
+                          - generic [ref=e457]: a
+                          - generic [ref=e458]: i
+                          - generic [ref=e459]: "n"
+                      - generic [ref=e461]: ⋅
+                      - generic [ref=e463]: v
+                    - generic [ref=e469]:
+                      - generic [ref=e471]: Δ
+                      - generic [ref=e473]: t
+                - math [ref=e475]:
+                  - generic [ref=e476]: F
+                  - generic [ref=e477]: =
+                  - generic [ref=e478]:
+                    - generic [ref=e479]:
+                      - generic [ref=e480]:
+                        - generic [ref=e481]: m
+                        - generic [ref=e483]: main
+                      - generic [ref=e484]: ⋅
+                      - generic [ref=e485]: v
+                    - generic [ref=e486]:
+                      - generic [ref=e487]: Δ
+                      - generic [ref=e488]: t
+              - figure "Fig. 3 — Profil temporel de la force d'impact." [ref=e489]:
+                - img "Force graph" [ref=e490]
+                - generic [ref=e491]: Fig. 3 — Profil temporel de la force d'impact.
+              - paragraph [ref=e492]:
+                - text: Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit. En prenant
+                - generic [ref=e493]:
+                  - generic [ref=e494]:
+                    - generic [ref=e495]:
+                      - generic [ref=e497]: m
+                      - generic [ref=e500]:
+                        - generic [ref=e501]: m
+                        - generic [ref=e502]: a
+                        - generic [ref=e503]: i
+                        - generic [ref=e504]: "n"
+                    - generic [ref=e506]: ≈
+                    - generic [ref=e508]: "0"
+                    - generic [ref=e511]: ","
+                    - generic [ref=e513]: "4"
+                    - generic [ref=e515]:
+                      - generic [ref=e516]: k
+                      - generic [ref=e517]: g
+                  - math [ref=e519]:
+                    - generic [ref=e520]:
+                      - generic [ref=e521]: m
+                      - generic [ref=e523]: main
+                    - generic [ref=e524]: ≈
+                    - generic [ref=e525]: "0"
+                    - generic [ref=e527]: ","
+                    - generic [ref=e528]: "4"
+                    - generic [ref=e530]: kg
+                - text: ", on arrive à"
+                - generic [ref=e531]:
+                  - generic [ref=e532]:
+                    - generic [ref=e534]: F
+                    - generic [ref=e536]: ≈
+                    - generic [ref=e537]:
+                      - generic [ref=e538]: "8"
+                      - generic [ref=e539]: "2"
+                      - generic [ref=e540]: "0"
+                    - generic [ref=e543]: "N"
+                  - math [ref=e545]:
+                    - generic [ref=e546]: F
+                    - generic [ref=e547]: ≈
+                    - generic [ref=e548]: "820"
+                    - generic [ref=e550]: "N"
+                - text: .
+              - paragraph [ref=e551]: Suspendisse commodo ullamcorper magna. Pellentesque egestas sem. Il est intéressant de noter que cette force est comparable à un coup de poing modéré.
+          - 'generic "Chapitre 4 : Masse accélérée" [ref=e552]':
+            - generic [ref=e553]:
+              - 'heading "Chapitre 4 : Masse accélérée" [level=2] [ref=e554]'
+              - paragraph [ref=e555]: "Curabitur sed urna. Nunc pulvinar ante sed lacus. Suspendisse potenti. La masse pertinente n'est pas celle de la tête entière, mais celle qui « participe » au mouvement initial :"
+              - generic [ref=e557]:
+                - generic [ref=e558]:
+                  - generic [ref=e559]:
+                    - generic [ref=e561]: m
+                    - generic [ref=e564]:
+                      - generic [ref=e565]: e
+                      - generic [ref=e566]: f
+                      - generic [ref=e567]: f
+                  - generic [ref=e569]: ≈
+                  - generic [ref=e571]: α
+                  - generic [ref=e573]: ⋅
+                  - generic [ref=e574]:
+                    - generic [ref=e576]: m
+                    - generic [ref=e579]:
+                      - generic [ref=e580]: t
+                      - generic [ref=e581]: ê
+                      - generic [ref=e582]: t
+                      - generic [ref=e583]: e
+                  - generic [ref=e584]:
+                    - generic [ref=e585]: a
+                    - generic [ref=e586]: v
+                    - generic [ref=e587]: e
+                    - generic [ref=e588]: c
+                  - generic [ref=e590]: α
+                  - generic [ref=e592]: ∈
+                  - generic [ref=e594]: "["
+                  - generic [ref=e596]: "0"
+                  - generic [ref=e599]: ","
+                  - generic [ref=e601]: "3"
+                  - generic [ref=e603]: ;
+                  - generic [ref=e605]: "0"
+                  - generic [ref=e608]: ","
+                  - generic [ref=e610]: "7"
+                  - generic [ref=e612]: "]"
+                - math [ref=e614]:
+                  - generic [ref=e615]:
+                    - generic [ref=e616]: m
+                    - generic [ref=e618]: eff
+                  - generic [ref=e619]: ≈
+                  - generic [ref=e620]: α
+                  - generic [ref=e621]: ⋅
+                  - generic [ref=e622]:
+                    - generic [ref=e623]: m
+                    - generic [ref=e625]: tête
+                  - generic [ref=e626]: avec
+                  - generic [ref=e627]: α
+                  - generic [ref=e628]: ∈
+                  - generic [ref=e629]: "["
+                  - generic [ref=e630]: "0"
+                  - generic [ref=e632]: ","
+                  - generic [ref=e633]: "3"
+                  - generic [ref=e634]: ;
+                  - generic [ref=e635]: "0"
+                  - generic [ref=e637]: ","
+                  - generic [ref=e638]: "7"
+                  - generic [ref=e639]: "]"
+              - paragraph [ref=e640]: Proin neque massa, cursus ut, gravida ut, lobortis eget, lacus. Sed diam. Praesent fermentum tempor tellus. Nullam tempor. Mauris ac felis vel velit tristique imperdiet.
+              - figure "Fig. 4 — Estimation de la masse effective accélérée." [ref=e641]:
+                - img "Masse effective" [ref=e642]
+                - generic [ref=e643]: Fig. 4 — Estimation de la masse effective accélérée.
+              - paragraph [ref=e644]: Vivamus laoreet. Nullam tincidunt adipiscing enim. Phasellus tempus, elit ut ullamcorper faucibus, justo nibh dignissim velit, a fermentum odio libero vitae tortor.
+          - 'generic "Chapitre 5 : Conclusion & Synthèse" [ref=e645]':
+            - generic [ref=e646]:
+              - 'heading "Chapitre 5 : Conclusion & Synthèse" [level=2] [ref=e647]'
+              - paragraph [ref=e648]: "Fusce vel dui. Sed in libero ut nibh placerat accumsan. Proin faucibus arcu quis ante. En rassemblant toutes les estimations :"
+              - generic [ref=e650]:
+                - generic [ref=e651]:
+                  - generic [ref=e652]:
+                    - generic [ref=e654]: "n"
+                    - generic [ref=e657]: g
+                  - generic [ref=e659]: =
+                  - generic [ref=e661]:
+                    - generic [ref=e664]: F
+                    - generic [ref=e670]:
+                      - generic [ref=e671]:
+                        - generic [ref=e673]: m
+                        - generic [ref=e676]:
+                          - generic [ref=e677]: e
+                          - generic [ref=e678]: f
+                          - generic [ref=e679]: f
+                      - generic [ref=e681]: ⋅
+                      - generic [ref=e683]: g
+                  - generic [ref=e685]: =
+                  - generic [ref=e687]:
+                    - generic [ref=e690]: v
+                    - generic [ref=e696]:
+                      - generic [ref=e698]: g
+                      - generic [ref=e700]: Δ
+                      - generic [ref=e702]: t
+                  - generic [ref=e704]: ≈
+                  - generic [ref=e706]:
+                    - generic [ref=e709]: "9"
+                    - generic [ref=e715]:
+                      - generic [ref=e717]: "9"
+                      - generic [ref=e720]: ","
+                      - generic [ref=e721]:
+                        - generic [ref=e722]: "8"
+                        - generic [ref=e723]: "1"
+                      - generic [ref=e725]: ×
+                      - generic [ref=e727]: "4"
+                      - generic [ref=e730]: ","
+                      - generic [ref=e732]: "4"
+                      - generic [ref=e734]: ×
+                      - generic [ref=e735]:
+                        - generic [ref=e736]:
+                          - generic [ref=e737]: "1"
+                          - generic [ref=e738]: "0"
+                        - generic [ref=e740]:
+                          - generic [ref=e742]: −
+                          - generic [ref=e744]: "3"
+                  - generic [ref=e746]: ≈
+                  - generic [ref=e747]:
+                    - generic [ref=e748]: "2"
+                    - generic [ref=e749]: "0"
+                    - generic [ref=e750]: "0"
+                  - generic [ref=e752]: g
+                  - generic [ref=e753]:
+                    - generic [ref=e754]: "'"
+                    - generic [ref=e755]: s
+                - math [ref=e757]:
+                  - generic [ref=e758]:
+                    - generic [ref=e759]: "n"
+                    - generic [ref=e760]: g
+                  - generic [ref=e761]: =
+                  - generic [ref=e762]:
+                    - generic [ref=e763]: F
+                    - generic [ref=e764]:
+                      - generic [ref=e765]:
+                        - generic [ref=e766]: m
+                        - generic [ref=e768]: eff
+                      - generic [ref=e769]: ⋅
+                      - generic [ref=e770]: g
+                  - generic [ref=e771]: =
+                  - generic [ref=e772]:
+                    - generic [ref=e773]: v
+                    - generic [ref=e774]:
+                      - generic [ref=e775]: g
+                      - generic [ref=e776]: Δ
+                      - generic [ref=e777]: t
+                  - generic [ref=e778]: ≈
+                  - generic [ref=e779]:
+                    - generic [ref=e780]: "9"
+                    - generic [ref=e781]:
+                      - generic [ref=e782]: "9"
+                      - generic [ref=e784]: ","
+                      - generic [ref=e785]: "81"
+                      - generic [ref=e786]: ×
+                      - generic [ref=e787]: "4"
+                      - generic [ref=e789]: ","
+                      - generic [ref=e790]: "4"
+                      - generic [ref=e791]: ×
+                      - generic [ref=e792]:
+                        - generic [ref=e793]: "10"
+                        - generic [ref=e794]:
+                          - generic [ref=e795]: −
+                          - generic [ref=e796]: "3"
+                  - generic [ref=e797]: ≈
+                  - generic [ref=e798]: "200"
+                  - generic [ref=e799]: g
+                  - generic [ref=e800]: "'s"
+              - paragraph [ref=e801]:
+                - text: L'encadrement final, compte tenu des hypothèses basses et hautes, donne un résultat compris entre
+                - generic [ref=e802]:
+                  - generic [ref=e803]:
+                    - generic [ref=e805]: ∼
+                    - generic [ref=e806]:
+                      - generic [ref=e807]: "2"
+                      - generic [ref=e808]: "5"
+                    - generic [ref=e810]: g
+                  - math [ref=e812]:
+                    - generic [ref=e813]: ∼
+                    - generic [ref=e814]: "25"
+                    - generic [ref=e815]: g
+                - text: et
+                - generic [ref=e816]:
+                  - generic [ref=e817]:
+                    - generic [ref=e819]: ∼
+                    - generic [ref=e820]:
+                      - generic [ref=e821]: "5"
+                      - generic [ref=e822]: "0"
+                      - generic [ref=e823]: "0"
+                    - generic [ref=e825]: g
+                  - math [ref=e827]:
+                    - generic [ref=e828]: ∼
+                    - generic [ref=e829]: "500"
+                    - generic [ref=e830]: g
+                - text: selon la violence de la claque et la masse effective retenue.
+              - paragraph [ref=e831]: Nulla sit amet est. Praesent metus tellus, elementum eu, semper a, adipiscing nec, purus. Cras risus ipsum, faucibus ut, ullamcorper id, varius ac, leo.
+      - generic [ref=e832]:
+        - heading "Problème 2" [level=2] [ref=e833]
+        - link "Illustration du problème 2 Voir l'article Cuire un poulet avec des claques" [ref=e834] [cursor=pointer]:
+          - /url: ./article-2.html#chapter-0
+          - img "Illustration du problème 2" [ref=e836]
+          - generic [ref=e837]:
+            - generic [ref=e838]: Voir l'article
+            - generic [ref=e839]: Cuire un poulet avec des claques
+  - contentinfo [ref=e841]:
+    - generic [ref=e842]:
+      - generic [ref=e843]:
+        - paragraph [ref=e844]: "[pages]"
+        - generic [ref=e845]:
+          - link "DIAGRAMMES" [ref=e846] [cursor=pointer]:
+            - /url: ./diagram.html
+          - link "ARTICLES" [ref=e847] [cursor=pointer]:
+            - /url: ./index.html
+          - link "VISUALISATION" [ref=e848] [cursor=pointer]:
+            - /url: "#"
+      - generic [ref=e849]:
+        - paragraph [ref=e850]: "[crédits/inspiration]"
+        - generic [ref=e851]:
+          - 'link "DESIGN & VIBE : HEAT BUREAU" [ref=e852] [cursor=pointer]':
+            - /url: https://www.heatbureau.com/
+          - 'link "ILLUSTRATIONS : CLARK" [ref=e853] [cursor=pointer]':
+            - /url: https://www.hostwithclark.com/
+      - generic [ref=e854]:
+        - paragraph [ref=e855]: "[colophon]"
+        - generic [ref=e856]:
+          - 'link "ICÔNES : HAND-MADE" [ref=e857] [cursor=pointer]':
+            - /url: https://lucide.dev/
+          - 'link "TYPOGRAPHIE : INTER & GEIST MONO" [ref=e858] [cursor=pointer]':
+            - /url: https://fonts.google.com/
+            - text: "TYPOGRAPHIE : INTER &"
+            - text: GEIST MONO
+      - generic [ref=e859]:
+        - paragraph [ref=e860]: "[à propos]"
+        - generic [ref=e861]:
+          - paragraph [ref=e862]: Compte rendu d'un projet de raisonnement par ordre de grandeur.
+          - paragraph [ref=e863]: "Le but : résoudre un problème ouvert via des estimations et un découpage en sous questions."
+    - generic [ref=e864]:
+      - generic [ref=e865]:
+        - paragraph [ref=e866]:
+          - generic [ref=e867]: CAPECL-2026
+        - paragraph [ref=e868]: GROUPE N°11 — 03/2026
+      - paragraph [ref=e871]: LINE, ISSHAC, LUCAS, PIERRE-LOUIS

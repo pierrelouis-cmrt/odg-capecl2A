@@ -699,8 +699,8 @@
         const DRAWER_TRANSITION_MS = 500;
         const articleReadingCache = window.ODGArticleReadingCache;
         const articleCacheKey = articleReadingCache?.getArticleKey?.();
-
         const total = blocks.length;
+        const cachedReadingState = getCachedReadingState();
         let isFullView = getInitialViewMode();
         let current = getInitialChapterIndex();
         let drawerCloseTimer = 0;
@@ -711,6 +711,7 @@
         let chapterTransitionCleanupTimer = 0;
         let chapterLayoutObserver = null;
         let chapterLayoutFrame = 0;
+        let fullViewProgressFrame = 0;
         let mathJaxReadyPromise = null;
 
         const chapterMeta = [
@@ -781,7 +782,10 @@
         }
 
         function getInitialViewMode() {
-          return new URLSearchParams(window.location.search).get("view") === "full";
+          const urlMode = new URLSearchParams(window.location.search).get("view");
+          if (urlMode === "full") return true;
+          if (urlMode === "chapter") return false;
+          return cachedReadingState?.viewMode === "full";
         }
 
         function getChapterIndexFromHash() {
@@ -793,12 +797,17 @@
           return index;
         }
 
-        function getCachedChapterIndex() {
-          const cachedIndex = articleReadingCache?.load?.({
+        function getCachedReadingState() {
+          const cachedState = articleReadingCache?.load?.({
             articleKey: articleCacheKey,
             total,
           });
 
+          return cachedState && typeof cachedState === "object" ? cachedState : null;
+        }
+
+        function getCachedChapterIndex() {
+          const cachedIndex = cachedReadingState?.chapter;
           return Number.isInteger(cachedIndex) ? cachedIndex : 0;
         }
 
@@ -811,11 +820,12 @@
           return getCachedChapterIndex();
         }
 
-        function persistCurrentChapter() {
+        function persistReadingState() {
           articleReadingCache?.save?.({
             articleKey: articleCacheKey,
             chapter: current,
             total,
+            viewMode: isFullView ? "full" : "chapter",
           });
         }
 
@@ -824,13 +834,10 @@
 
           if (isFullView) {
             url.searchParams.set("view", "full");
-            if (!/^#chapter-\d+$/.test(url.hash)) {
-              url.hash = `#chapter-${current}`;
-            }
           } else {
             url.searchParams.delete("view");
-            url.hash = `#chapter-${current}`;
           }
+          url.hash = `#chapter-${current}`;
 
           const nextUrl = `${url.pathname}${url.search}${url.hash}`;
           const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
@@ -865,6 +872,59 @@
           document.getElementById(`chapter-${hashIndex}`)?.scrollIntoView({
             block: "start",
             behavior,
+          });
+        }
+
+        function getFullViewTrackingOffset() {
+          const headerHeightValue = window
+            .getComputedStyle(document.documentElement)
+            .getPropertyValue("--header-height");
+          const headerHeight = Number.parseFloat(headerHeightValue) || 0;
+          return headerHeight + 40;
+        }
+
+        function getCurrentChapterFromScroll() {
+          const trackingOffset = getFullViewTrackingOffset();
+          let activeIndex = 0;
+          let nearestIndex = 0;
+          let nearestDistance = Number.POSITIVE_INFINITY;
+
+          blocks.forEach((block, index) => {
+            const top = block.getBoundingClientRect().top;
+
+            if (top <= trackingOffset) {
+              activeIndex = index;
+            }
+
+            const distance = Math.abs(top - trackingOffset);
+            if (distance < nearestDistance) {
+              nearestDistance = distance;
+              nearestIndex = index;
+            }
+          });
+
+          const firstBlockTop = blocks[0]?.getBoundingClientRect().top ?? 0;
+          return firstBlockTop > trackingOffset ? nearestIndex : activeIndex;
+        }
+
+        function syncFullViewProgress(force = false) {
+          if (!isFullView) return;
+
+          const nextIndex = getCurrentChapterFromScroll();
+          if (!force && nextIndex === current) return;
+
+          current = nextIndex;
+          syncUrlState();
+          persistReadingState();
+        }
+
+        function scheduleFullViewProgressSync(force = false) {
+          if (!isFullView) return;
+
+          cancelAnimationFrame(fullViewProgressFrame);
+          fullViewProgressFrame = requestAnimationFrame(() => {
+            fullViewProgressFrame = 0;
+            syncFullViewProgress(force);
           });
         }
 
@@ -1484,7 +1544,7 @@
 
         function ensureFullArticleReady() {
           prepareFullViewAssets();
-          Promise.all(blocks.map((_, index) => ensureChapterReady(index)))
+          return Promise.all(blocks.map((_, index) => ensureChapterReady(index)))
             .then(() => {
               articleProseViewport?.style.removeProperty("height");
             })
@@ -1509,7 +1569,7 @@
           });
 
           syncUrlState();
-          persistCurrentChapter();
+          persistReadingState();
           updateNavCopy();
           updateViewToggleCopy();
           syncMobileIntroState();
@@ -1558,7 +1618,7 @@
           });
 
           syncUrlState();
-          persistCurrentChapter();
+          persistReadingState();
           updateNavCopy();
           updateViewToggleCopy();
           syncMobileIntroState();
@@ -1633,6 +1693,7 @@
           if (isFullView) {
             requestAnimationFrame(() => {
               scrollToHashTarget("auto");
+              scheduleFullViewProgressSync(true);
             });
           }
         }
@@ -1690,7 +1751,7 @@
 
             if (isFullView) {
               current = nextIndex;
-              persistCurrentChapter();
+              persistReadingState();
 
               if (fromDrawer) {
                 closeDrawer();
@@ -1730,7 +1791,15 @@
         window.addEventListener("resize", () => {
           updateNavCopy();
           syncMobileIntroState();
+          scheduleFullViewProgressSync(true);
         });
+        window.addEventListener(
+          "scroll",
+          () => {
+            scheduleFullViewProgressSync();
+          },
+          { passive: true },
+        );
         if (typeof mobileMenuQuery.addEventListener === "function") {
           mobileMenuQuery.addEventListener("change", syncMobileIntroState);
         } else if (typeof mobileMenuQuery.addListener === "function") {
@@ -1742,7 +1811,7 @@
 
           if (isFullView) {
             current = hashIndex;
-            persistCurrentChapter();
+            persistReadingState();
             return;
           }
 
@@ -1760,6 +1829,7 @@
               ensureFullArticleReady();
               requestAnimationFrame(() => {
                 scrollToHashTarget("auto");
+                scheduleFullViewProgressSync(true);
               });
               return;
             }
