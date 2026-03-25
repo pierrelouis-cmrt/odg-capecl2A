@@ -17,6 +17,11 @@
   --article-prose-line: 28px;
   --article-prose-width: 620px;
   --article-image-bleed: 80px;
+  --article-module-offset: 28px;
+  --article-mobile-title-size: var(--article-subtitle-size);
+  --article-mobile-title-line: var(--article-subtitle-line);
+  --article-mobile-chapter-size: var(--article-chapter-size);
+  --article-mobile-chapter-line: var(--article-chapter-line);
 }
 
 /* ───────── Canvas & page shell ───────── */
@@ -125,7 +130,7 @@
 /* ── Problem column ── */
 
 .article-title {
-  margin: 28px 0 0;
+  margin: var(--article-module-offset) 0 0;
   color: var(--text-main);
   font-family: var(--font-display);
   font-size: var(--article-subtitle-size);
@@ -238,7 +243,7 @@
 .article-summary-block {
   display: grid;
   gap: 22px;
-  margin-top: 28px;
+  margin-top: var(--article-module-offset);
 }
 
 .page-article.is-chapter-transitioning .article-summary-block {
@@ -269,7 +274,7 @@
 .article-chapter-list {
   display: grid;
   gap: 3px;
-  margin: 28px 0 0;
+  margin: var(--article-module-offset) 0 0;
   padding: 0;
   list-style: none;
 }
@@ -289,6 +294,8 @@
 }
 
 .article-chapter-list a {
+  display: inline-block;
+  padding: 1px 0;
   color: inherit;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -768,6 +775,10 @@
     --article-inner-gutter: 0px;
     --article-intro-top: 28px;
     --article-image-bleed: 16px;
+    --article-mobile-title-size: 22px;
+    --article-mobile-title-line: 27px;
+    --article-mobile-chapter-size: 18px;
+    --article-mobile-chapter-line: 24px;
   }
 
   .page-article .page-main {
@@ -906,13 +917,16 @@
     height: min(78svh, 720px);
     min-height: 420px;
     justify-content: space-between;
-    padding: calc(var(--header-height) + 24px) var(--page-gutter) 24px;
+    padding: calc(var(--header-height) + var(--article-intro-top)) 0 24px;
     overflow-y: auto;
   }
 
   .article-drawer-content {
     display: grid;
-    gap: 36px;
+    gap: var(--article-intro-gap);
+    width: var(--article-frame-width);
+    margin: 0 auto;
+    padding-inline: var(--article-inner-gutter);
   }
 
   .article-drawer-block {
@@ -920,27 +934,38 @@
     gap: 0;
   }
 
+  .article-drawer-problem {
+    max-width: 320px;
+  }
+
+  .article-drawer-toc {
+    max-width: 360px;
+  }
+
   .article-drawer-title {
-    margin-top: 20px;
+    margin-top: var(--article-module-offset);
+    font-size: var(--article-mobile-title-size);
+    line-height: var(--article-mobile-title-line);
   }
 
   .article-drawer-problem .article-jump {
-    margin-top: 24px;
+    margin-top: 28px;
   }
 
   .article-drawer-chapter-list {
-    gap: 6px;
-    margin-top: 20px;
+    gap: 3px;
+    margin-top: var(--article-module-offset);
   }
 
   .article-drawer-chapter-list li {
-    font-size: clamp(24px, 4.5vw, 34px);
-    line-height: 1.02;
-    letter-spacing: -0.03em;
+    font-size: var(--article-mobile-chapter-size);
+    line-height: var(--article-mobile-chapter-line);
+    letter-spacing: -0.02em;
   }
 
   .article-drawer-chapter-list a {
     display: inline-block;
+    padding: 1px 0;
   }
 }
 
