@@ -301,11 +301,32 @@
   transition: color 0.2s ease;
 }
 
+.article-view-toggle-item {
+  margin-bottom: 10px;
+}
+
+.article-view-toggle {
+  display: inline-block;
+  padding: 1px 0;
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  font-family: var(--font-code);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
 .article-chapter-list li:not(.is-active) a:focus-visible {
   color: var(--accent);
 }
 
-.article-chapter-list a:focus-visible {
+.article-chapter-list a:focus-visible,
+.article-view-toggle:focus-visible {
   outline: 1px solid var(--accent);
   outline-offset: 3px;
 }
@@ -378,6 +399,17 @@
   width: 100%;
   max-width: var(--article-prose-width);
   overflow: visible;
+}
+
+.article-block-title {
+  display: none;
+  margin: 0 0 26px;
+  color: var(--text-main);
+  font-family: var(--font-display);
+  font-size: clamp(22px, 1.5vw, 30px);
+  font-weight: 430;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
 }
 
 .article-block-content::after {
@@ -647,6 +679,24 @@
   outline-offset: 6px;
 }
 
+.page-article.is-full-view .article-block {
+  align-items: stretch;
+}
+
+.page-article.is-full-view .article-block + .article-block {
+  margin-top: clamp(52px, 5vw, 88px);
+  padding-top: clamp(28px, 3vw, 40px);
+  border-top: 1px solid var(--line);
+}
+
+.page-article.is-full-view .article-block-title {
+  display: block;
+}
+
+.page-article.is-full-view .chapter-nav {
+  display: none;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .article-chapter-list li:not(.is-active) a:hover {
     color: var(--accent);
@@ -671,6 +721,10 @@
 
   .article-feature-card:hover .article-feature-kicker {
     color: var(--accent-muted);
+  }
+
+  .article-view-toggle:hover {
+    color: var(--accent);
   }
 }
 
@@ -698,6 +752,10 @@
 
   .article-feature-card:active .article-feature-kicker {
     color: var(--accent-muted);
+  }
+
+  .article-view-toggle:active {
+    color: var(--accent);
   }
 }
 
@@ -809,6 +867,11 @@
     gap: 18px;
   }
 
+  .article-view-toggle {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
   .article-chapter-list li {
     font-size: 18px;
     line-height: 24px;
@@ -821,6 +884,12 @@
   .article-block-content p {
     font-size: 14.5px;
     line-height: 24px;
+  }
+
+  .article-block-title {
+    margin-bottom: 20px;
+    font-size: 22px;
+    line-height: 27px;
   }
 
   .article-image {

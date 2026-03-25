@@ -1,0 +1,134 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e7]: COMPTE-RENDU ODG
+      - navigation "Sections" [ref=e8]:
+        - link "DIAGRAMMES" [ref=e9] [cursor=pointer]:
+          - /url: ./diagram.html
+        - link "ARTICLES" [ref=e10] [cursor=pointer]:
+          - /url: ./index.html
+        - link "VISUALISATION" [ref=e11] [cursor=pointer]:
+          - /url: "#"
+      - generic [ref=e14]: CAPECL-GRP11-2026
+  - main [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - paragraph [ref=e19]: problème 1
+          - heading "À combien de g équivaut une claque ?" [level=1] [ref=e20]:
+            - generic [ref=e21]: À combien de g équivaut
+            - generic [ref=e22]: une claque ?
+          - link "Retour aux articles" [ref=e23] [cursor=pointer]:
+            - /url: ./index.html
+            - img [ref=e24]
+            - generic: Retour
+        - navigation "Chapitres" [ref=e27]:
+          - paragraph [ref=e28]: chapitres
+          - list [ref=e29]:
+            - listitem [ref=e30]:
+              - link "00. Introduction & Présentation" [ref=e31] [cursor=pointer]:
+                - /url: "#chapter-0"
+            - listitem [ref=e32]:
+              - link "01. Vitesse d'impact de la main" [ref=e33] [cursor=pointer]:
+                - /url: "#chapter-1"
+            - listitem [ref=e34]:
+              - link "02. Distance d'arrêt, temps de contact" [ref=e35] [cursor=pointer]:
+                - /url: "#chapter-2"
+            - listitem [ref=e36]:
+              - link "03. Force d'impact" [ref=e37] [cursor=pointer]:
+                - /url: "#chapter-3"
+            - listitem [ref=e38]:
+              - link "04. Masse accélérée" [ref=e39] [cursor=pointer]:
+                - /url: "#chapter-4"
+            - listitem [ref=e40]:
+              - link "05. Conclusion & Synthèse" [ref=e41] [cursor=pointer]:
+                - /url: "#chapter-5"
+        - generic [ref=e42]:
+          - paragraph [ref=e43]: abstract / TL;DR
+          - generic [ref=e44]:
+            - 'heading "Chapitre 0 : Introduction et présentation" [level=2] [ref=e45]':
+              - generic [ref=e46]: "Chapitre 0 :"
+              - generic [ref=e47]: Introduction et présentation
+            - paragraph [ref=e48]: Nous présenterons ici notre démarche de résolution de ce premier problème, accompagnée de son diagramme de raisonnement et des hypothèses retenues.
+      - region "Contenu de l'article" [ref=e49]:
+        - button "Afficher tout l'article sur une seule page" [ref=e51] [cursor=pointer]:
+          - generic [ref=e52]: Tout afficher
+        - generic "Chapitre 0 :Introduction et présentation" [ref=e56]:
+          - generic [ref=e57]:
+            - paragraph [ref=e58]:
+              - text: Ce problème consiste à estimer l'accélération subie par la tête lors d'une claque, exprimée en multiples de
+              - generic [ref=e59]:
+                - generic [ref=e60]:
+                  - generic [ref=e62]: g
+                  - generic [ref=e64]: ≈
+                  - generic [ref=e66]: "9"
+                  - generic [ref=e69]: ","
+                  - generic [ref=e70]:
+                    - generic [ref=e71]: "8"
+                    - generic [ref=e72]: "1"
+                  - generic [ref=e73]:
+                    - generic [ref=e75]: m
+                    - generic [ref=e77]: ⋅
+                    - generic [ref=e78]:
+                      - generic [ref=e80]: s
+                      - generic [ref=e82]:
+                        - generic [ref=e84]: −
+                        - generic [ref=e86]: "2"
+                - math [ref=e88]:
+                  - generic [ref=e89]: g
+                  - generic [ref=e90]: ≈
+                  - generic [ref=e91]: "9"
+                  - generic [ref=e93]: ","
+                  - generic [ref=e94]: "81"
+                  - generic [ref=e95]:
+                    - generic [ref=e96]: m
+                    - generic [ref=e97]: ⋅
+                    - generic [ref=e98]:
+                      - generic [ref=e99]: s
+                      - generic [ref=e100]:
+                        - generic [ref=e101]: −
+                        - generic [ref=e102]: "2"
+              - text: . Nous décomposerons le raisonnement en sous-questions indépendantes, chacune faisant l'objet d'un chapitre.
+            - paragraph [ref=e103]:
+              - text: "L'idée directrice est simple : estimer la"
+              - emphasis [ref=e104]: force d'impact
+              - text: ", en déduire l'accélération via la relation fondamentale de la dynamique, puis exprimer le résultat en"
+              - generic [ref=e105]:
+                - generic [ref=e108]: g
+                - math [ref=e110]:
+                  - generic [ref=e111]: g
+              - text: .
+            - generic [ref=e113]:
+              - generic [ref=e114]:
+                - generic [ref=e116]: a
+                - generic [ref=e118]: =
+                - generic [ref=e120]:
+                  - generic [ref=e123]: F
+                  - generic [ref=e130]: m
+                - generic [ref=e132]: ⟹
+                - generic [ref=e133]:
+                  - generic [ref=e135]: "n"
+                  - generic [ref=e138]: g
+                - generic [ref=e140]: =
+                - generic [ref=e142]:
+                  - generic [ref=e145]: a
+                  - generic [ref=e152]: g
+              - math [ref=e154]:
+                - generic [ref=e155]: a
+                - generic [ref=e156]: =
+                - generic [ref=e157]:
+                  - generic [ref=e158]: F
+                  - generic [ref=e159]: m
+                - generic [ref=e160]: ⟹
+                - generic [ref=e161]:
+                  - generic [ref=e162]: "n"
+                  - generic [ref=e163]: g
+                - generic [ref=e164]: =
+                - generic [ref=e165]:
+                  - generic [ref=e166]: a
+                  - generic [ref=e167]: g
+            - paragraph [ref=e168]: Chaque grandeur intermédiaire sera encadrée par un ordre de grandeur bas et un ordre de grandeur haut afin de propager les incertitudes jusqu'au résultat final.
+        - navigation "Navigation entre chapitres" [ref=e169]:
+          - button "Aller au chapitre 01" [ref=e172] [cursor=pointer]:
+            - generic [ref=e173]: "Continuer vers le chapitre 01 : Vitesse d'impact de la main"
+            - img [ref=e174]

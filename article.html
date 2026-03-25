@@ -64,7 +64,7 @@
               <a class="label-upper menu-link" href="./diagram.html"
                 >DIAGRAMMES</a
               >
-              <a class="label-upper menu-link is-active" href="./index.html"
+              <a class="label-upper menu-link" href="./index.html"
                 >ARTICLES</a
               >
               <a class="label-upper menu-link" href="#">VISUALISATION</a>
@@ -135,6 +135,17 @@
                   class="article-chapter-list article-drawer-chapter-list"
                   id="mobile-chapter-list"
                 >
+                  <li class="article-view-toggle-item">
+                    <button
+                      class="article-view-toggle"
+                      type="button"
+                      data-view-toggle
+                      aria-pressed="false"
+                      aria-label="Afficher tout l'article sur une seule page"
+                    >
+                      <span data-view-toggle-label>Tout afficher</span>
+                    </button>
+                  </li>
                   <li class="is-active">
                     <a href="#chapter-0" data-chapter="0"
                       >00. Introduction &amp; Présentation</a
@@ -214,6 +225,17 @@
               >
                 <p class="article-eyebrow label-muted">chapitres</p>
                 <ol class="article-chapter-list" id="chapter-list">
+                  <li class="article-view-toggle-item">
+                    <button
+                      class="article-view-toggle"
+                      type="button"
+                      data-view-toggle
+                      aria-pressed="false"
+                      aria-label="Afficher tout l'article sur une seule page"
+                    >
+                      <span data-view-toggle-label>Tout afficher</span>
+                    </button>
+                  </li>
                   <li class="is-active">
                     <a href="#chapter-0" data-chapter="0"
                       >00. Introduction &amp; Présentation</a
@@ -641,11 +663,20 @@
     <script>
       (() => {
         const blocks = [...document.querySelectorAll("[data-chapter-block]")];
-        const listItems = [...document.querySelectorAll("#chapter-list li")];
+        const listItems = [
+          ...document.querySelectorAll(
+            "#chapter-list li:not(.article-view-toggle-item)",
+          ),
+        ];
         const mobileListItems = [
-          ...document.querySelectorAll("#mobile-chapter-list li"),
+          ...document.querySelectorAll(
+            "#mobile-chapter-list li:not(.article-view-toggle-item)",
+          ),
         ];
         const links = [...document.querySelectorAll("a[data-chapter]")];
+        const articleViewToggles = [
+          ...document.querySelectorAll("[data-view-toggle]"),
+        ];
         const articleCanvas = document.querySelector(".article-canvas");
         const articlePage = document.querySelector(".page-article");
         const articleProse = document.getElementById("article-prose");
@@ -670,6 +701,7 @@
         const articleCacheKey = articleReadingCache?.getArticleKey?.();
 
         const total = blocks.length;
+        let isFullView = getInitialViewMode();
         let current = getInitialChapterIndex();
         let drawerCloseTimer = 0;
         let lastTouchY = 0;
@@ -713,18 +745,51 @@
               "Rassemblement des résultats, encadrement final et comparaison avec des valeurs de référence.",
           },
         ];
+        const fullViewMeta = {
+          title: ["Article complet"],
+          summary:
+            "Tous les chapitres sont affichés sur une seule page pour une lecture continue, une exportation ou une capture intégrale.",
+        };
+
+        blocks.forEach((block, index) => {
+          block.id = `chapter-${index}`;
+
+          const content = block.querySelector(".article-block-content");
+          if (!content || content.querySelector(".article-block-title")) return;
+
+          const heading = document.createElement("h2");
+          heading.className = "article-block-title";
+          heading.id = `chapter-heading-${index}`;
+
+          chapterMeta[index]?.title?.forEach((line, lineIndex) => {
+            const span = document.createElement("span");
+            span.textContent = line;
+            heading.appendChild(span);
+
+            if (lineIndex === 0) {
+              heading.appendChild(document.createTextNode(" "));
+            }
+          });
+
+          content.prepend(heading);
+          block.setAttribute("aria-labelledby", heading.id);
+        });
 
         function getChapterTitle(index) {
           const meta = chapterMeta[index];
           return meta ? meta.title[1] : "";
         }
 
+        function getInitialViewMode() {
+          return new URLSearchParams(window.location.search).get("view") === "full";
+        }
+
         function getChapterIndexFromHash() {
           const match = window.location.hash.match(/^#chapter-(\d+)$/);
-          if (!match) return 0;
+          if (!match) return null;
 
           const index = Number.parseInt(match[1], 10);
-          if (Number.isNaN(index) || index < 0 || index >= total) return 0;
+          if (Number.isNaN(index) || index < 0 || index >= total) return null;
           return index;
         }
 
@@ -738,8 +803,9 @@
         }
 
         function getInitialChapterIndex() {
-          if (/^#chapter-\d+$/.test(window.location.hash)) {
-            return getChapterIndexFromHash();
+          const hashIndex = getChapterIndexFromHash();
+          if (hashIndex !== null) {
+            return hashIndex;
           }
 
           return getCachedChapterIndex();
@@ -753,10 +819,53 @@
           });
         }
 
-        function syncHash() {
-          const nextHash = `#chapter-${current}`;
-          if (window.location.hash === nextHash) return;
-          window.history.replaceState(null, "", nextHash);
+        function syncUrlState() {
+          const url = new URL(window.location.href);
+
+          if (isFullView) {
+            url.searchParams.set("view", "full");
+            if (!/^#chapter-\d+$/.test(url.hash)) {
+              url.hash = `#chapter-${current}`;
+            }
+          } else {
+            url.searchParams.delete("view");
+            url.hash = `#chapter-${current}`;
+          }
+
+          const nextUrl = `${url.pathname}${url.search}${url.hash}`;
+          const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+
+          if (nextUrl === currentUrl) return;
+          window.history.replaceState(null, "", nextUrl);
+        }
+
+        function updateViewToggleCopy() {
+          articleViewToggles.forEach((toggle) => {
+            toggle.setAttribute("aria-pressed", String(isFullView));
+            toggle.setAttribute(
+              "aria-label",
+              isFullView
+                ? "Revenir à l'affichage par chapitre"
+                : "Afficher tout l'article sur une seule page",
+            );
+
+            const label = toggle.querySelector("[data-view-toggle-label]");
+            if (label) {
+              label.textContent = isFullView
+                ? "Vue par chapitre"
+                : "Tout afficher";
+            }
+          });
+        }
+
+        function scrollToHashTarget(behavior = "auto") {
+          const hashIndex = getChapterIndexFromHash();
+          if (hashIndex === null) return;
+
+          document.getElementById(`chapter-${hashIndex}`)?.scrollIntoView({
+            block: "start",
+            behavior,
+          });
         }
 
         function updateNavCopy() {
@@ -1013,7 +1122,7 @@
             return;
           }
 
-          const condensed = current > 0;
+          const condensed = !isFullView && current > 0;
 
           articlePage?.classList.toggle("is-mobile-chapter-menu", condensed);
           menuToggle?.toggleAttribute("hidden", !condensed);
@@ -1359,9 +1468,65 @@
           window.setTimeout(run, 160);
         }
 
+        function prepareFullViewAssets() {
+          blocks.forEach((block, index) => {
+            block.querySelectorAll("img[src]").forEach((image) => {
+              image.setAttribute("loading", "eager");
+              image.setAttribute(
+                "fetchpriority",
+                index === current ? "high" : "auto",
+              );
+            });
+
+            primeChapter(index);
+          });
+        }
+
+        function ensureFullArticleReady() {
+          prepareFullViewAssets();
+          Promise.all(blocks.map((_, index) => ensureChapterReady(index)))
+            .then(() => {
+              articleProseViewport?.style.removeProperty("height");
+            })
+            .catch(() => {});
+        }
+
+        function applyFullViewState() {
+          clearChapterTransitionStyles();
+          articlePage?.classList.add("is-full-view");
+
+          blocks.forEach((block) => {
+            block.removeAttribute("hidden");
+            delete block.dataset.suppressIntro;
+            block.style.animation = "";
+          });
+
+          listItems.forEach((item) => {
+            item.classList.remove("is-active");
+          });
+          mobileListItems.forEach((item) => {
+            item.classList.remove("is-active");
+          });
+
+          syncUrlState();
+          persistCurrentChapter();
+          updateNavCopy();
+          updateViewToggleCopy();
+          syncMobileIntroState();
+
+          articleCanvas?.classList.add("is-last-chapter");
+          articlePage?.classList.add("is-last-chapter");
+          articleFeature?.toggleAttribute("hidden", false);
+          setSummary(fullViewMeta);
+
+          ensureFullArticleReady();
+        }
+
         function applyChapterState(previousScrollY, scroll, options = {}) {
           const keepScrollAnimation = options.keepScrollAnimation === true;
           const suppressBlockIntro = options.animate === true;
+
+          articlePage?.classList.remove("is-full-view");
 
           blocks.forEach((block, index) => {
             if (index === current) {
@@ -1392,9 +1557,10 @@
             item.classList.toggle("is-active", index === current);
           });
 
-          syncHash();
+          syncUrlState();
           persistCurrentChapter();
           updateNavCopy();
+          updateViewToggleCopy();
           syncMobileIntroState();
 
           const isLastChapter = current === total - 1;
@@ -1439,6 +1605,12 @@
             options.animate &&
             previousIndex !== current &&
             !window.ODGTransitions?.prefersReducedMotion?.();
+
+          if (isFullView) {
+            applyFullViewState();
+            return;
+          }
+
           const previousScrollY = window.scrollY;
 
           if (!shouldAnimate) {
@@ -1451,6 +1623,18 @@
           applyChapterState(previousScrollY, scroll, options);
           chapterSwap.applyTargetHeights();
           chapterSwap.cleanup();
+        }
+
+        function toggleArticleView() {
+          closeDrawer();
+          isFullView = !isFullView;
+          render(false, { animate: false, previousIndex: current });
+
+          if (isFullView) {
+            requestAnimationFrame(() => {
+              scrollToHashTarget("auto");
+            });
+          }
         }
 
         function goTo(index, scroll = true) {
@@ -1495,11 +1679,26 @@
           goToStart();
         });
 
+        articleViewToggles.forEach((toggle) => {
+          toggle.addEventListener("click", toggleArticleView);
+        });
+
         links.forEach((link) => {
           link.addEventListener("click", (event) => {
-            event.preventDefault();
             const nextIndex = Number.parseInt(link.dataset.chapter, 10);
             const fromDrawer = link.closest(".article-drawer-panel") !== null;
+
+            if (isFullView) {
+              current = nextIndex;
+              persistCurrentChapter();
+
+              if (fromDrawer) {
+                closeDrawer();
+              }
+              return;
+            }
+
+            event.preventDefault();
             goTo(nextIndex, fromDrawer);
 
             if (fromDrawer) {
@@ -1518,6 +1717,7 @@
           }
           if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")
             return;
+          if (isFullView) return;
           if (e.key === "ArrowLeft") goTo(current - 1);
           if (e.key === "ArrowRight") goTo(current + 1);
         });
@@ -1538,6 +1738,14 @@
         }
         window.addEventListener("hashchange", () => {
           const hashIndex = getChapterIndexFromHash();
+          if (hashIndex === null) return;
+
+          if (isFullView) {
+            current = hashIndex;
+            persistCurrentChapter();
+            return;
+          }
+
           if (hashIndex !== current) {
             cancelChapterScrollAnimation();
             current = hashIndex;
@@ -1548,6 +1756,14 @@
         window.addEventListener(
           "load",
           () => {
+            if (isFullView) {
+              ensureFullArticleReady();
+              requestAnimationFrame(() => {
+                scrollToHashTarget("auto");
+              });
+              return;
+            }
+
             primeChapter(current);
             typesetVisibleChapter();
             queueChapterWarmup([current + 1, current + 2]);
