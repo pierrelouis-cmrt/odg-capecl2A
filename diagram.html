@@ -900,6 +900,10 @@
         const trees = document.querySelectorAll(".diagram-tree");
         const radios = document.querySelectorAll(".diagram-tab-radio");
         let activeTree = document.getElementById("tree-1");
+        const diagramHashMap = {
+          "diagramme-1": "1",
+          "diagramme-2": "2",
+        };
         const viewState = {
           scale: 1,
           minScale: 0.1,
@@ -1258,7 +1262,22 @@
           return [...radios].find((radio) => radio.checked)?.value || "1";
         }
 
-        function switchTree(id) {
+        function syncDiagramHash(id) {
+          const url = new URL(window.location.href);
+          url.hash = `diagramme-${id}`;
+          const nextUrl = `${url.pathname}${url.search}${url.hash}`;
+          const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+
+          if (nextUrl === currentUrl) return;
+          window.history.replaceState(null, "", nextUrl);
+        }
+
+        function getTreeIdFromHash() {
+          const rawHash = window.location.hash.replace(/^#/, "");
+          return diagramHashMap[rawHash] || null;
+        }
+
+        function switchTree(id, { updateHash = true } = {}) {
           focusState.nodeId = null;
           resetTrace();
           trees.forEach((t) => {
@@ -1272,6 +1291,9 @@
           radios.forEach((radio) => {
             radio.checked = radio.value === String(id);
           });
+          if (updateHash) {
+            syncDiagramHash(id);
+          }
           queueLayoutRefresh({ fitView: true });
         }
 
@@ -1279,6 +1301,12 @@
           r.addEventListener("change", () => {
             if (r.checked) switchTree(r.value);
           });
+        });
+
+        window.addEventListener("hashchange", () => {
+          const treeId = getTreeIdFromHash();
+          if (!treeId || treeId === getSelectedTreeId()) return;
+          switchTree(treeId, { updateHash: false });
         });
 
         function getCanvasPoint(clientX, clientY) {
@@ -2066,7 +2094,9 @@
         }
 
         /* ── Init ── */
-        switchTree(getSelectedTreeId());
+        switchTree(getTreeIdFromHash() || getSelectedTreeId(), {
+          updateHash: Boolean(getTreeIdFromHash()),
+        });
         bindNodeInteractions();
         bindResizeObserver();
         requestAnimationFrame(() => {

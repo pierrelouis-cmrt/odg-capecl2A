@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ODG Article — À combien de g équivaut une claque&nbsp;?</title>
+    <title>ODG Article — Nombre de g perçus lors d'une baffe</title>
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -64,9 +64,7 @@
               <a class="label-upper menu-link" href="./diagram.html"
                 >DIAGRAMMES</a
               >
-              <a class="label-upper menu-link" href="./index.html"
-                >ARTICLES</a
-              >
+              <a class="label-upper menu-link" href="./index.html">ARTICLES</a>
               <a class="label-upper menu-link" href="#">VISUALISATION</a>
             </nav>
             <div class="menu-block menu-right">
@@ -93,8 +91,8 @@
               <div class="article-drawer-block article-drawer-problem">
                 <p class="article-eyebrow label-muted">problème 1</p>
                 <p class="article-title article-drawer-title">
-                  <span>À combien de g équivaut</span>
-                  <span>une claque&nbsp;?</span>
+                  <span>Nombre de g perçus</span>
+                  <span>lors d'une baffe</span>
                 </p>
                 <a
                   class="article-jump"
@@ -148,28 +146,30 @@
                   </li>
                   <li class="is-active">
                     <a href="#chapter-0" data-chapter="0"
-                      >00. Introduction &amp; Présentation</a
+                      >00. Introduction et premiers ordres de grandeur</a
                     >
                   </li>
                   <li>
                     <a href="#chapter-1" data-chapter="1"
-                      >01. Vitesse d'impact de la main</a
+                      >01. Méthode cinématique</a
                     >
                   </li>
                   <li>
                     <a href="#chapter-2" data-chapter="2"
-                      >02. Distance d'arrêt, temps de contact</a
+                      >02. Méthode masse-ressort</a
                     >
                   </li>
                   <li>
-                    <a href="#chapter-3" data-chapter="3">03. Force d'impact</a>
+                    <a href="#chapter-3" data-chapter="3"
+                      >03. Sensibilité de l'hypothèse vf ≈ 0</a
+                    >
                   </li>
                   <li>
-                    <a href="#chapter-4" data-chapter="4">04. Masse accélérée</a>
+                    <a href="#chapter-4" data-chapter="4">04. Synthèse</a>
                   </li>
                   <li>
                     <a href="#chapter-5" data-chapter="5"
-                      >05. Conclusion &amp; Synthèse</a
+                      >05. Limites et prolongements</a
                     >
                   </li>
                 </ol>
@@ -186,8 +186,8 @@
               <div class="article-column article-column-problem">
                 <p class="article-eyebrow label-muted">problème 1</p>
                 <h1 class="article-title">
-                  <span>À combien de g équivaut</span>
-                  <span>une claque&nbsp;?</span>
+                  <span>Nombre de g perçus</span>
+                  <span>lors d'une baffe</span>
                 </h1>
                 <a
                   class="article-jump"
@@ -238,28 +238,30 @@
                   </li>
                   <li class="is-active">
                     <a href="#chapter-0" data-chapter="0"
-                      >00. Introduction &amp; Présentation</a
+                      >00. Introduction et premiers ordres de grandeur</a
                     >
                   </li>
                   <li>
                     <a href="#chapter-1" data-chapter="1"
-                      >01. Vitesse d'impact de la main</a
+                      >01. Méthode cinématique</a
                     >
                   </li>
                   <li>
                     <a href="#chapter-2" data-chapter="2"
-                      >02. Distance d'arrêt, temps de contact</a
+                      >02. Méthode masse-ressort</a
                     >
                   </li>
                   <li>
-                    <a href="#chapter-3" data-chapter="3">03. Force d'impact</a>
+                    <a href="#chapter-3" data-chapter="3"
+                      >03. Sensibilité de l'hypothèse vf ≈ 0</a
+                    >
                   </li>
                   <li>
-                    <a href="#chapter-4" data-chapter="4">04. Masse accélérée</a>
+                    <a href="#chapter-4" data-chapter="4">04. Synthèse</a>
                   </li>
                   <li>
                     <a href="#chapter-5" data-chapter="5"
-                      >05. Conclusion &amp; Synthèse</a
+                      >05. Limites et prolongements</a
                     >
                   </li>
                 </ol>
@@ -270,12 +272,12 @@
                 <div class="article-summary-block" id="summary-block">
                   <h2 class="article-section-title" id="summary-title">
                     <span>Chapitre 0&nbsp;:</span>
-                    <span>Introduction et présentation</span>
+                    <span>Introduction et premiers ordres de grandeur</span>
                   </h2>
                   <p class="article-summary" id="summary-text">
-                    Nous présenterons ici notre démarche de résolution de ce
-                    premier problème, accompagnée de son diagramme de
-                    raisonnement et des hypothèses retenues.
+                    Construction des hypothèses de départ, estimation de la
+                    masse de la main, de la vitesse d'impact et de la distance
+                    d'arrêt avant les deux modèles de calcul.
                   </p>
                 </div>
               </div>
@@ -287,219 +289,403 @@
 
               <div class="article-prose" id="article-prose">
                 <div class="article-prose-viewport" id="article-prose-viewport">
-                <!-- ── Chapter 0 ── -->
-                <div class="article-block" data-chapter-block="0">
-                  <div class="article-block-content">
-                    <p>
-                      Ce problème consiste à estimer l'accélération subie par la
-                      tête lors d'une claque, exprimée en multiples de \(g
-                      \approx 9{,}81\;\mathrm{m\cdot s^{-2}}\). Nous
-                      décomposerons le raisonnement en sous-questions
-                      indépendantes, chacune faisant l'objet d'un chapitre.
-                    </p>
-                    <p>
-                      L'idée directrice est simple&nbsp;: estimer la
-                      <em>force d'impact</em>, en déduire l'accélération via la
-                      relation fondamentale de la dynamique, puis exprimer le
-                      résultat en \(g\).
-                    </p>
-                    <div class="math-block">
-                      \[ a = \frac{F}{m} \qquad\Longrightarrow\qquad n_g =
-                      \frac{a}{g} \]
+                  <!-- ── Chapter 0 ── -->
+                  <div class="article-block" data-chapter-block="0">
+                    <div class="article-block-content">
+                      <p>
+                        Ce chapitre d'introduction fixe les hypothèses de
+                        départ, estime les grandeurs utiles, puis prépare les
+                        deux modèles physiques utilisés dans la suite. Le
+                        diagramme associé à ce problème est disponible
+                        <a href="./diagram.html#diagramme-1">ici</a>.
+                      </p>
+                      <h3 class="article-subheading">Masse de la main</h3>
+                      <p>
+                        On modélise la main comme une paume (pavé de \(9 \times
+                        9 \times 2{,}5\;\text{cm}\)) prolongée par 5 doigts
+                        (cylindres de \(8\;\text{cm}\) de long et
+                        \(0{,}75\;\text{cm}\) de rayon) :
+                      </p>
+                      <div class="math-block">
+                        \[ V = 9 \times 9 \times 2{,}5 + 5\,\pi\,(0{,}75)^2
+                        \times 8 \approx 273\;\text{cm}^3 \]
+                      </div>
+                      <p>
+                        Le corps humain flotte à peine : \(\rho_{\text{main}}
+                        \approx \rho_{\text{eau}} =
+                        1\;\text{g}\cdot\text{cm}^{-3}\), d'où :
+                      </p>
+                      <div class="math-block">
+                        \[ m \approx 273\;\text{g} \approx 0{,}27\;\text{kg} \]
+                      </div>
+                      <h3 class="article-subheading">Vitesse d'impact</h3>
+                      <p>
+                        Un bras adulte mesure environ \(60\;\text{cm}\). Une
+                        baffe décrit un arc d'environ un quart de tour en
+                        \(\Delta t \approx 0{,}15\;\text{s}\) (geste vif) :
+                      </p>
+                      <div class="math-block">
+                        \[ v \approx \frac{\tfrac{1}{4}\times 2\pi \times
+                        0{,}6}{0{,}15} \approx 6\;\text{m/s} \]
+                      </div>
+                      <p>
+                        Le bout de la main est plus éloigné de l'épaule que le
+                        coude, et le poignet fouette en fin de geste ; on
+                        retient donc
+                      </p>
+                      <div class="math-block">
+                        \[ v_i \approx 10\;\text{m/s} \]
+                      </div>
+                      <h3 class="article-subheading">Distance d'arrêt</h3>
+                      <p>
+                        Entre le contact et l'arrêt presque complet, la main
+                        s'enfonce dans la chair de la cible. Pour un poulet
+                        maintenu sur une table, la déformation est surtout celle
+                        de la chair ; on estime
+                      </p>
+                      <div class="math-block">
+                        \[ \Delta x \in [3\;;\;8]\;\text{cm} \]
+                      </div>
+                      <h3 class="article-subheading">
+                        Hypothèses de modélisation
+                      </h3>
+                      <p>
+                        La main ne rebondit pas, la force est colinéaire au
+                        déplacement, normale à la surface de la table, et le
+                        poulet est maintenu (la table fournit la réaction
+                        normale).
+                      </p>
                     </div>
-                    <p>
-                      Chaque grandeur intermédiaire sera encadrée par un ordre
-                      de grandeur bas et un ordre de grandeur haut afin de
-                      propager les incertitudes jusqu'au résultat final.
-                    </p>
                   </div>
-                </div>
 
-                <!-- ── Chapter 1 ── -->
-                <div class="article-block" data-chapter-block="1" hidden>
-                  <div class="article-block-content">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Pellentesque habitant morbi tristique senectus et netus et
-                      malesuada fames ac turpis egestas. On modélise le bras
-                      comme un pendule de longueur \(L\) et on estime la vitesse
-                      tangentielle au bout&nbsp;:
-                    </p>
-                    <div class="math-block">
-                      \[ v = \omega \cdot L = \dot{\theta}\,L \]
+                  <!-- ── Chapter 1 ── -->
+                  <div class="article-block" data-chapter-block="1" hidden>
+                    <div class="article-block-content">
+                      <h3 class="article-subheading">
+                        Théorème de l'énergie cinétique
+                      </h3>
+                      <p>
+                        On cherche ici une <strong>accélération moyenne</strong>
+                        sur la distance d'arrêt. La variation d'énergie
+                        cinétique égale le travail de la force de contact :
+                      </p>
+                      <div class="math-block">
+                        \[ \frac{1}{2}\,m\,v_f^{\,2} - \frac{1}{2}\,m\,v_i^{\,2}
+                        = -F_{\text{moy}}\,\Delta x \]
+                      </div>
+                      <p>
+                        En divisant par \(m\) et en posant \(|a_{\text{moy}}| =
+                        F_{\text{moy}}/m\), on obtient :
+                      </p>
+                      <div class="math-block math-block-emphasis">
+                        \[ |a_{\text{moy}}| = \frac{v_i^{\,2} -
+                        v_f^{\,2}}{2\,\Delta x} \]
+                      </div>
+                      <p>Avec \(v_f \approx 0\) :</p>
+                      <div class="math-block math-block-emphasis">
+                        \[ |a_{\text{moy}}| =
+                        \frac{v_i^{\,2}}{2\,\Delta x} \]
+                      </div>
+                      <h4
+                        class="article-subheading article-subheading-secondary"
+                      >
+                        Application numérique
+                      </h4>
+                      <div class="article-table-wrap">
+                        <table class="article-table">
+                          <thead>
+                            <tr>
+                              <th>\(\Delta x\)</th>
+                              <th>\(|a_{\text{moy}}|\)</th>
+                              <th>En \(g\)</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>\(3\;\text{cm}\)</td>
+                              <td>
+                                \(\dfrac{100}{0{,}06} \approx
+                                1\,700\;\text{m/s}^2\)
+                              </td>
+                              <td>\(\approx 170\;g\)</td>
+                            </tr>
+                            <tr>
+                              <td>\(8\;\text{cm}\)</td>
+                              <td>
+                                \(\dfrac{100}{0{,}16} \approx
+                                630\;\text{m/s}^2\)
+                              </td>
+                              <td>\(\approx 64\;g\)</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="article-callout">
+                        <p>
+                          <strong>Méthode 1 :</strong> accélération moyenne de
+                          l'ordre de \(60\) à \(170\;g\).
+                        </p>
+                      </div>
                     </div>
-
-                    <figure class="article-image">
-                      <img
-                        src="https://placehold.co/780x400/2a2a2a/555?text=Diagram+—+arm+model"
-                        alt="Modèle bras-pendule"
-                        loading="lazy"
-                        decoding="async"
-                        fetchpriority="low"
-                      />
-                      <figcaption class="article-image-caption">
-                        Fig. 1 — Modèle simplifié du bras comme pendule rigide.
-                      </figcaption>
-                    </figure>
-
-                    <p>
-                      Aenean ultricies mi vitae est. Mauris placerat eleifend
-                      leo. En prenant \(\dot\theta \approx 15\;\mathrm{rad/s}\)
-                      et \(L \approx 0{,}6\;\mathrm{m}\), on obtient \(v \approx
-                      9\;\mathrm{m/s}\).
-                    </p>
-                    <p>
-                      Vestibulum erat wisi, condimentum sed, commodo vitae,
-                      ornare sit amet, wisi. Aenean fermentum, elit eget
-                      tincidunt condimentum, eros ipsum rutrum orci, sagittis
-                      tempus lacus enim ac dui.
-                    </p>
                   </div>
-                </div>
 
-                <!-- ── Chapter 2 ── -->
-                <div class="article-block" data-chapter-block="2" hidden>
-                  <div class="article-block-content">
-                    <p>
-                      Donec non enim in turpis pulvinar facilisis. Ut felis.
-                      Praesent dapibus, neque id cursus faucibus, tortor neque
-                      egestas augue, eu vulputate magna eros eu erat.
-                    </p>
-
-                    <figure class="article-image article-image-left">
-                      <img
-                        src="https://placehold.co/480x320/2a2a2a/555?text=Left+bleed+image"
-                        alt="Contact distance"
-                        loading="lazy"
-                        decoding="async"
-                        fetchpriority="low"
-                      />
-                      <figcaption class="article-image-caption">
-                        Fig. 2 — Déformation de la joue lors du contact.
-                      </figcaption>
-                    </figure>
-
-                    <p>
-                      En supposant une décélération uniforme sur une distance
-                      \(d\), le temps de contact vaut&nbsp;:
-                    </p>
-                    <div class="math-block">\[ \Delta t = \frac{2d}{v} \]</div>
-                    <p>
-                      Phasellus ultrices nulla quis nibh. Quisque a lectus.
-                      Donec consectetuer ligula vulputate sem tristique cursus.
-                      Pour \(d \approx 2\;\mathrm{cm}\) et \(v \approx
-                      9\;\mathrm{m/s}\), on trouve \(\Delta t \approx
-                      4{,}4\;\mathrm{ms}\).
-                    </p>
-                  </div>
-                </div>
-
-                <!-- ── Chapter 3 ── -->
-                <div class="article-block" data-chapter-block="3" hidden>
-                  <div class="article-block-content">
-                    <p>
-                      Pellentesque fermentum dolor. Aliquam quam lectus,
-                      facilisis auctor, ultrices ut, elementum vulputate, nunc.
-                      D'après le théorème de l'impulsion&nbsp;:
-                    </p>
-                    <div class="math-block">
-                      \[ F = \frac{m_{\text{main}} \cdot v}{\Delta t} \]
+                  <!-- ── Chapter 2 ── -->
+                  <div class="article-block" data-chapter-block="2" hidden>
+                    <div class="article-block-content">
+                      <h3 class="article-subheading">
+                        Compression maximale et pic d'accélération
+                      </h3>
+                      <p>
+                        On modélise la chair comme un ressort de raideur \(k\).
+                        À compression maximale \(\delta\), l'énergie cinétique
+                        initiale de la main est stockée sous forme d'énergie
+                        élastique :
+                      </p>
+                      <div class="math-block">
+                        \[ \frac{1}{2}\,m\,v_i^{\,2} = \frac{1}{2}\,k\,\delta^2
+                        \qquad\Longrightarrow\qquad \delta =
+                        v_i\sqrt{\frac{m}{k}} \]
+                      </div>
+                      <p>
+                        La force maximale et l'accélération maximale (pic)
+                        valent :
+                      </p>
+                      <div class="math-block">
+                        \[ F_{\max} = k\,\delta = v_i\sqrt{m\,k} \qquad;\qquad
+                        |a_{\max}| = \frac{F_{\max}}{m} = v_i\sqrt{\frac{k}{m}}
+                        \]
+                      </div>
+                      <p>
+                        Comme \(F = kx\) croît linéairement avec la compression,
+                        la
+                        <strong
+                          >force moyenne sur la distance de freinage</strong
+                        >
+                        vaut \(F_{\max}/2\). L'accélération moyenne associée
+                        vaut donc :
+                      </p>
+                      <div class="math-block">
+                        \[ |a_{\text{moy}}| = \frac{|a_{\max}|}{2} \]
+                      </div>
+                      <h4
+                        class="article-subheading article-subheading-secondary"
+                      >
+                        Application numérique
+                      </h4>
+                      <p>
+                        On estime la raideur des tissus mous à environ \(k
+                        \approx 10\;\text{kN/m}\). Cela correspond à
+                        \(100\;\text{N/cm}\), soit environ le poids d'une masse
+                        de \(10\;\text{kg}\) pour enfoncer la chair de
+                        \(1\;\text{cm}\). Pour \(k = 10\;\text{kN/m}\) :
+                      </p>
+                      <div class="math-block">
+                        \[ \begin{aligned} \delta &=
+                        10\,\sqrt{\frac{0{,}27}{10\,000}} \approx
+                        5{,}2\;\text{cm} \quad\in [3\;;\;8]\;\text{cm} \\[6pt]
+                        F_{\max} &= 10\,\sqrt{0{,}27 \times 10\,000} \approx
+                        520\;\text{N} \\[6pt] |a_{\max}| &= \frac{520}{0{,}27}
+                        \approx 1\,900\;\text{m/s}^2 \approx 200\;g \\[6pt]
+                        |a_{\text{moy}}| &\approx 960\;\text{m/s}^2 \approx
+                        98\;g \end{aligned} \]
+                      </div>
+                      <p>
+                        La déformation obtenue (\(5{,}2\;\text{cm}\)) reste dans
+                        la fourchette estimée, et l'accélération moyenne
+                        (\(\approx 100\;g\)) reste cohérente avec l'intervalle
+                        obtenu par la méthode 1.
+                      </p>
+                      <div class="article-callout">
+                        <p>
+                          <strong>Méthode 2 :</strong>
+                          \(a_{\text{moy}} \approx 100\;g\), et \(a_{\text{pic}}
+                          \approx 200\;g\).
+                        </p>
+                      </div>
                     </div>
-
-                    <figure class="article-image article-image-right">
-                      <img
-                        src="https://placehold.co/480x300/2a2a2a/555?text=Right+bleed+image"
-                        alt="Force graph"
-                        loading="lazy"
-                        decoding="async"
-                        fetchpriority="low"
-                      />
-                      <figcaption class="article-image-caption">
-                        Fig. 3 — Profil temporel de la force d'impact.
-                      </figcaption>
-                    </figure>
-
-                    <p>
-                      Sed adipiscing ornare risus. Morbi est est, blandit sit
-                      amet, sagittis vel, euismod vel, velit. En prenant
-                      \(m_{\text{main}} \approx 0{,}4\;\mathrm{kg}\), on arrive
-                      à \(F \approx 820\;\mathrm{N}\).
-                    </p>
-                    <p>
-                      Suspendisse commodo ullamcorper magna. Pellentesque
-                      egestas sem. Il est intéressant de noter que cette force
-                      est comparable à un coup de poing modéré.
-                    </p>
                   </div>
-                </div>
 
-                <!-- ── Chapter 4 ── -->
-                <div class="article-block" data-chapter-block="4" hidden>
-                  <div class="article-block-content">
-                    <p>
-                      Curabitur sed urna. Nunc pulvinar ante sed lacus.
-                      Suspendisse potenti. La masse pertinente n'est pas celle
-                      de la tête entière, mais celle qui « participe » au
-                      mouvement initial&nbsp;:
-                    </p>
-                    <div class="math-block">
-                      \[ m_{\text{eff}} \approx \alpha \cdot m_{\text{tête}}
-                      \qquad \text{avec } \alpha \in [0{,}3;\;0{,}7] \]
+                  <!-- ── Chapter 3 ── -->
+                  <div class="article-block" data-chapter-block="3" hidden>
+                    <div class="article-block-content">
+                      <h3 class="article-subheading">Quantité de mouvement</h3>
+                      <p>
+                        Dans la méthode précédente, on a supposé que la main
+                        s'arrête presque complètement à l'impact. Pour tester la
+                        sensibilité du résultat, on prend un cas extrême : un
+                        <strong>poulet libre</strong> et une collision
+                        <strong>parfaitement inélastique</strong>. Ce modèle est
+                        grossier, mais il donne une borne raisonnable de la
+                        vitesse résiduelle possible de la main.
+                      </p>
+                      <p>
+                        La quantité de mouvement totale du système
+                        \(\{\text{main} + \text{poulet}\}\) se conserve pendant
+                        le choc :
+                      </p>
+                      <div class="math-block">
+                        \[ m\,v_i = (m + M)\,v_f \qquad\Longrightarrow\qquad v_f
+                        = \frac{m\,v_i}{m + M} \]
+                      </div>
+                      <p>Pour un poulet de \(M = 2\;\text{kg}\) :</p>
+                      <div class="math-block">
+                        \[ v_f = \frac{0{,}27 \times 10}{0{,}27 + 2} \approx
+                        1{,}2\;\text{m/s} \]
+                      </div>
+                      <p>
+                        La vitesse résiduelle n'est donc qu'environ \(12\%\) de
+                        la vitesse initiale. Comme la formule cinématique dépend
+                        des <em>carrés</em> des vitesses, la correction attendue
+                        est encore plus faible.
+                      </p>
+                      <p>
+                        En reprenant la formule moyenne avec \(\Delta x =
+                        5\;\text{cm}\) :
+                      </p>
+                      <div class="article-table-wrap">
+                        <table class="article-table">
+                          <thead>
+                            <tr>
+                              <th>Hypothèse</th>
+                              <th>\(|a_{\text{moy}}|\)</th>
+                              <th>En \(g\)</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                Poulet libre (\(v_f = 1{,}2\;\text{m/s}\))
+                              </td>
+                              <td>
+                                \(\dfrac{100 - 1{,}4}{0{,}10} \approx
+                                990\;\text{m/s}^2\)
+                              </td>
+                              <td>\(\approx 101\;g\)</td>
+                            </tr>
+                            <tr>
+                              <td>Poulet maintenu (\(v_f = 0\))</td>
+                              <td>
+                                \(\dfrac{100}{0{,}10} = 1\,000\;\text{m/s}^2\)
+                              </td>
+                              <td>\(\approx 102\;g\)</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p>L'écart n'est que de \(1{,}4\;\%\).</p>
+                      <div class="article-callout">
+                        <p>
+                          <strong>Prendre \(v_f \approx 0\)</strong> est donc
+                          tout à fait légitime pour un calcul d'ordre de
+                          grandeur. Maintenir le poulet évite en plus qu'une
+                          partie de l'énergie parte dans la translation globale
+                          du poulet.
+                        </p>
+                      </div>
                     </div>
-                    <p>
-                      Proin neque massa, cursus ut, gravida ut, lobortis eget,
-                      lacus. Sed diam. Praesent fermentum tempor tellus. Nullam
-                      tempor. Mauris ac felis vel velit tristique imperdiet.
-                    </p>
-
-                    <figure class="article-image">
-                      <img
-                        src="https://placehold.co/780x360/2a2a2a/555?text=Effective+mass+diagram"
-                        alt="Masse effective"
-                        loading="lazy"
-                        decoding="async"
-                        fetchpriority="low"
-                      />
-                      <figcaption class="article-image-caption">
-                        Fig. 4 — Estimation de la masse effective accélérée.
-                      </figcaption>
-                    </figure>
-
-                    <p>
-                      Vivamus laoreet. Nullam tincidunt adipiscing enim.
-                      Phasellus tempus, elit ut ullamcorper faucibus, justo nibh
-                      dignissim velit, a fermentum odio libero vitae tortor.
-                    </p>
                   </div>
-                </div>
 
-                <!-- ── Chapter 5 ── -->
-                <div class="article-block" data-chapter-block="5" hidden>
-                  <div class="article-block-content">
-                    <p>
-                      Fusce vel dui. Sed in libero ut nibh placerat accumsan.
-                      Proin faucibus arcu quis ante. En rassemblant toutes les
-                      estimations&nbsp;:
-                    </p>
-                    <div class="math-block">
-                      \[ n_g = \frac{F}{m_{\text{eff}} \cdot g} =
-                      \frac{v}{g\,\Delta t} \approx
-                      \frac{9}{9{,}81\times4{,}4\times10^{-3}} \approx
-                      200\;g\text{'s} \]
+                  <!-- ── Chapter 4 ── -->
+                  <div class="article-block" data-chapter-block="4" hidden>
+                    <div class="article-block-content">
+                      <h3 class="article-subheading">
+                        Convergence des deux approches
+                      </h3>
+                      <div class="article-table-wrap">
+                        <table class="article-table">
+                          <thead>
+                            <tr>
+                              <th>Approche</th>
+                              <th>Résultat</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                Énergie cinétique (\(\Delta x \in
+                                [3\;;\;8]\;\text{cm}\))
+                              </td>
+                              <td>
+                                \(|a_{\text{moy}}| \approx 60\) à \(170\;g\)
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>Masse-ressort (\(k = 10\;\text{kN/m}\))</td>
+                              <td>
+                                \(|a_{\text{moy}}| \approx 100\;g\),
+                                \(|a_{\text{pic}}| \approx 200\;g\)
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p>
+                        Les deux méthodes, basées sur des modèles physiques
+                        distincts, convergent vers le même ordre de grandeur. Le
+                        test de quantité de mouvement confirme en outre que
+                        considérer \(v_f \approx 0\) est cohérent.
+                      </p>
+                      <div class="article-callout">
+                        <p>
+                          Une baffe produit ici une accélération moyenne de
+                          l'ordre de <strong>\(100\;g\)</strong>, avec un pic de
+                          l'ordre de <strong>\(200\;g\)</strong>, donc de
+                          quelques <strong>\(10^2\,g\)</strong>.
+                        </p>
+                      </div>
                     </div>
-                    <p>
-                      L'encadrement final, compte tenu des hypothèses basses et
-                      hautes, donne un résultat compris entre \(\sim\!25\,g\) et
-                      \(\sim\!500\,g\) selon la violence de la claque et la
-                      masse effective retenue.
-                    </p>
-                    <p>
-                      Nulla sit amet est. Praesent metus tellus, elementum eu,
-                      semper a, adipiscing nec, purus. Cras risus ipsum,
-                      faucibus ut, ullamcorper id, varius ac, leo.
-                    </p>
                   </div>
-                </div>
+
+                  <!-- ── Chapter 5 ── -->
+                  <div class="article-block" data-chapter-block="5" hidden>
+                    <div class="article-block-content">
+                      <h3 class="article-subheading">Approche acoustique</h3>
+                      <ul class="article-list">
+                        <li>
+                          Une approche <strong>acoustique</strong> offrirait une
+                          voie indépendante. Le « clac » de la baffe est une
+                          impulsion sonore brève ; sa durée \(\Delta t\)
+                          correspond à la durée du contact. On peut la mesurer
+                          de deux façons :
+                          <ul>
+                            <li>
+                              <em>dans le domaine temporel</em> : on lit
+                              directement la durée de l'impulsion sur un
+                              oscilloscope audio (Phyphox par ex.) ;
+                            </li>
+                            <li>
+                              <em>dans le domaine fréquentiel</em> : une
+                              impulsion de durée \(\Delta t\) produit un spectre
+                              dont la largeur de bande vaut \(B \approx 1/\Delta
+                              t\). Mesurer \(B\) revient donc à mesurer \(\Delta
+                              t\).
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                      <p>
+                        Une fois \(\Delta t\) connu, on retrouve l'accélération
+                        à partir de la méthode cinématique. Pour une
+                        décélération supposée constante avec \(v_f = 0\) :
+                      </p>
+                      <div class="math-block">
+                        \[ \Delta x = \frac{v_i}{2}\,\Delta t \]
+                      </div>
+                      <p>
+                        En substituant dans \(|a| = \dfrac{v_i^{\,2}}{2\,\Delta
+                        x}\) :
+                      </p>
+                      <div class="math-block">
+                        \[ |a| = \frac{v_i^{\,2}}{2\;\dfrac{v_i}{2}\,\Delta t} =
+                        \frac{v_i}{\Delta t} \]
+                      </div>
+                      <p>
+                        Cette expression permet d'estimer \(|a|\) sans avoir à
+                        évaluer \(\Delta x\), grandeur plus difficile à mesurer
+                        directement.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -516,8 +702,7 @@
                         class="chapter-nav-continue-text"
                         id="nav-continue-text"
                       >
-                        Continuer vers le chapitre 01 : Vitesse d'impact de la
-                        main
+                        Continuer vers le chapitre 01 : Méthode cinématique
                       </span>
                       <svg
                         class="chapter-nav-continue-icon"
@@ -716,40 +901,43 @@
 
         const chapterMeta = [
           {
-            title: ["Chapitre 0\u00a0:", "Introduction et présentation"],
+            title: [
+              "Chapitre 0\u00a0:",
+              "Introduction et premiers ordres de grandeur",
+            ],
             summary:
-              "Nous présenterons ici notre démarche de résolution de ce premier problème, accompagnée de son diagramme de raisonnement et des hypothèses retenues.",
+              "Construction des hypothèses de départ, estimation de la masse de la main, de la vitesse d'impact et de la distance d'arrêt avant les deux modèles de calcul.",
           },
           {
-            title: ["Chapitre 1\u00a0:", "Vitesse d'impact de la main"],
+            title: ["Chapitre 1\u00a0:", "Méthode cinématique"],
             summary:
-              "Estimation de la vitesse tangentielle de la main au moment du contact en modélisant le bras comme un pendule rigide.",
+              "Application du théorème de l'énergie cinétique pour obtenir une accélération moyenne en fonction de la distance d'arrêt.",
           },
           {
-            title: ["Chapitre 2\u00a0:", "Distance d'arrêt, temps de contact"],
+            title: ["Chapitre 2\u00a0:", "Méthode masse-ressort"],
             summary:
-              "Évaluation de la distance de décélération et du temps pendant lequel la main est en contact avec la joue.",
+              "Modélisation de la chair par un ressort pour estimer la compression, la force maximale, l'accélération moyenne et le pic d'accélération.",
           },
           {
-            title: ["Chapitre 3\u00a0:", "Force d'impact"],
+            title: ["Chapitre 3\u00a0:", "Sensibilité de l'hypothèse vf ≈ 0"],
             summary:
-              "Application du théorème de l'impulsion pour remonter à la force moyenne exercée pendant la claque.",
+              "Vérification, via la conservation de la quantité de mouvement, que l'hypothèse d'arrêt quasi complet de la main reste légitime.",
           },
           {
-            title: ["Chapitre 4\u00a0:", "Masse accélérée"],
+            title: ["Chapitre 4\u00a0:", "Synthèse"],
             summary:
-              "Détermination de la masse effective de la tête qui subit réellement l'accélération.",
+              "Confrontation des deux approches pour faire émerger l'ordre de grandeur final de l'accélération subie.",
           },
           {
-            title: ["Chapitre 5\u00a0:", "Conclusion & Synthèse"],
+            title: ["Chapitre 5\u00a0:", "Limites et prolongements"],
             summary:
-              "Rassemblement des résultats, encadrement final et comparaison avec des valeurs de référence.",
+              "Ouverture vers une mesure acoustique de la durée de contact pour obtenir une estimation indépendante de l'accélération.",
           },
         ];
         const fullViewMeta = {
           title: ["Article complet"],
           summary:
-            "Tous les chapitres sont affichés sur une seule page pour une lecture continue, une exportation ou une capture intégrale.",
+            "Tous les chapitres sont affichés sur une seule page pour une lecture continue. Permet notamment de facilement screenshot la page entière.",
         };
 
         blocks.forEach((block, index) => {
@@ -782,7 +970,9 @@
         }
 
         function getInitialViewMode() {
-          const urlMode = new URLSearchParams(window.location.search).get("view");
+          const urlMode = new URLSearchParams(window.location.search).get(
+            "view",
+          );
           if (urlMode === "full") return true;
           if (urlMode === "chapter") return false;
           return cachedReadingState?.viewMode === "full";
@@ -803,7 +993,9 @@
             total,
           });
 
-          return cachedState && typeof cachedState === "object" ? cachedState : null;
+          return cachedState && typeof cachedState === "object"
+            ? cachedState
+            : null;
         }
 
         function getCachedChapterIndex() {
@@ -1059,7 +1251,10 @@
 
           return new Promise((resolve) => {
             const startedAt = performance.now();
-            const duration = Math.min(420, Math.max(220, Math.abs(distance) * 0.45));
+            const duration = Math.min(
+              420,
+              Math.max(220, Math.abs(distance) * 0.45),
+            );
 
             const settle = (now) => {
               const progress = Math.min(1, (now - startedAt) / duration);
@@ -1151,7 +1346,9 @@
           menuToggle?.setAttribute("aria-expanded", String(open));
           menuToggle?.setAttribute(
             "aria-label",
-            open ? "Fermer le menu de l'article" : "Ouvrir le menu de l'article",
+            open
+              ? "Fermer le menu de l'article"
+              : "Ouvrir le menu de l'article",
           );
           mobileDrawer?.setAttribute("aria-hidden", String(!open));
         }
@@ -1429,7 +1626,9 @@
           );
           const nextProseHeight = Math.max(
             1,
-            nextBlock ? measureHiddenBlockHeight(nextBlock) : currentProseHeight,
+            nextBlock
+              ? measureHiddenBlockHeight(nextBlock)
+              : currentProseHeight,
           );
           const currentSummaryHeight = lockSummaryHeight
             ? Math.ceil(summaryBlock?.getBoundingClientRect().height || 0)
@@ -1472,7 +1671,9 @@
               ensureChapterReady(nextIndex).then(() => {
                 syncVisibleChapterHeight(nextIndex);
 
-                if (articlePage?.classList.contains("is-chapter-transitioning")) {
+                if (
+                  articlePage?.classList.contains("is-chapter-transitioning")
+                ) {
                   scheduleChapterTransitionCleanup();
                 }
               });
@@ -1544,7 +1745,9 @@
 
         function ensureFullArticleReady() {
           prepareFullViewAssets();
-          return Promise.all(blocks.map((_, index) => ensureChapterReady(index)))
+          return Promise.all(
+            blocks.map((_, index) => ensureChapterReady(index)),
+          )
             .then(() => {
               articleProseViewport?.style.removeProperty("height");
             })
