@@ -1,16 +1,16 @@
-.simple-canvas {
+.ai-charter-canvas {
   min-height: calc(100svh + var(--footer-height));
   padding-bottom: var(--footer-height);
 }
 
-.page.page-simple {
+.page.page-ai-charter {
   position: relative;
   height: auto;
   min-height: 100svh;
   z-index: 1;
 }
 
-.simple-main {
+.ai-charter-main {
   position: relative;
   inset: auto;
   width: 100%;
@@ -23,29 +23,28 @@
   overflow: visible;
 }
 
-.simple-shell {
+.ai-charter-layout {
   width: var(--content-width);
   margin: 0 auto;
   display: grid;
   gap: clamp(42px, 4.4vw, 68px);
 }
 
-.simple-header {
+.ai-charter-header {
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
 }
 
-.simple-header-left {
+.ai-charter-heading {
   display: flex;
   flex-direction: column;
   gap: 12px;
   max-width: min(640px, 100%);
 }
 
-.simple-eyebrow {
+.ai-charter-heading .diagram-eyebrow {
   margin: 0;
-  color: var(--text-secondary);
   font-family: var(--font-code);
   font-size: 13px;
   font-weight: 400;
@@ -53,7 +52,7 @@
   letter-spacing: -0.02em;
 }
 
-.simple-title {
+.ai-charter-heading .diagram-title {
   margin: 0;
   color: var(--text-main);
   font-family: var(--font-display);
@@ -63,7 +62,7 @@
   letter-spacing: -1px;
 }
 
-.simple-columns {
+.ai-charter-grid {
   width: 100%;
   max-width: none;
   margin: 0;
@@ -73,17 +72,17 @@
   align-items: start;
 }
 
-.simple-column {
+.ai-charter-column {
   display: grid;
   gap: clamp(28px, 3vw, 40px);
 }
 
-.simple-section {
+.ai-charter-section {
   display: grid;
   gap: 12px;
 }
 
-.simple-section h2 {
+.ai-charter-section h2 {
   margin: 0;
   color: var(--text-main);
   font-family: var(--font-display);
@@ -92,7 +91,7 @@
   line-height: 1.2;
 }
 
-.simple-section p {
+.ai-charter-section p {
   margin: 0;
   color: var(--text-main);
   font-size: clamp(15px, 1.35vw, 17px);
@@ -102,17 +101,17 @@
 }
 
 @media (max-width: 960px) {
-  .simple-main {
+  .ai-charter-main {
     padding-top: calc(var(--header-height) + 28px);
     gap: 32px;
   }
 
-  .simple-shell {
+  .ai-charter-layout {
     width: 100%;
     gap: 32px;
   }
 
-  .simple-columns {
+  .ai-charter-grid {
     max-width: 100%;
     grid-template-columns: 1fr;
     gap: 28px;
