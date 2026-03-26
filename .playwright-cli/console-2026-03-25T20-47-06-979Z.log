@@ -1,8 +1,0 @@
-[     348ms] ReferenceError: Cannot access 'total' before initialization
-    at getCachedReadingState (http://127.0.0.1:4173/article.html:804:13)
-    at http://127.0.0.1:4173/article.html:702:36
-    at http://127.0.0.1:4173/article.html:1850:9
-[   18764ms] ReferenceError: Cannot access 'total' before initialization
-    at getCachedReadingState (http://127.0.0.1:4173/article.html:804:13)
-    at http://127.0.0.1:4173/article.html:702:36
-    at http://127.0.0.1:4173/article.html:1850:9
