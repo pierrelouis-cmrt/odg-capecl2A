@@ -1198,9 +1198,10 @@
   }
 
   .article-drawer-panel {
-    height: min(78svh, 720px);
-    min-height: 420px;
-    justify-content: space-between;
+    height: auto;
+    min-height: 0;
+    max-height: min(85svh, 720px);
+    justify-content: flex-start;
     padding: calc(var(--header-height) + var(--article-intro-top)) 0 24px;
     overflow-y: auto;
   }

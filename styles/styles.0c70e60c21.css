@@ -1330,6 +1330,7 @@ html.has-motion-shell.is-ready .cta-read {
     position: fixed;
     inset: 0;
     z-index: 3;
+    visibility: hidden;
     pointer-events: none;
     overscroll-behavior: contain;
   }
@@ -1348,8 +1349,9 @@ html.has-motion-shell.is-ready .cta-read {
     top: 0;
     left: 0;
     right: 0;
-    height: 50svh;
-    min-height: 300px;
+    height: auto;
+    min-height: 0;
+    max-height: 85svh;
     background: var(--page-bg);
     border-bottom: 1px solid var(--line);
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
@@ -1358,7 +1360,9 @@ html.has-motion-shell.is-ready .cta-read {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    gap: 24px;
     padding: calc(var(--header-height) + 32px) var(--page-gutter) 32px;
+    overflow-y: auto;
     overscroll-behavior: contain;
   }
 
@@ -1366,8 +1370,8 @@ html.has-motion-shell.is-ready .cta-read {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    flex: 1;
-    justify-content: center;
+    flex: 0 0 auto;
+    justify-content: flex-start;
   }
 
   .drawer-link {
@@ -1411,6 +1415,7 @@ html.has-motion-shell.is-ready .cta-read {
 
   .drawer-open .drawer,
   .drawer-closing .drawer {
+    visibility: visible;
     pointer-events: auto;
   }
 
@@ -1698,8 +1703,7 @@ html.has-motion-shell.is-ready .cta-read {
   }
 
   .drawer-panel {
-    height: 50svh;
-    min-height: 260px;
+    max-height: 85svh;
   }
 
   .footer-links {
