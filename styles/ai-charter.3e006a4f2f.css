@@ -1,0 +1,119 @@
+.ai-charter-canvas {
+  min-height: calc(100svh + var(--footer-height));
+  padding-bottom: var(--footer-height);
+}
+
+.page.page-ai-charter {
+  position: relative;
+  height: auto;
+  min-height: 100svh;
+  z-index: 1;
+}
+
+.ai-charter-main {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  min-height: calc(100svh - var(--header-height));
+  padding: calc(var(--header-height) + clamp(32px, 4vw, 56px))
+    var(--page-gutter) clamp(88px, 8vw, 128px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(36px, 4vw, 56px);
+  overflow: visible;
+}
+
+.ai-charter-layout {
+  width: var(--content-width);
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(42px, 4.4vw, 68px);
+}
+
+.ai-charter-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.ai-charter-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: min(640px, 100%);
+}
+
+.ai-charter-heading .diagram-eyebrow {
+  margin: 0;
+  font-family: var(--font-code);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+}
+
+.ai-charter-heading .diagram-title {
+  margin: 0;
+  color: var(--text-main);
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 51px);
+  font-weight: 540;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.ai-charter-grid {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(36px, 4vw, 72px);
+  align-items: start;
+}
+
+.ai-charter-column {
+  display: grid;
+  gap: clamp(28px, 3vw, 40px);
+}
+
+.ai-charter-section {
+  display: grid;
+  gap: 12px;
+}
+
+.ai-charter-section h2 {
+  margin: 0;
+  color: var(--text-main);
+  font-family: var(--font-display);
+  font-size: clamp(17px, 1.8vw, 21px);
+  font-weight: 640;
+  line-height: 1.2;
+}
+
+.ai-charter-section p {
+  margin: 0;
+  color: var(--text-main);
+  font-size: clamp(15px, 1.35vw, 17px);
+  font-weight: 400;
+  line-height: 1.72;
+  text-wrap: pretty;
+}
+
+@media (max-width: 960px) {
+  .ai-charter-main {
+    padding-top: calc(var(--header-height) + 28px);
+    gap: 32px;
+  }
+
+  .ai-charter-layout {
+    width: 100%;
+    gap: 32px;
+  }
+
+  .ai-charter-grid {
+    max-width: 100%;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
