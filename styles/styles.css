@@ -959,6 +959,36 @@ html.has-motion-shell.is-ready .cta-read {
   display: block;
 }
 
+.footer-link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  margin-top: 22px;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.footer-link-button.is-active {
+  color: var(--accent);
+}
+
+.footer-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.footer-link-icon svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+
 .footer-link-inline {
   display: inline;
 }
@@ -1060,6 +1090,10 @@ html.has-motion-shell.is-ready .cta-read {
     color: var(--accent);
   }
 
+  .footer-link-button:hover {
+    color: var(--accent);
+  }
+
   .footer-link.footer-link-static:hover {
     color: inherit;
   }
@@ -1081,6 +1115,10 @@ html.has-motion-shell.is-ready .cta-read {
   .footer-link:active,
   .footer-link-inline:active,
   .footer-meta-link:active {
+    color: var(--accent);
+  }
+
+  .footer-link-button:active {
     color: var(--accent);
   }
 
