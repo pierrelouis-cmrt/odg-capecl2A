@@ -1,0 +1,1137 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ODG - Visualisation</title>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="ODG" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=Geist+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/styles.0c70e60c21.css" />
+    <link rel="stylesheet" href="../styles/visualisation.css" />
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ["\\(", "\\)"],
+            ["$", "$"],
+          ],
+          displayMath: [
+            ["\\[", "\\]"],
+            ["$$", "$$"],
+          ],
+        },
+        options: {
+          renderActions: {
+            addMenu: [],
+          },
+        },
+      };
+    </script>
+    <script
+      defer
+      id="MathJax-script"
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+    ></script>
+    <script src="../scripts/page-transitions.babda48585.js"></script>
+  </head>
+  <body>
+    <div class="canvas visualisation-canvas">
+      <div class="page page-visualisation">
+        <header class="page-header">
+          <div class="header-blur" aria-hidden="true"></div>
+          <div class="menu">
+            <div class="menu-block menu-left">
+              <span class="label-upper">COMPTE-RENDU ODG</span>
+            </div>
+            <nav class="menu-block menu-center" aria-label="Sections">
+              <a class="label-upper menu-link" href="./diagram.html">DIAGRAMMES</a>
+              <a class="label-upper menu-link" href="../index.html">ARTICLES</a>
+              <a class="label-upper menu-link is-active" href="#">
+                VISUALISATION
+              </a>
+            </nav>
+            <div class="menu-block menu-right">
+              <span class="copyright">
+                <span class="label-upper">CAPECL-GRP11-2026</span>
+              </span>
+            </div>
+            <button
+              class="hamburger"
+              aria-label="Ouvrir le menu"
+              aria-expanded="false"
+            >
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+            </button>
+          </div>
+        </header>
+
+        <div class="drawer">
+          <div class="drawer-backdrop"></div>
+          <div class="drawer-panel">
+            <nav class="drawer-nav">
+              <a class="drawer-link" href="../index.html">ARTICLES</a>
+              <a class="drawer-link" href="./diagram.html">DIAGRAMMES</a>
+              <a class="drawer-link is-active" href="#">VISUALISATION</a>
+            </nav>
+            <p class="drawer-meta label-upper label-muted">CAPECL-GRP11-2026</p>
+          </div>
+        </div>
+
+        <main class="page-main visualisation-main">
+          <div class="visualisation-header">
+            <div class="visualisation-header-left">
+              <p class="visualisation-eyebrow label-muted">
+                diagrammes de raisonnement
+              </p>
+              <h1 class="visualisation-title">Simulation</h1>
+            </div>
+
+            <div
+              class="visualisation-tabs"
+              role="radiogroup"
+              aria-label="Mode de visualisation"
+            >
+              <label class="visualisation-tab">
+                <input
+                  class="visualisation-tab-radio"
+                  type="radio"
+                  name="view-mode"
+                  value="curve"
+                  checked
+                />
+                <span class="visualisation-tab-label">Courbe</span>
+              </label>
+              <label class="visualisation-tab">
+                <input
+                  class="visualisation-tab-radio"
+                  type="radio"
+                  name="view-mode"
+                  value="sphere"
+                />
+                <span class="visualisation-tab-label">Boule 3D</span>
+              </label>
+            </div>
+          </div>
+
+          <section
+            class="visualisation-panel"
+            data-view="curve"
+            aria-label="Simulation thermique"
+          >
+            <div class="viz-workbench">
+              <aside class="viz-rail" aria-label="Paramètres du modèle">
+                <div class="viz-rail-head">
+                  <h2 class="viz-rail-title">Paramètres</h2>
+                  <button class="viz-reset" id="viz-reset" type="button">
+                    Reset
+                  </button>
+                </div>
+
+                <section class="viz-group">
+                  <div class="viz-group-head">
+                    <p class="viz-group-label">impact</p>
+                  </div>
+
+                  <label class="viz-field">
+                    <span class="viz-field-top">
+                      <span class="viz-field-label">Fréquence</span>
+                      <span class="viz-field-value" data-value-for="frequency"></span>
+                    </span>
+                    <input
+                      class="viz-range"
+                      type="range"
+                      min="1"
+                      max="30"
+                      step="0.5"
+                      value="17"
+                      data-field="frequency"
+                    />
+                  </label>
+
+                  <label class="viz-field">
+                    <span class="viz-field-top">
+                      <span class="viz-field-label">Masse de la main</span>
+                      <span class="viz-field-value" data-value-for="handMass"></span>
+                    </span>
+                    <input
+                      class="viz-range"
+                      type="range"
+                      min="0.15"
+                      max="0.45"
+                      step="0.01"
+                      value="0.27"
+                      data-field="handMass"
+                    />
+                  </label>
+
+                  <label class="viz-field">
+                    <span class="viz-field-top">
+                      <span class="viz-field-label">Vitesse d'impact</span>
+                      <span class="viz-field-value" data-value-for="impactSpeed"></span>
+                    </span>
+                    <input
+                      class="viz-range"
+                      type="range"
+                      min="6"
+                      max="14"
+                      step="0.1"
+                      value="10"
+                      data-field="impactSpeed"
+                    />
+                  </label>
+
+                  <label class="viz-field">
+                    <span class="viz-field-top">
+                      <span class="viz-field-label">Restitution élastique</span>
+                      <span class="viz-field-value" data-value-for="elasticLoss"></span>
+                    </span>
+                    <input
+                      class="viz-range"
+                      type="range"
+                      min="0"
+                      max="3"
+                      step="0.1"
+                      value="1"
+                      data-field="elasticLoss"
+                    />
+                  </label>
+
+                  <label class="viz-field">
+                    <span class="viz-field-top">
+                      <span class="viz-field-label">Part déposée dans le poulet</span>
+                      <span class="viz-field-value" data-value-for="thermalShare"></span>
+                    </span>
+                    <input
+                      class="viz-range"
+                      type="range"
+                      min="0.3"
+                      max="0.8"
+                      step="0.01"
+                      value="0.55"
+                      data-field="thermalShare"
+                    />
+                  </label>
+                </section>
+
+                <section class="viz-group">
+                  <div class="viz-group-head">
+                    <p class="viz-group-label">poulet</p>
+                  </div>
+
+                  <label class="viz-field">
+                    <span class="viz-field-top">
+                      <span class="viz-field-label">Masse du poulet</span>
+                      <span class="viz-field-value" data-value-for="chickenMass"></span>
+                    </span>
+                    <input
+                      class="viz-range"
+                      type="range"
+                      min="1"
+                      max="3.5"
+                      step="0.1"
+                      value="2"
+                      data-field="chickenMass"
+                    />
+                  </label>
+
+                  <label class="viz-field">
+                    <span class="viz-field-top">
+                      <span class="viz-field-label">Épaisseur de coque</span>
+                      <span class="viz-field-value" data-value-for="thicknessCm"></span>
+                    </span>
+                    <input
+                      class="viz-range"
+                      type="range"
+                      min="3"
+                      max="7"
+                      step="0.1"
+                      value="5"
+                      data-field="thicknessCm"
+                    />
+                  </label>
+
+                  <label class="viz-field">
+                    <span class="viz-field-top">
+                      <span class="viz-field-label">Température cible</span>
+                      <span class="viz-field-value" data-value-for="targetTemp"></span>
+                    </span>
+                    <input
+                      class="viz-range"
+                      type="range"
+                      min="60"
+                      max="80"
+                      step="1"
+                      value="70"
+                      data-field="targetTemp"
+                    />
+                  </label>
+                </section>
+
+                <section class="viz-group">
+                  <div class="viz-group-head">
+                    <p class="viz-group-label">environnement</p>
+                  </div>
+
+                  <label class="viz-field">
+                    <span class="viz-field-top">
+                      <span class="viz-field-label">Température ambiante</span>
+                      <span class="viz-field-value" data-value-for="ambientTemp"></span>
+                    </span>
+                    <input
+                      class="viz-range"
+                      type="range"
+                      min="10"
+                      max="30"
+                      step="1"
+                      value="20"
+                      data-field="ambientTemp"
+                    />
+                  </label>
+
+                  <label class="viz-field">
+                    <span class="viz-field-top">
+                      <span class="viz-field-label">Convection</span>
+                      <span class="viz-field-value" data-value-for="convection"></span>
+                    </span>
+                    <input
+                      class="viz-range"
+                      type="range"
+                      min="8"
+                      max="30"
+                      step="1"
+                      value="20"
+                      data-field="convection"
+                    />
+                  </label>
+                </section>
+              </aside>
+
+              <section class="viz-stage" aria-label="Courbes de température">
+                <div class="viz-stage-head">
+                  <h2 class="viz-stage-title">T cœur / T surface</h2>
+                  <div class="viz-legend" aria-label="Légende du graphique">
+                    <span class="viz-legend-item">
+                      <span class="viz-legend-swatch viz-legend-swatch-core"></span>
+                      <span>cœur</span>
+                    </span>
+                    <span class="viz-legend-item">
+                      <span class="viz-legend-swatch viz-legend-swatch-surface"></span>
+                      <span>surface</span>
+                    </span>
+                    <span class="viz-legend-item">
+                      <span class="viz-legend-swatch viz-legend-swatch-target"></span>
+                      <span>cible</span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="viz-chart-shell">
+                  <div class="viz-chart-meta">
+                    <p class="viz-chart-note" id="viz-chart-note">
+                      Le cœur atteint 70&nbsp;°C après environ 5&nbsp;h&nbsp;00&nbsp;min.
+                    </p>
+                  </div>
+
+                  <div class="viz-chart-frame">
+                    <svg
+                      class="viz-chart"
+                      id="viz-chart"
+                      viewBox="0 0 860 430"
+                      role="img"
+                      aria-labelledby="viz-chart-title viz-chart-desc"
+                    >
+                      <title id="viz-chart-title">
+                        Évolution de la température du cœur et de la surface
+                      </title>
+                      <desc id="viz-chart-desc">
+                        Graphique thermique recalculé en fonction des paramètres
+                        du modèle.
+                      </desc>
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="viz-metrics" aria-label="Indicateurs clés">
+                  <div class="viz-metric">
+                    <p class="viz-metric-label">t_cible</p>
+                    <p class="viz-metric-value" id="metric-time">5&nbsp;h&nbsp;00&nbsp;min</p>
+                  </div>
+                  <div class="viz-metric">
+                    <p class="viz-metric-label">N_cible</p>
+                    <p class="viz-metric-value" id="metric-slaps">220 000</p>
+                  </div>
+                  <div class="viz-metric">
+                    <p class="viz-metric-label">E_baffe</p>
+                    <p class="viz-metric-value" id="metric-energy">≈&nbsp;6,3&nbsp;J</p>
+                  </div>
+                  <div class="viz-metric">
+                    <p class="viz-metric-label">P_in</p>
+                    <p class="viz-metric-value" id="metric-power">81&nbsp;W</p>
+                  </div>
+                </div>
+
+              </section>
+            </div>
+
+            <section class="viz-context" aria-label="Contexte et explications">
+              <div class="viz-context-block">
+                <h2 class="viz-context-title">Article</h2>
+                <p class="viz-context-copy">
+                  L'article garde un bilan simple,
+                  \(Q_{\mathrm{total}} \approx Q_{\mathrm{chauffe}} +
+                  Q_{\mathrm{conv}} + Q_{\mathrm{rad}} + Q_{\mathrm{evap}}\),
+                  puis utilise \(t_c \sim e^2 / D\) pour estimer le délai vers
+                  le cœur. La simulation, elle, résout un champ radial
+                  \(T(r,t)\) avec diffusion, flux imposé en surface et pertes
+                  appliquées à chaque instant. Elle est donc plus stricte que
+                  l'estimation d'ordre de grandeur, et tend en pratique à être
+                  un peu plus pessimiste.
+                </p>
+              </div>
+              <div class="viz-context-block">
+                <h2 class="viz-context-title">Simulation</h2>
+                <p class="viz-context-copy">
+                  Ici on suit un champ radial \(T(r,t)\) dans une coque
+                  d'épaisseur \(e\), avec les mêmes ordres de grandeur que
+                  l'article pour la masse, l'épaisseur et l'impact. En
+                  revanche, \(f = 17\,\mathrm{Hz}\) et \(\eta = 55\,\%\) sont
+                  pris par défaut pour que \(T_{\mathrm{cœur}}\) atteigne bien
+                  la consigne dans ce modèle plus exigeant. Avec les
+                  paramètres bruts de l'article, la simulation reste souvent
+                  légèrement sous la cible sur 8&nbsp;h.
+                </p>
+              </div>
+              <div class="viz-context-block">
+                <h2 class="viz-context-title">Lecture</h2>
+                <p class="viz-context-copy">
+                  Si la cible n'est pas atteinte en 8&nbsp;h, la courbe tend vers
+                  un plateau. En pratique, cela veut dire que
+                  \(P_{\mathrm{in}} = f E_{\mathrm{baffe}}\) reste trop faible
+                  devant les pertes thermiques.
+                </p>
+              </div>
+            </section>
+          </section>
+
+          <section
+            class="visualisation-panel visualisation-panel-placeholder"
+            data-view="sphere"
+            hidden
+            aria-label="Mode boule 3D"
+          >
+            <div class="viz-placeholder">
+              <div class="viz-placeholder-art" aria-hidden="true">
+                <span class="viz-placeholder-sphere"></span>
+                <span class="viz-placeholder-cut"></span>
+                <span class="viz-placeholder-core"></span>
+              </div>
+              <div class="viz-placeholder-copy">
+                <h2 class="viz-stage-title">Vue volumique à venir</h2>
+                <p class="viz-context-copy">
+                  Le second mode préparera une coupe thermique animée de la
+                  coque et, ensuite, une interprétation 3D plus libre autour de
+                  la forme du poulet.
+                </p>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <div class="page-divider" aria-hidden="true"></div>
+
+        <footer class="page-footer">
+          <div class="footer-links">
+            <section class="footer-column footer-column-pages">
+              <p class="footer-heading">[pages]</p>
+              <div class="footer-stack">
+                <a class="label-upper footer-link" href="./diagram.html">
+                  DIAGRAMMES
+                </a>
+                <a class="label-upper footer-link" href="../index.html">
+                  ARTICLES
+                </a>
+                <a class="label-upper footer-link is-active" href="#">
+                  VISUALISATION
+                </a>
+                <a
+                  class="label-upper footer-link footer-link-button"
+                  href="./charte-ia.html"
+                >
+                  <span class="footer-link-icon" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" fill="none">
+                      <path
+                        d="M2 8H13"
+                        stroke="currentColor"
+                        stroke-width="1.35"
+                        stroke-linecap="square"
+                      />
+                      <path
+                        d="M9.5 4.5L13 8L9.5 11.5"
+                        stroke="currentColor"
+                        stroke-width="1.35"
+                        stroke-linecap="square"
+                        stroke-linejoin="miter"
+                      />
+                    </svg>
+                  </span>
+                  <span>CHARTE IA</span>
+                </a>
+              </div>
+            </section>
+
+            <section class="footer-column footer-column-credits">
+              <p class="footer-heading">[crédits/inspiration]</p>
+              <div class="footer-stack">
+                <a
+                  class="label-upper footer-link"
+                  href="https://www.heatbureau.com/"
+                  target="_blank"
+                >
+                  DESIGN &amp; VIBE : HEAT BUREAU
+                </a>
+                <a
+                  class="label-upper footer-link"
+                  href="https://www.hostwithclark.com/"
+                  target="_blank"
+                >
+                  ILLUSTRATIONS : CLARK
+                </a>
+              </div>
+            </section>
+
+            <section class="footer-column footer-column-colophon">
+              <p class="footer-heading">[colophon]</p>
+              <div class="footer-stack">
+                <a
+                  class="label-upper footer-link"
+                  href="https://github.com/pierrelouis-cmrt/odg-capecl2A"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  CODE SOURCE : GITHUB
+                </a>
+                <span class="label-upper footer-link footer-link-static">
+                  ICÔNES : HAND-MADE
+                </span>
+                <p class="label-upper footer-fonts">
+                  TYPOGRAPHIE :
+                  <a
+                    class="footer-link-inline"
+                    href="https://fonts.google.com/specimen/Inter?query=inter"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    INTER
+                  </a>
+                  &amp;<br />
+                  <span class="footer-fonts-indent">TYPOGRAPHIE : </span>
+                  <a
+                    class="footer-link-inline"
+                    href="https://fonts.google.com/specimen/Geist+Mono"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    GEIST MONO
+                  </a>
+                </p>
+              </div>
+            </section>
+
+            <section class="footer-column footer-column-about">
+              <p class="footer-heading">[à propos]</p>
+              <div class="footer-copy">
+                <p class="footer-copy-text">
+                  Compte rendu d'un projet de raisonnement par ordre de
+                  grandeur.
+                </p>
+                <p class="footer-copy-text">
+                  Le but : résoudre un problème ouvert via des estimations et un
+                  découpage en sous questions.
+                </p>
+              </div>
+            </section>
+          </div>
+
+          <div class="footer-bottom">
+            <div class="footer-meta footer-meta-left">
+              <p class="copyright label-upper label-muted footer-meta-text">
+                <span>CAPECL-2026</span>
+              </p>
+              <p class="label-upper label-muted footer-meta-text">
+                GROUPE N°11 — 03/2026
+              </p>
+            </div>
+            <div class="footer-rule" aria-hidden="true"></div>
+            <div class="footer-meta footer-meta-right">
+              <p class="label-upper label-muted footer-meta-text">
+                LINE, ISSHAC, LUCAS, PIERRE-LOUIS
+              </p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      (() => {
+        const btn = document.querySelector(".hamburger");
+        const backdrop = document.querySelector(".drawer-backdrop");
+        const drawerPanel = document.querySelector(".drawer-panel");
+        const pageMain = document.querySelector(".page-main");
+        const footer = document.querySelector(".page-footer");
+        const mobileFooterQuery = window.matchMedia("(max-width: 960px)");
+        const DRAWER_TRANSITION_MS = 500;
+        let drawerCloseTimer = 0;
+        let lastTouchY = 0;
+
+        const syncFooterHeight = () => {
+          if (!footer) return;
+
+          if (!mobileFooterQuery.matches) {
+            document.documentElement.style.removeProperty("--footer-height");
+            footer.style.removeProperty("min-height");
+            return;
+          }
+
+          footer.style.minHeight = "0px";
+          const nextHeight = Math.ceil(footer.scrollHeight);
+          footer.style.removeProperty("min-height");
+
+          if (nextHeight > 0) {
+            document.documentElement.style.setProperty(
+              "--footer-height",
+              `${nextHeight}px`,
+            );
+          }
+        };
+
+        const isDrawerScrollLocked = () =>
+          document.body.classList.contains("drawer-open") ||
+          document.body.classList.contains("drawer-closing");
+
+        const getDrawerScrollContainer = (target) => {
+          if (!(target instanceof Element)) return null;
+          return target.closest(".drawer-panel");
+        };
+
+        const canScrollWithin = (container, deltaY) => {
+          if (!container) return false;
+
+          const maxScrollTop = container.scrollHeight - container.clientHeight;
+          if (maxScrollTop <= 1) return false;
+          if (deltaY < 0) return container.scrollTop > 0;
+          if (deltaY > 0) return container.scrollTop < maxScrollTop - 1;
+          return true;
+        };
+
+        const preventBackgroundScroll = (event, deltaY) => {
+          if (!isDrawerScrollLocked()) return;
+          const container = getDrawerScrollContainer(event.target);
+          if (canScrollWithin(container, deltaY)) return;
+          event.preventDefault();
+        };
+
+        const setPageInert = (inert) => {
+          pageMain?.toggleAttribute("inert", inert);
+          footer?.toggleAttribute("inert", inert);
+        };
+
+        const focusWithoutScroll = (element) => {
+          if (!(element instanceof HTMLElement)) return;
+          try {
+            element.focus({ preventScroll: true });
+          } catch {
+            element.focus();
+          }
+        };
+
+        drawerPanel?.setAttribute("tabindex", "-1");
+
+        document.addEventListener(
+          "wheel",
+          (event) => preventBackgroundScroll(event, event.deltaY),
+          { passive: false },
+        );
+
+        document.addEventListener(
+          "touchstart",
+          (event) => {
+            if (!isDrawerScrollLocked()) return;
+            lastTouchY = event.touches[0]?.clientY ?? 0;
+          },
+          { passive: true },
+        );
+
+        document.addEventListener(
+          "touchmove",
+          (event) => {
+            const nextTouchY = event.touches[0]?.clientY ?? lastTouchY;
+            const deltaY = lastTouchY - nextTouchY;
+            lastTouchY = nextTouchY;
+            preventBackgroundScroll(event, deltaY);
+          },
+          { passive: false },
+        );
+
+        const setDrawerOpen = (open) => {
+          clearTimeout(drawerCloseTimer);
+
+          if (open) {
+            document.body.classList.add("drawer-open");
+            document.body.classList.remove("drawer-closing");
+            setPageInert(true);
+            requestAnimationFrame(() => focusWithoutScroll(drawerPanel));
+          } else {
+            document.body.classList.remove("drawer-open");
+            document.body.classList.add("drawer-closing");
+            setPageInert(true);
+            drawerCloseTimer = window.setTimeout(() => {
+              document.body.classList.remove("drawer-closing");
+              setPageInert(false);
+              focusWithoutScroll(btn);
+            }, DRAWER_TRANSITION_MS);
+          }
+
+          btn?.setAttribute("aria-expanded", String(open));
+          btn?.setAttribute(
+            "aria-label",
+            open ? "Fermer le menu" : "Ouvrir le menu",
+          );
+        };
+
+        const toggleDrawer = () => {
+          setDrawerOpen(!document.body.classList.contains("drawer-open"));
+        };
+
+        btn?.addEventListener("click", toggleDrawer);
+        backdrop?.addEventListener("click", toggleDrawer);
+        document.querySelectorAll(".drawer-link").forEach((link) => {
+          link.addEventListener("click", () => setDrawerOpen(false));
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (
+            event.key === "Escape" &&
+            document.body.classList.contains("drawer-open")
+          ) {
+            toggleDrawer();
+          }
+        });
+
+        mobileFooterQuery.addEventListener("change", syncFooterHeight);
+        window.addEventListener("resize", syncFooterHeight);
+        window.addEventListener("load", syncFooterHeight);
+        syncFooterHeight();
+
+        const panels = document.querySelectorAll(".visualisation-panel");
+        const modeRadios = document.querySelectorAll(".visualisation-tab-radio");
+
+        function setMode(mode) {
+          panels.forEach((panel) => {
+            const isActive = panel.dataset.view === mode;
+            panel.toggleAttribute("hidden", !isActive);
+          });
+        }
+
+        modeRadios.forEach((radio) => {
+          radio.addEventListener("change", () => {
+            if (radio.checked) setMode(radio.value);
+          });
+        });
+
+        const inputElements = Array.from(
+          document.querySelectorAll("[data-field]"),
+        );
+        const valueElements = Array.from(
+          document.querySelectorAll("[data-value-for]"),
+        ).reduce((map, node) => {
+          map[node.dataset.valueFor] = node;
+          return map;
+        }, {});
+
+        const chart = document.getElementById("viz-chart");
+        const chartNote = document.getElementById("viz-chart-note");
+        const metricTime = document.getElementById("metric-time");
+        const metricSlaps = document.getElementById("metric-slaps");
+        const metricEnergy = document.getElementById("metric-energy");
+        const metricPower = document.getElementById("metric-power");
+        const resetButton = document.getElementById("viz-reset");
+        const defaultParams = {
+          frequency: 17,
+          handMass: 0.27,
+          impactSpeed: 10,
+          elasticLoss: 1,
+          thermalShare: 0.55,
+          chickenMass: 2,
+          thicknessCm: 5,
+          targetTemp: 70,
+          ambientTemp: 20,
+          convection: 20,
+        };
+
+        const NBSP = "\u00A0";
+
+        const formatters = {
+          frequency: (value) => `${value.toFixed(1)}${NBSP}Hz`,
+          handMass: (value) => `${value.toFixed(2)}${NBSP}kg`,
+          impactSpeed: (value) => `${value.toFixed(1)}${NBSP}m/s`,
+          elasticLoss: (value) => `${value.toFixed(1)}${NBSP}J`,
+          thermalShare: (value) => `${Math.round(value * 100)}${NBSP}%`,
+          chickenMass: (value) => `${value.toFixed(1)}${NBSP}kg`,
+          thicknessCm: (value) => `${value.toFixed(1)}${NBSP}cm`,
+          targetTemp: (value) => `${value.toFixed(0)}${NBSP}°C`,
+          ambientTemp: (value) => `${value.toFixed(0)}${NBSP}°C`,
+          convection: (value) => `${value.toFixed(0)}${NBSP}W/m²K`,
+        };
+
+        function formatCompactNumber(value) {
+          return new Intl.NumberFormat("fr-FR", {
+            maximumFractionDigits: value >= 100 ? 0 : 1,
+          }).format(value);
+        }
+
+        function formatInteger(value) {
+          return new Intl.NumberFormat("fr-FR", {
+            maximumFractionDigits: 0,
+          }).format(Math.round(value));
+        }
+
+        function formatDuration(seconds) {
+          if (!Number.isFinite(seconds) || seconds < 0) return "—";
+          const roundedMinutes = Math.round(seconds / 60);
+          const hours = Math.floor(roundedMinutes / 60);
+          const minutes = roundedMinutes % 60;
+
+          if (hours <= 0) return `${minutes}${NBSP}min`;
+          return `${hours}${NBSP}h${NBSP}${String(minutes).padStart(2, "0")}${NBSP}min`;
+        }
+
+        function smoothstep(edge0, edge1, value) {
+          const x = Math.max(
+            0,
+            Math.min(1, (value - edge0) / Math.max(1e-6, edge1 - edge0)),
+          );
+          return x * x * (3 - 2 * x);
+        }
+
+        function formatTemperature(value) {
+          return `${formatCompactNumber(value)}${NBSP}°C`;
+        }
+
+        function readParams() {
+          return inputElements.reduce((acc, input) => {
+            acc[input.dataset.field] = Number(input.value);
+            return acc;
+          }, {});
+        }
+
+        function updateDisplayedValues(params) {
+          Object.entries(params).forEach(([key, value]) => {
+            const formatter = formatters[key];
+            if (formatter && valueElements[key]) {
+              valueElements[key].textContent = formatter(value);
+            }
+          });
+        }
+
+        function buildPath(points) {
+          if (!points.length) return "";
+          return points
+            .map((point, index) =>
+              `${index === 0 ? "M" : "L"} ${point[0].toFixed(2)} ${point[1].toFixed(2)}`,
+            )
+            .join(" ");
+        }
+
+        function outerRadiusFromMass(mass, thickness, density) {
+          const targetVolume = mass / ((4 / 3) * Math.PI * density);
+          let lower = thickness + 1e-6;
+          let upper = 0.5;
+
+          for (let index = 0; index < 100; index += 1) {
+            const mid = (lower + upper) / 2;
+            const shellVolume = mid ** 3 - (mid - thickness) ** 3;
+
+            if (shellVolume > targetVolume) {
+              upper = mid;
+            } else {
+              lower = mid;
+            }
+          }
+
+          return (lower + upper) / 2;
+        }
+
+        function simulate(params) {
+          const cp = 4186;
+          const rho = 1000;
+          const lambda = 0.6;
+          const sigma = 5.67e-8;
+          const epsilon = 0.96;
+          const diffusivity = lambda / (rho * cp);
+          const shellThickness = Math.max(0.01, params.thicknessCm / 100);
+          const outerRadius = outerRadiusFromMass(
+            params.chickenMass,
+            shellThickness,
+            rho,
+          );
+          const innerRadius = outerRadius - shellThickness;
+          const area = 4 * Math.PI * outerRadius * outerRadius;
+          const ec = 0.5 * params.handMass * params.impactSpeed ** 2;
+          const eBaffe = Math.max(
+            0,
+            params.thermalShare *
+              Math.max(0, ec - params.elasticLoss),
+          );
+          const inputPower = params.frequency * eBaffe;
+          const maxTime = 8 * 3600;
+          const suggestedDr = 0.002;
+          const radialSteps =
+            Math.max(14, Math.round(shellThickness / suggestedDr)) + 1;
+          const dr = shellThickness / (radialSteps - 1);
+          const stableDt = 0.24 * (dr * dr) / diffusivity;
+          const dt = Math.min(1, Math.max(0.05, stableDt));
+          const sampleStep = 60;
+          const sampleStride = Math.max(1, Math.round(sampleStep / dt));
+          const radii = Array.from(
+            { length: radialSteps },
+            (_, index) => innerRadius + index * dr,
+          );
+          const points = [];
+          let profile = Array(radialSteps).fill(params.ambientTemp);
+          let finalCore = params.ambientTemp;
+          let finalSurface = params.ambientTemp;
+          let targetTime = null;
+
+          for (
+            let stepIndex = 0, time = 0;
+            time <= maxTime + 1e-9;
+            stepIndex += 1, time += dt
+          ) {
+            const coreTemp = profile[0];
+            const surfaceTemp = profile[radialSteps - 1];
+
+            if (stepIndex % sampleStride === 0) {
+              points.push({
+                timeHours: time / 3600,
+                surface: surfaceTemp,
+                core: coreTemp,
+              });
+            }
+
+            if (targetTime === null && coreTemp >= params.targetTemp) {
+              targetTime = time;
+            }
+
+            if (time >= maxTime) {
+              finalCore = coreTemp;
+              finalSurface = surfaceTemp;
+              break;
+            }
+
+            const surfaceKelvin = surfaceTemp + 273.15;
+            const ambientKelvin = params.ambientTemp + 273.15;
+            const convectiveLoss =
+              params.convection * area * (surfaceTemp - params.ambientTemp);
+            const radiativeLoss =
+              epsilon *
+              sigma *
+              area *
+              (surfaceKelvin ** 4 - ambientKelvin ** 4);
+            const evaporativeLoss =
+              3.9 * smoothstep(60, 70, surfaceTemp);
+            const inwardFluxDensity =
+              (inputPower - convectiveLoss - radiativeLoss - evaporativeLoss) /
+              area;
+
+            const ghostInner = profile[1];
+            const ghostOuter =
+              profile[radialSteps - 2] + (2 * dr * inwardFluxDensity) / lambda;
+            const nextProfile = profile.slice();
+
+            for (let index = 0; index < radialSteps; index += 1) {
+              const leftTemp = index === 0 ? ghostInner : profile[index - 1];
+              const rightTemp =
+                index === radialSteps - 1
+                  ? ghostOuter
+                  : profile[index + 1];
+              const secondDerivative =
+                (rightTemp - 2 * profile[index] + leftTemp) / (dr * dr);
+              const firstDerivative =
+                (rightTemp - leftTemp) / (2 * dr);
+
+              nextProfile[index] =
+                profile[index] +
+                dt *
+                  diffusivity *
+                  (secondDerivative + (2 / radii[index]) * firstDerivative);
+            }
+
+            profile = nextProfile;
+          }
+
+          return {
+            points,
+            targetReached: Number.isFinite(targetTime),
+            targetTime: Number.isFinite(targetTime) ? targetTime : Infinity,
+            eBaffe,
+            ec,
+            inputPower,
+            outerRadius,
+            area,
+            shellThickness,
+            finalCore,
+            finalSurface,
+            dt,
+            radialSteps,
+          };
+        }
+
+        function renderChart(params, result) {
+          const width = 860;
+          const height = 430;
+          const padding = { top: 28, right: 18, bottom: 52, left: 52 };
+          const innerWidth = width - padding.left - padding.right;
+          const innerHeight = height - padding.top - padding.bottom;
+          const maxHours = Math.max(
+            8,
+            result.points[result.points.length - 1]?.timeHours ?? 8,
+          );
+          const allTemps = result.points.flatMap((point) => [
+            point.surface,
+            point.core,
+            params.targetTemp,
+            params.ambientTemp,
+          ]);
+          const minTemp = Math.floor(Math.min(...allTemps, params.ambientTemp) - 2);
+          const maxTemp = Math.ceil(Math.max(...allTemps, params.targetTemp) + 4);
+          const xForHour = (hour) =>
+            padding.left + (hour / maxHours) * innerWidth;
+          const yForTemp = (temp) =>
+            padding.top +
+            (1 - (temp - minTemp) / Math.max(1, maxTemp - minTemp)) *
+              innerHeight;
+
+          const corePoints = result.points.map((point) => [
+            xForHour(point.timeHours),
+            yForTemp(point.core),
+          ]);
+          const surfacePoints = result.points.map((point) => [
+            xForHour(point.timeHours),
+            yForTemp(point.surface),
+          ]);
+          const corePath = buildPath(corePoints);
+          const surfacePath = buildPath(surfacePoints);
+          const targetY = yForTemp(params.targetTemp);
+          const targetMarker =
+            result.targetReached
+              ? {
+                  x: xForHour(result.targetTime / 3600),
+                  y: yForTemp(params.targetTemp),
+                }
+              : null;
+
+          const horizontalTicks = 5;
+          const verticalTicks = 5;
+          let markup = `<rect x="0" y="0" width="${width}" height="${height}" fill="transparent"></rect>`;
+
+          for (let index = 0; index <= horizontalTicks; index += 1) {
+            const ratio = index / horizontalTicks;
+            const temp = minTemp + (1 - ratio) * (maxTemp - minTemp);
+            const y = padding.top + ratio * innerHeight;
+            markup += `
+              <line class="viz-chart-grid" x1="${padding.left}" y1="${y}" x2="${width - padding.right}" y2="${y}"></line>
+              <text class="viz-chart-axis viz-chart-axis-temp" x="${padding.left - 12}" y="${y + 4}" text-anchor="end">${Math.round(temp)}°</text>
+            `;
+          }
+
+          for (let index = 0; index <= verticalTicks; index += 1) {
+            const hour = (index / verticalTicks) * maxHours;
+            const x = xForHour(hour);
+            markup += `
+              <line class="viz-chart-grid viz-chart-grid-vertical" x1="${x}" y1="${padding.top}" x2="${x}" y2="${height - padding.bottom}"></line>
+              <text class="viz-chart-axis" x="${x}" y="${height - padding.bottom + 24}" text-anchor="middle">${hour.toFixed(hour % 1 === 0 ? 0 : 1)} h</text>
+            `;
+          }
+
+          markup += `
+            <line class="viz-chart-target" x1="${padding.left}" y1="${targetY}" x2="${width - padding.right}" y2="${targetY}"></line>
+            <path class="viz-chart-line viz-chart-line-surface" d="${surfacePath}"></path>
+            <path class="viz-chart-line viz-chart-line-core" d="${corePath}"></path>
+          `;
+
+          if (targetMarker) {
+            markup += `
+              <circle class="viz-chart-marker" cx="${targetMarker.x}" cy="${targetMarker.y}" r="5"></circle>
+              <text class="viz-chart-axis viz-chart-marker-label" x="${Math.min(width - padding.right - 4, targetMarker.x + 14)}" y="${targetMarker.y + 18}" text-anchor="start">
+                cœur atteint la cible
+              </text>
+            `;
+          }
+
+          chart.innerHTML = markup;
+
+          if (result.targetReached) {
+            chartNote.textContent = `Le cœur atteint ${params.targetTemp.toFixed(0)}${NBSP}°C après ${formatDuration(result.targetTime)}.`;
+            metricTime.textContent = formatDuration(result.targetTime);
+            metricSlaps.textContent = formatInteger(
+              params.frequency * result.targetTime,
+            );
+          } else {
+            chartNote.textContent = `Le cœur n’atteint pas ${params.targetTemp.toFixed(0)}${NBSP}°C en 8${NBSP}h ; il plafonne vers ${formatTemperature(result.finalCore)}.`;
+            metricTime.textContent = "non atteint";
+            metricSlaps.textContent = "—";
+          }
+
+          metricEnergy.textContent = `${formatCompactNumber(result.eBaffe)}${NBSP}J`;
+          metricPower.textContent = `${formatCompactNumber(result.inputPower)}${NBSP}W`;
+        }
+
+        let renderRaf = 0;
+
+        function render() {
+          const params = readParams();
+          updateDisplayedValues(params);
+          const result = simulate(params);
+          renderChart(params, result);
+        }
+
+        function scheduleRender() {
+          if (renderRaf) return;
+          renderRaf = requestAnimationFrame(() => {
+            renderRaf = 0;
+            render();
+          });
+        }
+
+        inputElements.forEach((input) => {
+          input.addEventListener("input", scheduleRender);
+        });
+
+        resetButton?.addEventListener("click", () => {
+          inputElements.forEach((input) => {
+            const value = defaultParams[input.dataset.field];
+            if (value !== undefined) {
+              input.value = String(value);
+            }
+          });
+          render();
+        });
+
+        setMode("curve");
+        render();
+      })();
+    </script>
+  </body>
+</html>
