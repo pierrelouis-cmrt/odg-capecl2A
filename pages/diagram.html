@@ -26,7 +26,14 @@
           inlineMath: [["\\(", "\\)"]],
         },
         options: {
-          skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+          skipHtmlTags: [
+            "script",
+            "noscript",
+            "style",
+            "textarea",
+            "pre",
+            "code",
+          ],
         },
         startup: {
           ready() {
@@ -130,18 +137,25 @@
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1.75"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="lucide lucide-info-icon lucide-info"
+                  aria-hidden="true"
                 >
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 16v-4" />
-                  <path d="M12 8h.01" />
+                  <circle cx="12" cy="12" r="9.25" />
+                  <line x1="12" y1="11" x2="12" y2="16.5" />
+                  <circle
+                    cx="12"
+                    cy="7.75"
+                    r="1.1"
+                    fill="currentColor"
+                    stroke="none"
+                  />
                 </svg>
               </span>
               <span class="diagram-canvas-hint-text">
-                Zoomez, faites glisser, ou cliquez sur un bloc pour zoomer dessus.
+                Zoomez, faites glisser, ou cliquez sur un bloc pour zoomer
+                dessus.
               </span>
             </p>
             <div class="diagram-panzoom">
@@ -176,7 +190,9 @@
                     data-children="1-3,1-4"
                     style="grid-column: 1 / span 5"
                   >
-                    <p class="diagram-node-id">\( |a| = {v_i^{\,2}}/{(2\,\Delta x)} \)</p>
+                    <p class="diagram-node-id">
+                      \( |a| = {v_i^{\,2}}/{(2\,\Delta x)} \)
+                    </p>
                     <p class="diagram-node-desc">Méthode cinématique</p>
                   </div>
                   <div
@@ -185,7 +201,9 @@
                     data-children="1-5,1-6,1-7"
                     style="grid-column: 6 / span 5"
                   >
-                    <p class="diagram-node-id">\( |a|_{\text{pic}} = v_i\sqrt{k/m} \)</p>
+                    <p class="diagram-node-id">
+                      \( |a|_{\text{pic}} = v_i\sqrt{k/m} \)
+                    </p>
                     <p class="diagram-node-desc">Méthode masse-ressort</p>
                   </div>
                 </div>
@@ -199,9 +217,7 @@
                     style="grid-column: 1 / span 2"
                   >
                     <p class="diagram-node-id">\(v_i\)</p>
-                    <p class="diagram-node-desc">
-                      Vitesse d'impact
-                    </p>
+                    <p class="diagram-node-desc">Vitesse d'impact</p>
                   </div>
                   <div
                     class="diagram-node diagram-node--mid"
@@ -226,9 +242,7 @@
                     style="grid-column: 8 / span 1"
                   >
                     <p class="diagram-node-id">\(k\)</p>
-                    <p class="diagram-node-desc">
-                      Raideur des tissus mous
-                    </p>
+                    <p class="diagram-node-desc">Raideur des tissus mous</p>
                   </div>
                   <div
                     class="diagram-node diagram-node--mid"
@@ -237,9 +251,7 @@
                     style="grid-column: 9 / span 2"
                   >
                     <p class="diagram-node-id">\(m\)</p>
-                    <p class="diagram-node-desc">
-                      Masse de la main
-                    </p>
+                    <p class="diagram-node-desc">Masse de la main</p>
                   </div>
                 </div>
 
@@ -252,9 +264,7 @@
                     style="grid-column: 1 / span 1"
                   >
                     <p class="diagram-node-id">\(s = L \cdot \theta\)</p>
-                    <p class="diagram-node-desc">
-                      Arc parcouru
-                    </p>
+                    <p class="diagram-node-desc">Arc parcouru</p>
                   </div>
                   <div
                     class="diagram-node"
@@ -325,9 +335,7 @@
                     style="grid-column: 10 / span 1"
                   >
                     <p class="diagram-node-id">\(V\)</p>
-                    <p class="diagram-node-desc">
-                      Géométrie des doigts
-                    </p>
+                    <p class="diagram-node-desc">Géométrie des doigts</p>
                   </div>
                 </div>
               </div>
@@ -358,9 +366,7 @@
                     style="grid-column: 1 / span 10"
                   >
                     <p class="diagram-node-id">\(Q_{\text{total}}\)</p>
-                    <p class="diagram-node-desc">
-                      Énergie totale nécessaire
-                    </p>
+                    <p class="diagram-node-desc">Énergie totale nécessaire</p>
                   </div>
                   <div
                     class="diagram-node diagram-node--mid"
@@ -384,9 +390,7 @@
                     style="grid-column: 1 / span 3"
                   >
                     <p class="diagram-node-id">\(Q_{\text{chauffe}}\)</p>
-                    <p class="diagram-node-desc">
-                      Énergie de chauffe
-                    </p>
+                    <p class="diagram-node-desc">Énergie de chauffe</p>
                   </div>
                   <div
                     class="diagram-node diagram-node--mid"
@@ -406,9 +410,7 @@
                     style="grid-column: 9 / span 2"
                   >
                     <p class="diagram-node-id">\(Q_{\text{évap}}\)</p>
-                    <p class="diagram-node-desc">
-                      Pertes par évaporation
-                    </p>
+                    <p class="diagram-node-desc">Pertes par évaporation</p>
                   </div>
                   <div
                     class="diagram-node diagram-node--mid"
@@ -428,9 +430,7 @@
                     style="grid-column: 13 / span 2"
                   >
                     <p class="diagram-node-id">\(E_{\text{élast}}\)</p>
-                    <p class="diagram-node-desc">
-                      Restitution élastique
-                    </p>
+                    <p class="diagram-node-desc">Restitution élastique</p>
                   </div>
                   <div
                     class="diagram-node diagram-node--mid"
@@ -480,9 +480,7 @@
                     style="grid-column: 4 / span 2"
                   >
                     <p class="diagram-node-id">\(t_{\text{cuisson}}\)</p>
-                    <p class="diagram-node-desc">
-                      Temps de cuisson
-                    </p>
+                    <p class="diagram-node-desc">Temps de cuisson</p>
                   </div>
                   <div
                     class="diagram-node"
@@ -591,9 +589,7 @@
                     style="grid-column: 6 / span 1"
                   >
                     <p class="diagram-node-id">\(h\)</p>
-                    <p class="diagram-node-desc">
-                      Coefficient de convection
-                    </p>
+                    <p class="diagram-node-desc">Coefficient de convection</p>
                   </div>
                   <div
                     class="diagram-node"
@@ -602,9 +598,7 @@
                     style="grid-column: 7 / span 1"
                   >
                     <p class="diagram-node-id">\(h_{\text{rad}}\)</p>
-                    <p class="diagram-node-desc">
-                      Coefficient de rayonnement
-                    </p>
+                    <p class="diagram-node-desc">Coefficient de rayonnement</p>
                   </div>
                 </div>
 
@@ -680,11 +674,8 @@
             <section class="footer-column footer-column-colophon">
               <p class="footer-heading">[colophon]</p>
               <div class="footer-stack">
-                <a
-                  class="label-upper footer-link"
-                  href="https://lucide.dev/"
-                  target="_blank"
-                  >ICÔNES&nbsp;: HAND-MADE</a
+                <span class="label-upper footer-link"
+                  >ICÔNES&nbsp;: HAND-MADE</span
                 >
                 <a
                   class="label-upper footer-link"
@@ -1205,7 +1196,8 @@
           const bounds = getTraceBounds(nodeId);
           if (!bounds) return;
 
-          const { width: viewportWidth, height: viewportHeight } = getViewportBox();
+          const { width: viewportWidth, height: viewportHeight } =
+            getViewportBox();
           const paddingX = Math.max(12, Math.round(viewportWidth * 0.028));
           const paddingY = Math.max(12, Math.round(viewportHeight * 0.04));
           const usableWidth = Math.max(1, viewportWidth - paddingX * 2);
@@ -1214,7 +1206,10 @@
             viewState.maxScale,
             Math.max(
               viewState.minScale,
-              Math.min(usableWidth / bounds.width, usableHeight / bounds.height),
+              Math.min(
+                usableWidth / bounds.width,
+                usableHeight / bounds.height,
+              ),
             ),
           );
           const target = {
@@ -2108,7 +2103,10 @@
         const refreshAfterMathTypeset = () => {
           queueLayoutRefresh({ fitView: true });
         };
-        window.addEventListener("diagram:mathjax-ready", refreshAfterMathTypeset);
+        window.addEventListener(
+          "diagram:mathjax-ready",
+          refreshAfterMathTypeset,
+        );
         if (window.__diagramMathReady) {
           refreshAfterMathTypeset();
         }
