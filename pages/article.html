@@ -847,6 +847,10 @@
 
     <script>
       (() => {
+        if ("scrollRestoration" in window.history) {
+          window.history.scrollRestoration = "manual";
+        }
+
         const blocks = [...document.querySelectorAll("[data-chapter-block]")];
         const listItems = [
           ...document.querySelectorAll(
@@ -1026,10 +1030,11 @@
 
           if (isFullView) {
             url.searchParams.set("view", "full");
+            url.hash = `#chapter-${current}`;
           } else {
             url.searchParams.delete("view");
+            url.hash = "";
           }
-          url.hash = `#chapter-${current}`;
 
           const nextUrl = `${url.pathname}${url.search}${url.hash}`;
           const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
@@ -1060,6 +1065,11 @@
         function scrollToHashTarget(behavior = "auto") {
           const hashIndex = getChapterIndexFromHash();
           if (hashIndex === null) return;
+
+          if (hashIndex === 0) {
+            window.scrollTo({ top: 0, behavior });
+            return;
+          }
 
           document.getElementById(`chapter-${hashIndex}`)?.scrollIntoView({
             block: "start",
@@ -1277,6 +1287,11 @@
 
             chapterScrollFrame = requestAnimationFrame(settle);
           });
+        }
+
+        function restoreChapterViewTop() {
+          cancelChapterScrollAnimation();
+          window.scrollTo({ top: 0, behavior: "auto" });
         }
 
         drawerPanel?.setAttribute("tabindex", "-1");
@@ -2040,6 +2055,7 @@
             primeChapter(current);
             typesetVisibleChapter();
             queueChapterWarmup([current + 1, current + 2]);
+            requestAnimationFrame(restoreChapterViewTop);
           },
           { once: true },
         );
