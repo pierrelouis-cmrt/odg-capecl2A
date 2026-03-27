@@ -959,6 +959,10 @@ html.has-motion-shell.is-ready .cta-read {
   display: block;
 }
 
+.footer-link-subpage {
+  padding-left: 14px;
+}
+
 .footer-link-button {
   display: inline-flex;
   align-items: center;
