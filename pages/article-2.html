@@ -343,11 +343,11 @@
                         </li>
                         <li>
                           Capacité thermique massique&nbsp;: \(c_p =
-                          4\,186\;\text{J/(kg\,K)}\).
+                          4\,186\;\text{J}\,\text{kg}^{-1}\,\text{K}^{-1}\).
                         </li>
                         <li>
                           Conductivité thermique&nbsp;: \(\lambda =
-                          0{,}6\;\text{W/(m\,K)}\).
+                          0{,}6\;\text{W}\,\text{m}^{-1}\,\text{K}^{-1}\).
                         </li>
                         <li>
                           Diffusivité thermique&nbsp;:
@@ -359,11 +359,13 @@
                         </li>
                         <li>
                           Coefficient de convection&nbsp;: \(h =
-                          20\;\text{W/(m}^2\text{\,K)}\). En air calme, \(h
-                          \approx 10\;\text{W/(m}^2\text{\,K)}\) (cf.&nbsp;cours
-                          diffusion thermique ch11)&nbsp;; le mouvement répété
-                          de la main brasse l'air au voisinage du poulet, ce qui
-                          justifie une valeur de convection forcée modérée.
+                          20\;\text{W}\,\text{m}^{-2}\,\text{K}^{-1}\). En air
+                          calme, \(h \approx
+                          10\;\text{W}\,\text{m}^{-2}\,\text{K}^{-1}\)
+                          (cf.&nbsp;cours diffusion thermique ch11)&nbsp;; le
+                          mouvement répété de la main brasse l'air au voisinage
+                          du poulet, ce qui justifie une valeur de convection un
+                          peu plus élevée.
                         </li>
                         <li>
                           Températures&nbsp;: \(T_i = 20\;^\circ\text{C}\)
@@ -415,11 +417,11 @@
                         Restitution élastique
                       </h4>
                       <p>
-                        La chair se comporte comme un matériau viscoélastique.
-                        En reprenant l'estimation de l'article précédent,
-                        \(\delta \approx 5{,}2\;\text{cm}\) pour \(k \approx
-                        10\;\text{kN/m}\). L'énergie temporairement stockée à
-                        compression maximale vaut alors&nbsp;:
+                        La chair se comporte comme un matériau élastique (i.e.
+                        un ressort). En reprenant l'estimation de l'article
+                        précédent, \(\delta \approx 5{,}2\;\text{cm}\) pour \(k
+                        \approx 10\;\text{kN/m}\). L'énergie temporairement
+                        stockée à compression maximale vaut alors&nbsp;:
                       </p>
                       <div class="math-block">
                         \[ E_{\text{stock}} = \tfrac{1}{2}\,k\,\delta^2 \approx
@@ -461,16 +463,16 @@
                       </p>
                       <p>
                         <strong>Remarque.</strong> L'énergie acoustique due au
-                        claquement est négligeable devant \(E_c\) à cet ordre de
-                        grandeur.
+                        claquement est considérée négligeable devant \(E_c\)
+                        ici.
                       </p>
                       <p>
                         L'énergie thermique effectivement déposée dans le poulet
                         par baffe vaut donc&nbsp;:
                       </p>
                       <div class="math-block math-block-emphasis">
-                        \[ E_{\text{baffe}} \approx 0{,}50 \times E_c =
-                        0{,}50 \times 13{,}5 = 6{,}75\;\text{J} \approx
+                        \[ E_{\text{baffe}} \approx 0{,}50 \times E_c = 0{,}50
+                        \times 13{,}5 = 6{,}75\;\text{J} \approx
                         6{,}8\;\text{J}. \]
                       </div>
                       <h3 class="article-subheading">
@@ -610,7 +612,7 @@
                       </div>
                       <p>
                         où \(\sigma = 5{,}67 \times
-                        10^{-8}\;\text{W/(m}^2\text{\,K}^4\text{)}\) est la
+                        10^{-8}\;\text{W}\,\text{m}^{-2}\,\text{K}^{-4}\) est la
                         constante de Stefan--Boltzmann.
                       </p>
                       <p>
@@ -640,8 +642,8 @@
                         On raisonne en ordre de grandeur. L'évaporation ne
                         concerne qu'une fine couche superficielle du poulet. On
                         estime l'épaisseur de chair qui sèche significativement
-                        au cours de la cuisson à \(\ell \sim 2\) --
-                        \(3\;\text{mm}\). Le volume correspondant vaut
+                        au cours de la cuisson à une valeur de \(\ell\) de \(2\)
+                        à \(3\;\text{mm}\). Le volume correspondant vaut
                       </p>
                       <div class="math-block">
                         \[ V_{\text{couche}} \sim S\,\ell \approx 0{,}077 \times
@@ -721,11 +723,11 @@
                       <p>
                         <strong>Remarque.</strong> Cette puissance de conduction
                         n'est pas une <em>perte</em> vers l'extérieur&nbsp;:
-                        c'est un flux interne qui redistribue la chaleur de la
-                        surface vers le cœur. Elle intervient dans le bilan
-                        local à la surface, mais elle ne doit pas être ajoutée
-                        une seconde fois au bilan énergétique global, car elle
-                        est déjà contenue dans
+                        c'est un flux interne au poulet qui redistribue la
+                        chaleur de la surface vers le cœur. Elle intervient dans
+                        le bilan local à la surface, mais n'ets pas ajoutée une
+                        seconde fois au bilan énergétique global, car elle est
+                        déjà contenue dans
                       </p>
                       <div class="math-block">
                         \[ Q_{\text{chauffe}} = m\,c_p\,\Delta T. \]
@@ -767,8 +769,8 @@
                         \[ T_s(t)=T_0+\Delta T\,\frac{t}{t_c}. \]
                       </div>
                       <p>
-                        Il s'agit d'un modèle très simplifié mais adapté à un
-                        raisonnement par ordre de grandeur.
+                        Il s'agit d'un modèle très simplifié mais qui nous est
+                        suffisant ici.
                       </p>
                       <p>
                         Le bilan instantané de puissance à la surface du poulet
@@ -794,8 +796,7 @@
                         \[ f_{\min}^{\text{fin}} \approx
                         \frac{\dfrac{Q_{\text{chauffe}}}{t_{\text{cuisson}}} +
                         h\,S\,\Delta T + \sigma\,S\,(T_f^4-T_0^4) +
-                        P_{\text{évap}}}
-                        {E_{\text{baffe}}}. \]
+                        P_{\text{évap}}} {E_{\text{baffe}}}. \]
                       </div>
                       <p>Application numérique&nbsp;:</p>
                       <div class="math-block math-block-emphasis">
@@ -827,9 +828,8 @@
                       <p>D'où une fréquence moyenne requise de l'ordre de</p>
                       <div class="math-block math-block-emphasis">
                         \[ f_{\text{moy}} \approx \frac{24 + h\,S\,\bar{\theta}
-                        + \bar{P}_{\text{rad}} + 3{,}9}{6{,}75} = \frac{24 +
-                        20\times 0{,}077 \times 25 + 13 + 3{,}9}{6{,}75}
-                        \approx 12\;\text{Hz}. \]
+                        + \bar{P}_{\text{rad}} + 3{,}9}{6{,}75} \approx
+                        12\;\text{Hz}. \]
                       </div>
                       <p>
                         Soit environ
@@ -975,7 +975,7 @@
                         \left(T_0+\Delta T\,\frac{t}{t_c}\right)^4 - T_0^4
                         \right]\mathrm{d}t. \]
                       </div>
-                      <p>En développant le binôme&nbsp;:</p>
+                      <p>En développant &nbsp;:</p>
                       <div class="math-block">
                         \[ \left(T_0+\Delta T\,\frac{t}{t_c}\right)^4 - T_0^4 =
                         4T_0^3\Delta T\,\frac{t}{t_c} + 6T_0^2\Delta
@@ -1202,7 +1202,9 @@
                 <a class="label-upper footer-link" href="./diagram.html"
                   >DIAGRAMMES</a
                 >
-                <a class="label-upper footer-link is-active" href="../index.html"
+                <a
+                  class="label-upper footer-link is-active"
+                  href="../index.html"
                   >ARTICLES</a
                 >
                 <a
@@ -1244,7 +1246,7 @@
                   href="https://skfb.ly/6XHDu"
                   target="_blank"
                   rel="noreferrer"
-                  title="&quot;Roast chicken&quot; by daidaiaoko — licensed under CC BY 4.0."
+                  title='"Roast chicken" by daidaiaoko — licensed under CC BY 4.0.'
                   >MODÈLE 3D&nbsp;: PAR DAIDAIAOKO, CC BY 4.0</a
                 >
               </div>
