@@ -17,7 +17,15 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles/styles.133ad20834.css" />
-    <link rel="stylesheet" href="../styles/visualisation.f878fb3c37.css" />
+    <link rel="stylesheet" href="../styles/visualisation.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
     <script>
       window.MathJax = {
         tex: {
@@ -133,188 +141,197 @@
               <aside class="viz-rail" aria-label="Paramètres du modèle">
                 <div class="viz-rail-head">
                   <h2 class="viz-rail-title">Paramètres</h2>
-                  <button class="viz-reset" id="viz-reset" type="button">
+                  <button class="viz-reset" data-reset-trigger type="button">
                     Reset
                   </button>
                 </div>
 
-                <section class="viz-group">
-                  <div class="viz-group-head">
-                    <p class="viz-group-label">impact</p>
+                <details class="viz-group" open>
+                  <summary class="viz-group-head">
+                    <span class="viz-group-label">impact</span>
+                    <span class="viz-group-toggle" aria-hidden="true"></span>
+                  </summary>
+
+                  <div class="viz-group-body">
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Fréquence</span>
+                        <span class="viz-field-value" data-value-for="frequency"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="1"
+                        max="30"
+                        step="0.5"
+                        value="17"
+                        data-field="frequency"
+                      />
+                    </label>
+
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Masse de la main</span>
+                        <span class="viz-field-value" data-value-for="handMass"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="0.15"
+                        max="0.45"
+                        step="0.01"
+                        value="0.27"
+                        data-field="handMass"
+                      />
+                    </label>
+
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Vitesse d'impact</span>
+                        <span class="viz-field-value" data-value-for="impactSpeed"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="6"
+                        max="14"
+                        step="0.1"
+                        value="10"
+                        data-field="impactSpeed"
+                      />
+                    </label>
+
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Restitution élastique</span>
+                        <span class="viz-field-value" data-value-for="elasticLoss"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="0"
+                        max="3"
+                        step="0.1"
+                        value="1"
+                        data-field="elasticLoss"
+                      />
+                    </label>
+
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Part déposée dans le poulet</span>
+                        <span class="viz-field-value" data-value-for="thermalShare"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="0.3"
+                        max="0.8"
+                        step="0.01"
+                        value="0.55"
+                        data-field="thermalShare"
+                      />
+                    </label>
                   </div>
+                </details>
 
-                  <label class="viz-field">
-                    <span class="viz-field-top">
-                      <span class="viz-field-label">Fréquence</span>
-                      <span class="viz-field-value" data-value-for="frequency"></span>
-                    </span>
-                    <input
-                      class="viz-range"
-                      type="range"
-                      min="1"
-                      max="30"
-                      step="0.5"
-                      value="17"
-                      data-field="frequency"
-                    />
-                  </label>
+                <details class="viz-group" open>
+                  <summary class="viz-group-head">
+                    <span class="viz-group-label">poulet</span>
+                    <span class="viz-group-toggle" aria-hidden="true"></span>
+                  </summary>
 
-                  <label class="viz-field">
-                    <span class="viz-field-top">
-                      <span class="viz-field-label">Masse de la main</span>
-                      <span class="viz-field-value" data-value-for="handMass"></span>
-                    </span>
-                    <input
-                      class="viz-range"
-                      type="range"
-                      min="0.15"
-                      max="0.45"
-                      step="0.01"
-                      value="0.27"
-                      data-field="handMass"
-                    />
-                  </label>
+                  <div class="viz-group-body">
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Masse du poulet</span>
+                        <span class="viz-field-value" data-value-for="chickenMass"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="1"
+                        max="3.5"
+                        step="0.1"
+                        value="2"
+                        data-field="chickenMass"
+                      />
+                    </label>
 
-                  <label class="viz-field">
-                    <span class="viz-field-top">
-                      <span class="viz-field-label">Vitesse d'impact</span>
-                      <span class="viz-field-value" data-value-for="impactSpeed"></span>
-                    </span>
-                    <input
-                      class="viz-range"
-                      type="range"
-                      min="6"
-                      max="14"
-                      step="0.1"
-                      value="10"
-                      data-field="impactSpeed"
-                    />
-                  </label>
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Épaisseur de coque</span>
+                        <span class="viz-field-value" data-value-for="thicknessCm"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="3"
+                        max="7"
+                        step="0.1"
+                        value="5"
+                        data-field="thicknessCm"
+                      />
+                    </label>
 
-                  <label class="viz-field">
-                    <span class="viz-field-top">
-                      <span class="viz-field-label">Restitution élastique</span>
-                      <span class="viz-field-value" data-value-for="elasticLoss"></span>
-                    </span>
-                    <input
-                      class="viz-range"
-                      type="range"
-                      min="0"
-                      max="3"
-                      step="0.1"
-                      value="1"
-                      data-field="elasticLoss"
-                    />
-                  </label>
-
-                  <label class="viz-field">
-                    <span class="viz-field-top">
-                      <span class="viz-field-label">Part déposée dans le poulet</span>
-                      <span class="viz-field-value" data-value-for="thermalShare"></span>
-                    </span>
-                    <input
-                      class="viz-range"
-                      type="range"
-                      min="0.3"
-                      max="0.8"
-                      step="0.01"
-                      value="0.55"
-                      data-field="thermalShare"
-                    />
-                  </label>
-                </section>
-
-                <section class="viz-group">
-                  <div class="viz-group-head">
-                    <p class="viz-group-label">poulet</p>
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Température cible</span>
+                        <span class="viz-field-value" data-value-for="targetTemp"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="60"
+                        max="80"
+                        step="1"
+                        value="70"
+                        data-field="targetTemp"
+                      />
+                    </label>
                   </div>
+                </details>
 
-                  <label class="viz-field">
-                    <span class="viz-field-top">
-                      <span class="viz-field-label">Masse du poulet</span>
-                      <span class="viz-field-value" data-value-for="chickenMass"></span>
-                    </span>
-                    <input
-                      class="viz-range"
-                      type="range"
-                      min="1"
-                      max="3.5"
-                      step="0.1"
-                      value="2"
-                      data-field="chickenMass"
-                    />
-                  </label>
+                <details class="viz-group" open>
+                  <summary class="viz-group-head">
+                    <span class="viz-group-label">environnement</span>
+                    <span class="viz-group-toggle" aria-hidden="true"></span>
+                  </summary>
 
-                  <label class="viz-field">
-                    <span class="viz-field-top">
-                      <span class="viz-field-label">Épaisseur de coque</span>
-                      <span class="viz-field-value" data-value-for="thicknessCm"></span>
-                    </span>
-                    <input
-                      class="viz-range"
-                      type="range"
-                      min="3"
-                      max="7"
-                      step="0.1"
-                      value="5"
-                      data-field="thicknessCm"
-                    />
-                  </label>
+                  <div class="viz-group-body">
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Température ambiante</span>
+                        <span class="viz-field-value" data-value-for="ambientTemp"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="10"
+                        max="30"
+                        step="1"
+                        value="20"
+                        data-field="ambientTemp"
+                      />
+                    </label>
 
-                  <label class="viz-field">
-                    <span class="viz-field-top">
-                      <span class="viz-field-label">Température cible</span>
-                      <span class="viz-field-value" data-value-for="targetTemp"></span>
-                    </span>
-                    <input
-                      class="viz-range"
-                      type="range"
-                      min="60"
-                      max="80"
-                      step="1"
-                      value="70"
-                      data-field="targetTemp"
-                    />
-                  </label>
-                </section>
-
-                <section class="viz-group">
-                  <div class="viz-group-head">
-                    <p class="viz-group-label">environnement</p>
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Convection</span>
+                        <span class="viz-field-value" data-value-for="convection"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="8"
+                        max="30"
+                        step="1"
+                        value="20"
+                        data-field="convection"
+                      />
+                    </label>
                   </div>
-
-                  <label class="viz-field">
-                    <span class="viz-field-top">
-                      <span class="viz-field-label">Température ambiante</span>
-                      <span class="viz-field-value" data-value-for="ambientTemp"></span>
-                    </span>
-                    <input
-                      class="viz-range"
-                      type="range"
-                      min="10"
-                      max="30"
-                      step="1"
-                      value="20"
-                      data-field="ambientTemp"
-                    />
-                  </label>
-
-                  <label class="viz-field">
-                    <span class="viz-field-top">
-                      <span class="viz-field-label">Convection</span>
-                      <span class="viz-field-value" data-value-for="convection"></span>
-                    </span>
-                    <input
-                      class="viz-range"
-                      type="range"
-                      min="8"
-                      max="30"
-                      step="1"
-                      value="20"
-                      data-field="convection"
-                    />
-                  </label>
-                </section>
+                </details>
               </aside>
 
               <section class="viz-stage" aria-label="Courbes de température">
@@ -425,26 +442,376 @@
           </section>
 
           <section
-            class="visualisation-panel visualisation-panel-placeholder"
+            class="visualisation-panel"
             data-view="sphere"
             hidden
             aria-label="Mode boule 3D"
           >
-            <div class="viz-placeholder">
-              <div class="viz-placeholder-art" aria-hidden="true">
-                <span class="viz-placeholder-sphere"></span>
-                <span class="viz-placeholder-cut"></span>
-                <span class="viz-placeholder-core"></span>
-              </div>
-              <div class="viz-placeholder-copy">
-                <h2 class="viz-stage-title">Vue volumique à venir</h2>
+            <div class="viz-workbench">
+              <aside class="viz-rail" aria-label="Paramètres du modèle">
+                <div class="viz-rail-head">
+                  <h2 class="viz-rail-title">Paramètres</h2>
+                  <button class="viz-reset" data-reset-trigger type="button">
+                    Reset
+                  </button>
+                </div>
+
+                <details class="viz-group" open>
+                  <summary class="viz-group-head">
+                    <span class="viz-group-label">impact</span>
+                    <span class="viz-group-toggle" aria-hidden="true"></span>
+                  </summary>
+
+                  <div class="viz-group-body">
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Fréquence</span>
+                        <span class="viz-field-value" data-value-for="frequency"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="1"
+                        max="30"
+                        step="0.5"
+                        value="17"
+                        data-field="frequency"
+                      />
+                    </label>
+
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Masse de la main</span>
+                        <span class="viz-field-value" data-value-for="handMass"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="0.15"
+                        max="0.45"
+                        step="0.01"
+                        value="0.27"
+                        data-field="handMass"
+                      />
+                    </label>
+
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Vitesse d'impact</span>
+                        <span class="viz-field-value" data-value-for="impactSpeed"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="6"
+                        max="14"
+                        step="0.1"
+                        value="10"
+                        data-field="impactSpeed"
+                      />
+                    </label>
+
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Restitution élastique</span>
+                        <span class="viz-field-value" data-value-for="elasticLoss"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="0"
+                        max="3"
+                        step="0.1"
+                        value="1"
+                        data-field="elasticLoss"
+                      />
+                    </label>
+
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Part déposée dans le poulet</span>
+                        <span class="viz-field-value" data-value-for="thermalShare"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="0.3"
+                        max="0.8"
+                        step="0.01"
+                        value="0.55"
+                        data-field="thermalShare"
+                      />
+                    </label>
+                  </div>
+                </details>
+
+                <details class="viz-group" open>
+                  <summary class="viz-group-head">
+                    <span class="viz-group-label">poulet</span>
+                    <span class="viz-group-toggle" aria-hidden="true"></span>
+                  </summary>
+
+                  <div class="viz-group-body">
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Masse du poulet</span>
+                        <span class="viz-field-value" data-value-for="chickenMass"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="1"
+                        max="3.5"
+                        step="0.1"
+                        value="2"
+                        data-field="chickenMass"
+                      />
+                    </label>
+
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Épaisseur de coque</span>
+                        <span class="viz-field-value" data-value-for="thicknessCm"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="3"
+                        max="7"
+                        step="0.1"
+                        value="5"
+                        data-field="thicknessCm"
+                      />
+                    </label>
+
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Température cible</span>
+                        <span class="viz-field-value" data-value-for="targetTemp"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="60"
+                        max="80"
+                        step="1"
+                        value="70"
+                        data-field="targetTemp"
+                      />
+                    </label>
+                  </div>
+                </details>
+
+                <details class="viz-group" open>
+                  <summary class="viz-group-head">
+                    <span class="viz-group-label">environnement</span>
+                    <span class="viz-group-toggle" aria-hidden="true"></span>
+                  </summary>
+
+                  <div class="viz-group-body">
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Température ambiante</span>
+                        <span class="viz-field-value" data-value-for="ambientTemp"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="10"
+                        max="30"
+                        step="1"
+                        value="20"
+                        data-field="ambientTemp"
+                      />
+                    </label>
+
+                    <label class="viz-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Convection</span>
+                        <span class="viz-field-value" data-value-for="convection"></span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        type="range"
+                        min="8"
+                        max="30"
+                        step="1"
+                        value="20"
+                        data-field="convection"
+                      />
+                    </label>
+                  </div>
+                </details>
+              </aside>
+
+              <section class="viz-stage viz-stage-sphere" aria-label="Champ thermique volumique">
+                <div class="viz-stage-head viz-stage-head-sphere">
+                  <h2 class="viz-stage-title">Champ thermique 3D / coupe</h2>
+
+                  <div class="viz-legend" aria-label="Échelle thermique">
+                    <span class="viz-legend-item" id="sphere-legend-min">
+                      20&nbsp;°C
+                    </span>
+                    <span class="viz-thermal-scale-bar" aria-hidden="true"></span>
+                    <span class="viz-legend-item" id="sphere-legend-max">
+                      78&nbsp;°C
+                    </span>
+                  </div>
+                </div>
+
+                <div class="viz-volume-shell">
+                  <div class="viz-volume-meta">
+                    <p class="viz-chart-note" id="sphere-note">
+                      La coupe lit le même champ \(T(r,t)\) que la courbe, mais
+                      point par point dans le volume.
+                    </p>
+                  </div>
+
+                  <div class="viz-chart-frame viz-volume-frame">
+                    <div class="viz-volume-grid">
+                      <section class="viz-volume-panel" aria-label="Vue volumique">
+                        <div class="viz-volume-panel-head">
+                          <p class="viz-volume-panel-title">volume</p>
+                        </div>
+                        <div class="viz-canvas-shell viz-canvas-shell-volume">
+                          <canvas
+                            class="viz-volume-canvas"
+                            id="viz-volume-canvas"
+                            width="900"
+                            height="560"
+                          ></canvas>
+                          <div class="viz-volume-status" id="viz-volume-status">
+                            chargement du poulet…
+                          </div>
+                        </div>
+                      </section>
+
+                      <section class="viz-volume-panel" aria-label="Plan de coupe">
+                        <div class="viz-volume-panel-head">
+                          <p class="viz-volume-panel-title">plan de coupe</p>
+                        </div>
+                        <div class="viz-canvas-shell viz-canvas-shell-slice">
+                          <canvas
+                            class="viz-slice-canvas"
+                            id="viz-slice-canvas"
+                            width="620"
+                            height="620"
+                          ></canvas>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+
+                  <div class="viz-volume-controls" aria-label="Contrôles du volume">
+                    <div class="viz-volume-controls-top">
+                      <button
+                        class="viz-play"
+                        id="sphere-play"
+                        type="button"
+                        aria-pressed="false"
+                      >
+                        Play
+                      </button>
+
+                      <label class="viz-inline-field viz-inline-field-wide">
+                        <span class="viz-field-top">
+                          <span class="viz-field-label">Temps</span>
+                          <span class="viz-field-value" id="sphere-time-value">
+                            0&nbsp;min
+                          </span>
+                        </span>
+                        <input
+                          class="viz-range"
+                          id="sphere-time"
+                          type="range"
+                          min="0"
+                          max="480"
+                          step="1"
+                          value="0"
+                        />
+                        <span class="viz-inline-hints" aria-hidden="true">
+                          <span>0 h</span>
+                          <span>8 h</span>
+                        </span>
+                      </label>
+                    </div>
+
+                    <label class="viz-inline-field">
+                      <span class="viz-field-top">
+                        <span class="viz-field-label">Profondeur de coupe</span>
+                        <span class="viz-field-value" id="sphere-depth-value">
+                          0&nbsp;cm
+                        </span>
+                      </span>
+                      <input
+                        class="viz-range"
+                        id="sphere-depth"
+                        type="range"
+                        min="0"
+                        max="1000"
+                        step="1"
+                        value="180"
+                      />
+                      <span class="viz-inline-hints" aria-hidden="true">
+                        <span id="sphere-depth-min-hint">0&nbsp;cm</span>
+                        <span id="sphere-depth-max-hint">0&nbsp;cm</span>
+                      </span>
+                    </label>
+                  </div>
+
+                  <div class="viz-sphere-metrics" aria-label="Indicateurs du volume">
+                    <div class="viz-sphere-metric">
+                      <p class="viz-metric-label">T_cœur</p>
+                      <p class="viz-metric-value" id="sphere-metric-core">
+                        20&nbsp;°C
+                      </p>
+                    </div>
+                    <div class="viz-sphere-metric">
+                      <p class="viz-metric-label">T_surface</p>
+                      <p class="viz-metric-value" id="sphere-metric-surface">
+                        20&nbsp;°C
+                      </p>
+                    </div>
+                    <div class="viz-sphere-metric">
+                      <p class="viz-metric-label">V&nbsp;≥&nbsp;cible</p>
+                      <p class="viz-metric-value" id="sphere-metric-hot">
+                        0&nbsp;%
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <section class="viz-context" aria-label="Contexte volumique">
+              <div class="viz-context-block">
+                <h2 class="viz-context-title">Même modèle</h2>
                 <p class="viz-context-copy">
-                  Le second mode préparera une coupe thermique animée de la
-                  coque et, ensuite, une interprétation 3D plus libre autour de
-                  la forme du poulet.
+                  La vue volumique ne réutilise pas une approximation décorative.
+                  Elle lit exactement le même champ radial \(T(r,t)\) que
+                  l'onglet courbe, puis l'évalue en chaque point 3D par sa
+                  distance au centre.
                 </p>
               </div>
-            </div>
+              <div class="viz-context-block">
+                <h2 class="viz-context-title">Coupe mobile</h2>
+                <p class="viz-context-copy">
+                  Le slider de profondeur déplace un plan de coupe depuis la
+                  surface vers le centre. La section affichée à droite montre
+                  donc la température en tout point de ce plan, avec la cavité
+                  interne qui apparaît quand la coupe devient assez profonde.
+                </p>
+              </div>
+              <div class="viz-context-block">
+                <h2 class="viz-context-title">Lecture</h2>
+                <p class="viz-context-copy">
+                  Tant que le gradient est fort, la surface se réchauffe vite
+                  alors que les couches proches du cœur restent en retard. Quand
+                  la fraction \(V \geq T_{\mathrm{cible}}\) augmente, la chaleur
+                  a réellement commencé à envahir l'épaisseur de chair.
+                </p>
+              </div>
+            </section>
           </section>
         </main>
 
@@ -736,29 +1103,30 @@
 
         const panels = document.querySelectorAll(".visualisation-panel");
         const modeRadios = document.querySelectorAll(".visualisation-tab-radio");
-
-        function setMode(mode) {
-          panels.forEach((panel) => {
-            const isActive = panel.dataset.view === mode;
-            panel.toggleAttribute("hidden", !isActive);
-          });
-        }
-
-        modeRadios.forEach((radio) => {
-          radio.addEventListener("change", () => {
-            if (radio.checked) setMode(radio.value);
-          });
-        });
-
-        const inputElements = Array.from(
+        const viewHashMap = {
+          courbe: "curve",
+          "boule-3d": "sphere",
+        };
+        const inputGroups = Array.from(
           document.querySelectorAll("[data-field]"),
-        );
+        ).reduce((map, node) => {
+          const field = node.dataset.field;
+          if (!map[field]) map[field] = [];
+          map[field].push(node);
+          return map;
+        }, {});
+        const fieldNames = Object.keys(inputGroups);
         const valueElements = Array.from(
           document.querySelectorAll("[data-value-for]"),
         ).reduce((map, node) => {
-          map[node.dataset.valueFor] = node;
+          const field = node.dataset.valueFor;
+          if (!map[field]) map[field] = [];
+          map[field].push(node);
           return map;
         }, {});
+        const resetButtons = Array.from(
+          document.querySelectorAll("[data-reset-trigger]"),
+        );
 
         const chart = document.getElementById("viz-chart");
         const chartNote = document.getElementById("viz-chart-note");
@@ -766,7 +1134,26 @@
         const metricSlaps = document.getElementById("metric-slaps");
         const metricEnergy = document.getElementById("metric-energy");
         const metricPower = document.getElementById("metric-power");
-        const resetButton = document.getElementById("viz-reset");
+
+        const volumeCanvas = document.getElementById("viz-volume-canvas");
+        const volumeStatus = document.getElementById("viz-volume-status");
+        const sliceCanvas = document.getElementById("viz-slice-canvas");
+        const sphereNote = document.getElementById("sphere-note");
+        const sphereTimeSlider = document.getElementById("sphere-time");
+        const sphereDepthSlider = document.getElementById("sphere-depth");
+        const spherePlayButton = document.getElementById("sphere-play");
+        const sphereTimeValue = document.getElementById("sphere-time-value");
+        const sphereDepthValue = document.getElementById("sphere-depth-value");
+        const sphereMetricCore = document.getElementById("sphere-metric-core");
+        const sphereMetricSurface = document.getElementById(
+          "sphere-metric-surface",
+        );
+        const sphereMetricHot = document.getElementById("sphere-metric-hot");
+        const sphereLegendMin = document.getElementById("sphere-legend-min");
+        const sphereLegendMax = document.getElementById("sphere-legend-max");
+        const sphereDepthMinHint = document.getElementById("sphere-depth-min-hint");
+        const sphereDepthMaxHint = document.getElementById("sphere-depth-max-hint");
+
         const defaultParams = {
           frequency: 17,
           handMass: 0.27,
@@ -781,6 +1168,12 @@
         };
 
         const NBSP = "\u00A0";
+        const THERMAL_STOPS = [
+          { t: 0, color: [242, 205, 168] },
+          { t: 0.3, color: [232, 148, 103] },
+          { t: 0.62, color: [214, 79, 54] },
+          { t: 1, color: [156, 20, 18] },
+        ];
 
         const formatters = {
           frequency: (value) => `${value.toFixed(1)}${NBSP}Hz`,
@@ -794,6 +1187,48 @@
           ambientTemp: (value) => `${value.toFixed(0)}${NBSP}°C`,
           convection: (value) => `${value.toFixed(0)}${NBSP}W/m²K`,
         };
+
+        const sphereState = {
+          playing: false,
+          animationFrame: 0,
+          lastTimestamp: 0,
+          samplePosition: 0,
+          maxIndex: 0,
+          initialized: false,
+        };
+
+        let renderRaf = 0;
+        let sphereRenderRaf = 0;
+        let latestParams = null;
+        let latestResult = null;
+        let volumeGeometry = [];
+        let volumeGeometryKey = "";
+        const chickenState = {
+          ready: false,
+          failed: false,
+          promise: null,
+          THREE: null,
+          renderer: null,
+          scene: null,
+          camera: null,
+          root: null,
+          planeMesh: null,
+          modelRadius: 1,
+          modelHalfExtentX: 1,
+          modelHalfExtentY: 1,
+          modelHalfExtentZ: 1,
+          planeLocalX: 0,
+          currentSection: null,
+          meshEntries: [],
+        };
+
+        function clamp(value, min, max) {
+          return Math.max(min, Math.min(max, value));
+        }
+
+        function mix(start, end, ratio) {
+          return start + (end - start) * ratio;
+        }
 
         function formatCompactNumber(value) {
           return new Intl.NumberFormat("fr-FR", {
@@ -817,21 +1252,42 @@
           return `${hours}${NBSP}h${NBSP}${String(minutes).padStart(2, "0")}${NBSP}min`;
         }
 
-        function smoothstep(edge0, edge1, value) {
-          const x = Math.max(
-            0,
-            Math.min(1, (value - edge0) / Math.max(1e-6, edge1 - edge0)),
-          );
-          return x * x * (3 - 2 * x);
-        }
-
         function formatTemperature(value) {
           return `${formatCompactNumber(value)}${NBSP}°C`;
         }
 
+        function formatDepth(depthMeters) {
+          return `${formatCompactNumber(depthMeters * 100)}${NBSP}cm`;
+        }
+
+        function resizeCanvasToDisplaySize(canvas, maxPixelRatio = 1.2) {
+          if (!canvas) return false;
+
+          const pixelRatio = Math.min(window.devicePixelRatio || 1, maxPixelRatio);
+          const width = Math.max(1, Math.round(canvas.clientWidth * pixelRatio));
+          const height = Math.max(1, Math.round(canvas.clientHeight * pixelRatio));
+
+          if (canvas.width === width && canvas.height === height) {
+            return false;
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          return true;
+        }
+
+        function smoothstep(edge0, edge1, value) {
+          const x = clamp(
+            (value - edge0) / Math.max(1e-6, edge1 - edge0),
+            0,
+            1,
+          );
+          return x * x * (3 - 2 * x);
+        }
+
         function readParams() {
-          return inputElements.reduce((acc, input) => {
-            acc[input.dataset.field] = Number(input.value);
+          return fieldNames.reduce((acc, field) => {
+            acc[field] = Number(inputGroups[field][0].value);
             return acc;
           }, {});
         }
@@ -839,8 +1295,18 @@
         function updateDisplayedValues(params) {
           Object.entries(params).forEach(([key, value]) => {
             const formatter = formatters[key];
-            if (formatter && valueElements[key]) {
-              valueElements[key].textContent = formatter(value);
+            if (!formatter || !valueElements[key]) return;
+
+            valueElements[key].forEach((node) => {
+              node.textContent = formatter(value);
+            });
+          });
+        }
+
+        function syncFieldGroup(field, value, source) {
+          inputGroups[field]?.forEach((input) => {
+            if (input !== source) {
+              input.value = value;
             }
           });
         }
@@ -891,8 +1357,7 @@
           const ec = 0.5 * params.handMass * params.impactSpeed ** 2;
           const eBaffe = Math.max(
             0,
-            params.thermalShare *
-              Math.max(0, ec - params.elasticLoss),
+            params.thermalShare * Math.max(0, ec - params.elasticLoss),
           );
           const inputPower = params.frequency * eBaffe;
           const maxTime = 8 * 3600;
@@ -908,11 +1373,22 @@
             { length: radialSteps },
             (_, index) => innerRadius + index * dr,
           );
-          const points = [];
+          const samples = [];
           let profile = Array(radialSteps).fill(params.ambientTemp);
           let finalCore = params.ambientTemp;
           let finalSurface = params.ambientTemp;
           let targetTime = null;
+
+          const pushSample = (timeSeconds, snapshotProfile) => {
+            const copy = snapshotProfile.slice();
+            samples.push({
+              timeSeconds,
+              timeHours: timeSeconds / 3600,
+              core: copy[0],
+              surface: copy[radialSteps - 1],
+              profile: copy,
+            });
+          };
 
           for (
             let stepIndex = 0, time = 0;
@@ -923,11 +1399,7 @@
             const surfaceTemp = profile[radialSteps - 1];
 
             if (stepIndex % sampleStride === 0) {
-              points.push({
-                timeHours: time / 3600,
-                surface: surfaceTemp,
-                core: coreTemp,
-              });
+              pushSample(time, profile);
             }
 
             if (targetTime === null && coreTemp >= params.targetTemp) {
@@ -937,6 +1409,14 @@
             if (time >= maxTime) {
               finalCore = coreTemp;
               finalSurface = surfaceTemp;
+
+              const lastSample = samples[samples.length - 1];
+              if (
+                !lastSample ||
+                Math.abs(lastSample.timeSeconds - time) > dt * 0.5
+              ) {
+                pushSample(time, profile);
+              }
               break;
             }
 
@@ -982,19 +1462,28 @@
           }
 
           return {
-            points,
-            targetReached: Number.isFinite(targetTime),
-            targetTime: Number.isFinite(targetTime) ? targetTime : Infinity,
+            samples,
+            points: samples.map((sample) => ({
+              timeHours: sample.timeHours,
+              surface: sample.surface,
+              core: sample.core,
+            })),
+            targetReached: targetTime !== null,
+            targetTime: targetTime ?? Infinity,
             eBaffe,
             ec,
             inputPower,
             outerRadius,
+            innerRadius,
             area,
             shellThickness,
             finalCore,
             finalSurface,
             dt,
             radialSteps,
+            radii,
+            maxTime,
+            sampleStep,
           };
         }
 
@@ -1098,13 +1587,914 @@
           metricPower.textContent = `${formatCompactNumber(result.inputPower)}${NBSP}W`;
         }
 
-        let renderRaf = 0;
+        function getSnapshotAtPosition(result, samplePosition) {
+          const maxIndex = Math.max(0, result.samples.length - 1);
+          const clampedPosition = clamp(samplePosition, 0, maxIndex);
+          const lowerIndex = Math.floor(clampedPosition);
+          const upperIndex = Math.min(maxIndex, lowerIndex + 1);
+          const ratio = clampedPosition - lowerIndex;
+          const first = result.samples[lowerIndex];
+          const second = result.samples[upperIndex];
+
+          if (!first) {
+            return {
+              timeSeconds: 0,
+              timeHours: 0,
+              core: 0,
+              surface: 0,
+              profile: [],
+            };
+          }
+
+          if (lowerIndex === upperIndex || !second) {
+            return {
+              timeSeconds: first.timeSeconds,
+              timeHours: first.timeHours,
+              core: first.core,
+              surface: first.surface,
+              profile: first.profile.slice(),
+            };
+          }
+
+          const profile = first.profile.map((value, index) =>
+            mix(value, second.profile[index], ratio),
+          );
+
+          return {
+            timeSeconds: mix(first.timeSeconds, second.timeSeconds, ratio),
+            timeHours: mix(first.timeHours, second.timeHours, ratio),
+            core: profile[0],
+            surface: profile[profile.length - 1],
+            profile,
+          };
+        }
+
+        function temperatureAtRadius(result, profile, radius) {
+          if (!profile.length) return latestParams?.ambientTemp ?? 20;
+          if (radius <= result.radii[0]) return profile[0];
+
+          const lastIndex = result.radii.length - 1;
+          if (radius >= result.radii[lastIndex]) return profile[lastIndex];
+
+          for (let index = 1; index < result.radii.length; index += 1) {
+            const rightRadius = result.radii[index];
+            if (radius > rightRadius) continue;
+
+            const leftRadius = result.radii[index - 1];
+            const ratio =
+              (radius - leftRadius) / Math.max(1e-9, rightRadius - leftRadius);
+            return mix(profile[index - 1], profile[index], ratio);
+          }
+
+          return profile[lastIndex];
+        }
+
+        function computeHotFraction(result, profile, threshold) {
+          let hotVolume = 0;
+          const totalVolume =
+            result.outerRadius ** 3 - result.innerRadius ** 3;
+
+          for (let index = 0; index < result.radii.length - 1; index += 1) {
+            const r0 = result.radii[index];
+            const r1 = result.radii[index + 1];
+            const t0 = profile[index];
+            const t1 = profile[index + 1];
+            const segmentVolume = r1 ** 3 - r0 ** 3;
+
+            if (t0 >= threshold && t1 >= threshold) {
+              hotVolume += segmentVolume;
+              continue;
+            }
+
+            if ((t0 - threshold) * (t1 - threshold) >= 0) continue;
+
+            const ratio = clamp(
+              (threshold - t0) / Math.max(1e-9, t1 - t0),
+              0,
+              1,
+            );
+            const thresholdRadius = mix(r0, r1, ratio);
+
+            if (t0 >= threshold) {
+              hotVolume += thresholdRadius ** 3 - r0 ** 3;
+            } else {
+              hotVolume += r1 ** 3 - thresholdRadius ** 3;
+            }
+          }
+
+          return clamp(hotVolume / Math.max(1e-9, totalVolume), 0, 1);
+        }
+
+        function thermalRgb(temp, minTemp, maxTemp) {
+          const normalized = clamp(
+            (temp - minTemp) / Math.max(1e-6, maxTemp - minTemp),
+            0,
+            1,
+          );
+          const upperIndex = THERMAL_STOPS.findIndex(
+            (stop) => normalized <= stop.t,
+          );
+
+          if (upperIndex <= 0) return THERMAL_STOPS[0].color;
+          if (upperIndex === -1) {
+            return THERMAL_STOPS[THERMAL_STOPS.length - 1].color;
+          }
+
+          const lower = THERMAL_STOPS[upperIndex - 1];
+          const upper = THERMAL_STOPS[upperIndex];
+          const ratio =
+            (normalized - lower.t) / Math.max(1e-6, upper.t - lower.t);
+
+          return lower.color.map((channel, index) =>
+            Math.round(mix(channel, upper.color[index], ratio)),
+          );
+        }
+
+        function boostChickenDisplayColor(red, green, blue) {
+          const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+          const saturationBoost = 1.28;
+          const contrastBoost = 1.08;
+          const darkenFactor = 0.94;
+
+          return [red, green, blue].map((channel) => {
+            const saturated = luminance + (channel - luminance) * saturationBoost;
+            const contrasted = 128 + (saturated - 128) * contrastBoost;
+            return Math.round(clamp(contrasted * darkenFactor, 0, 255));
+          });
+        }
+
+        function getThermalWindow(params, snapshot) {
+          const gradient = Math.max(0.45, snapshot.surface - snapshot.core);
+          const localMin = snapshot.core - Math.max(1.2, gradient * 0.26);
+          const localMax = snapshot.surface + Math.max(1.4, gradient * 0.34);
+          const globalMin = Math.min(params.ambientTemp, snapshot.core) - 1;
+          const globalMax = Math.max(
+            params.targetTemp + 8,
+            snapshot.surface + 4,
+            snapshot.core + 3,
+          );
+
+          return {
+            min: mix(globalMin, localMin, 0.93),
+            max: mix(globalMax, localMax, 0.92),
+          };
+        }
+
+        function getChickenSectionGeometry(result, planeX) {
+          const planeNorm = clamp(planeX / result.outerRadius, 0, 1);
+          const outerSliceNorm = Math.sqrt(Math.max(0, 1 - planeNorm * planeNorm));
+          const innerNorm = result.innerRadius / result.outerRadius;
+          const cavityNorm =
+            planeNorm < innerNorm
+              ? Math.sqrt(Math.max(0, innerNorm * innerNorm - planeNorm * planeNorm))
+              : 0;
+
+          return {
+            planeNorm,
+            outerSliceNorm,
+            cavityNorm,
+            cavityRatio:
+              cavityNorm > 0.001 && outerSliceNorm > 0.001
+                ? cavityNorm / outerSliceNorm
+                : 0,
+          };
+        }
+
+        function setSpherePlaying(playing) {
+          sphereState.playing = playing;
+          spherePlayButton.setAttribute("aria-pressed", String(playing));
+          spherePlayButton.textContent = playing ? "Pause" : "Play";
+
+          if (!playing) {
+            sphereState.lastTimestamp = 0;
+            if (sphereState.animationFrame) {
+              cancelAnimationFrame(sphereState.animationFrame);
+              sphereState.animationFrame = 0;
+            }
+            return;
+          }
+
+          if (sphereState.samplePosition >= sphereState.maxIndex) {
+            sphereState.samplePosition = 0;
+            sphereTimeSlider.value = "0";
+            scheduleSphereRender();
+          }
+
+          const tick = (timestamp) => {
+            if (!sphereState.playing) return;
+
+            if (!sphereState.lastTimestamp) {
+              sphereState.lastTimestamp = timestamp;
+            }
+
+            const delta = timestamp - sphereState.lastTimestamp;
+            sphereState.lastTimestamp = timestamp;
+            sphereState.samplePosition = clamp(
+              sphereState.samplePosition + delta / 42,
+              0,
+              sphereState.maxIndex,
+            );
+            sphereTimeSlider.value = String(
+              Math.round(sphereState.samplePosition),
+            );
+            scheduleSphereRender();
+
+            if (sphereState.samplePosition >= sphereState.maxIndex) {
+              setSpherePlaying(false);
+              return;
+            }
+
+            sphereState.animationFrame = requestAnimationFrame(tick);
+          };
+
+          sphereState.animationFrame = requestAnimationFrame(tick);
+        }
+
+        function getSelectedMode() {
+          return [...modeRadios].find((radio) => radio.checked)?.value || "curve";
+        }
+
+        function syncModeHash(mode) {
+          const hash =
+            mode === "sphere" ? "boule-3d" : "courbe";
+          const url = new URL(window.location.href);
+          url.hash = hash;
+          const nextUrl = `${url.pathname}${url.search}${url.hash}`;
+          const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+
+          if (nextUrl === currentUrl) return;
+          window.history.replaceState(null, "", nextUrl);
+        }
+
+        function getModeFromHash() {
+          const rawHash = window.location.hash.replace(/^#/, "");
+          return viewHashMap[rawHash] || null;
+        }
+
+        function setMode(mode, { updateHash = true } = {}) {
+          const nextMode = mode === "sphere" ? "sphere" : "curve";
+
+          panels.forEach((panel) => {
+            const isActive = panel.dataset.view === nextMode;
+            panel.toggleAttribute("hidden", !isActive);
+          });
+
+          modeRadios.forEach((radio) => {
+            radio.checked = radio.value === nextMode;
+          });
+
+          if (updateHash) {
+            syncModeHash(nextMode);
+          }
+
+          if (nextMode !== "sphere") {
+            setSpherePlaying(false);
+          } else {
+            scheduleSphereRender();
+          }
+        }
+
+        function rebuildVolumeGeometry(result) {
+          const innerNorm = result.innerRadius / result.outerRadius;
+          const nextKey = `${innerNorm.toFixed(6)}:${result.radialSteps}`;
+          if (nextKey === volumeGeometryKey) return;
+
+          volumeGeometryKey = nextKey;
+          volumeGeometry = [];
+
+          const radialBands = 14;
+
+          for (let rIndex = 0; rIndex < radialBands; rIndex += 1) {
+            const shellRatio = (rIndex + 0.35) / radialBands;
+            const radiusNorm = innerNorm + shellRatio * (1 - innerNorm);
+            const polarSteps = 10 + rIndex;
+            const azimuthSteps = 22 + rIndex * 2;
+
+            for (let thetaIndex = 0; thetaIndex < polarSteps; thetaIndex += 1) {
+              const theta = (Math.PI * (thetaIndex + 0.5)) / polarSteps;
+              const sinTheta = Math.sin(theta);
+              const cosTheta = Math.cos(theta);
+
+              for (let phiIndex = 0; phiIndex < azimuthSteps; phiIndex += 1) {
+                const phase = thetaIndex % 2 === 0 ? 0.5 : 0;
+                const phi =
+                  (2 * Math.PI * (phiIndex + phase)) / azimuthSteps;
+                const x = radiusNorm * sinTheta * Math.cos(phi);
+                const y = radiusNorm * cosTheta;
+                const z = radiusNorm * sinTheta * Math.sin(phi);
+
+                volumeGeometry.push({
+                  x,
+                  y,
+                  z,
+                  radiusMeters: radiusNorm * result.outerRadius,
+                  shellRatio,
+                  depth: x * 1.24 + z * 0.56 - y * 0.08,
+                });
+              }
+            }
+          }
+
+          volumeGeometry.sort((left, right) => left.depth - right.depth);
+        }
+
+        async function ensureChickenScene() {
+          if (!volumeCanvas) return false;
+          if (chickenState.ready) return true;
+          if (chickenState.failed) return false;
+          if (chickenState.promise) return chickenState.promise;
+
+          volumeStatus?.removeAttribute("hidden");
+          volumeStatus.textContent = "chargement du poulet…";
+
+          chickenState.promise = (async () => {
+            try {
+              const [THREE, { GLTFLoader }] = await Promise.all([
+                import("three"),
+                import("three/addons/loaders/GLTFLoader.js"),
+              ]);
+              chickenState.THREE = THREE;
+
+              const renderer = new THREE.WebGLRenderer({
+                canvas: volumeCanvas,
+                alpha: true,
+                antialias: true,
+                powerPreference: "high-performance",
+              });
+              renderer.setClearAlpha(0);
+              renderer.localClippingEnabled = true;
+              renderer.outputColorSpace = THREE.SRGBColorSpace;
+              chickenState.renderer = renderer;
+
+              const scene = new THREE.Scene();
+              chickenState.scene = scene;
+
+              const camera = new THREE.PerspectiveCamera(28, 1, 0.01, 20);
+              chickenState.camera = camera;
+
+              const hemi = new THREE.HemisphereLight(0xf7eadf, 0x090705, 0.42);
+              scene.add(hemi);
+
+              const keyLight = new THREE.DirectionalLight(0xfff3ea, 0.96);
+              keyLight.position.set(1.9, 1.5, 2.4);
+              scene.add(keyLight);
+
+              const fillLight = new THREE.DirectionalLight(0xffc7a3, 0.18);
+              fillLight.position.set(-1.2, 0.65, -0.8);
+              scene.add(fillLight);
+
+              const rimLight = new THREE.DirectionalLight(0xffd2be, 0.12);
+              rimLight.position.set(0.2, -0.8, 1.6);
+              scene.add(rimLight);
+
+              const loader = new GLTFLoader();
+              const gltf = await loader.loadAsync("/assets/roast_chicken.glb");
+              const sourceRoot = gltf.scene || gltf.scenes?.[0];
+              sourceRoot.updateMatrixWorld(true);
+
+              const worldBox = new THREE.Box3().setFromObject(sourceRoot);
+              const center = worldBox.getCenter(new THREE.Vector3());
+              const maxDimension = Math.max(
+                worldBox.max.x - worldBox.min.x,
+                worldBox.max.y - worldBox.min.y,
+                worldBox.max.z - worldBox.min.z,
+              );
+              const uniformScale = 1.95 / Math.max(1e-6, maxDimension);
+              const root = new THREE.Group();
+              const meshEntries = [];
+
+              sourceRoot.traverse((node) => {
+                if (!node.isMesh || !node.geometry?.attributes?.position) return;
+
+                const geometry = node.geometry.clone();
+                geometry.applyMatrix4(node.matrixWorld);
+                geometry.translate(-center.x, -center.y, -center.z);
+                geometry.scale(uniformScale, uniformScale, uniformScale);
+                geometry.computeVertexNormals();
+
+                const positionAttr = geometry.getAttribute("position");
+                const vertexCount = positionAttr.count;
+                const colorAttr = new THREE.BufferAttribute(
+                  new Float32Array(vertexCount * 3),
+                  3,
+                );
+                geometry.setAttribute("color", colorAttr);
+
+                const material = new THREE.MeshStandardMaterial({
+                  vertexColors: true,
+                  roughness: 0.82,
+                  metalness: 0,
+                  side: THREE.DoubleSide,
+                });
+
+                const mesh = new THREE.Mesh(geometry, material);
+                root.add(mesh);
+
+                meshEntries.push({
+                  mesh,
+                  colors: colorAttr.array,
+                  colorAttr,
+                  radiusNorms: new Float32Array(vertexCount),
+                });
+              });
+
+              root.rotation.set(0.15, -0.78, 0);
+              scene.add(root);
+
+              const modelBox = new THREE.Box3().setFromObject(root);
+              const modelSphere = modelBox.getBoundingSphere(new THREE.Sphere());
+              const modelSize = modelBox.getSize(new THREE.Vector3());
+
+              chickenState.root = root;
+              chickenState.meshEntries = meshEntries;
+              chickenState.modelRadius = modelSphere.radius;
+              chickenState.modelHalfExtentX = modelSize.x * 0.5;
+              chickenState.modelHalfExtentY = modelSize.y * 0.5;
+              chickenState.modelHalfExtentZ = modelSize.z * 0.5;
+
+              const planeMesh = new THREE.Mesh(
+                new THREE.PlaneGeometry(
+                  chickenState.modelHalfExtentZ * 2.25,
+                  chickenState.modelHalfExtentY * 2.15,
+                ),
+                new THREE.MeshBasicMaterial({
+                  color: 0xf1d1d1,
+                  transparent: true,
+                  opacity: 0.16,
+                  side: THREE.DoubleSide,
+                  depthWrite: false,
+                }),
+              );
+              planeMesh.rotation.y = Math.PI / 2;
+              planeMesh.renderOrder = 4;
+              root.add(planeMesh);
+              chickenState.planeMesh = planeMesh;
+
+              meshEntries.forEach((entry) => {
+                const positions = entry.mesh.geometry.getAttribute("position").array;
+
+                for (let index = 0; index < entry.radiusNorms.length; index += 1) {
+                  const offset = index * 3;
+                  entry.radiusNorms[index] =
+                    Math.hypot(
+                      positions[offset],
+                      positions[offset + 1],
+                      positions[offset + 2],
+                    ) / Math.max(1e-6, chickenState.modelRadius);
+                }
+              });
+
+              const distance =
+                modelSphere.radius /
+                Math.sin((camera.fov * Math.PI) / 360);
+              camera.position.set(
+                modelSphere.radius * 0.42,
+                modelSphere.radius * 0.18,
+                distance * 0.84,
+              );
+              camera.lookAt(0, modelSphere.radius * 0.04, 0);
+
+              chickenState.ready = true;
+              volumeStatus?.setAttribute("hidden", "");
+              requestAnimationFrame(() => {
+                if (typeof render === "function") render();
+              });
+              return true;
+            } catch (error) {
+              chickenState.failed = true;
+              volumeStatus?.removeAttribute("hidden");
+              volumeStatus.textContent = "fallback volumique";
+              console.error(error);
+              requestAnimationFrame(() => {
+                if (typeof render === "function") render();
+              });
+              return false;
+            }
+          })();
+
+          return chickenState.promise;
+        }
+
+        function resizeChickenRenderers() {
+          if (
+            !chickenState.ready ||
+            !chickenState.renderer ||
+            !chickenState.camera ||
+            !volumeCanvas
+          ) {
+            return;
+          }
+
+          const width = Math.max(1, Math.round(volumeCanvas.clientWidth));
+          const height = Math.max(1, Math.round(volumeCanvas.clientHeight));
+          const aspect = width / Math.max(1, height);
+          const fov = aspect < 0.82 ? 35 : aspect < 1.1 ? 31 : aspect < 1.45 ? 28 : 26;
+          const distance =
+            chickenState.modelRadius / Math.tan((fov * Math.PI) / 360);
+          const distanceFactor =
+            aspect < 0.82 ? 0.72 : aspect < 1.1 ? 0.75 : aspect < 1.45 ? 0.8 : 0.84;
+
+          chickenState.renderer.setPixelRatio(
+            Math.min(window.devicePixelRatio || 1, 1.2),
+          );
+          chickenState.renderer.setSize(width, height, false);
+          chickenState.camera.fov = fov;
+          chickenState.camera.position.set(
+            chickenState.modelRadius * 0.42,
+            chickenState.modelRadius * 0.18,
+            distance * distanceFactor,
+          );
+          chickenState.camera.lookAt(0, chickenState.modelRadius * 0.04, 0);
+          chickenState.camera.aspect = width / height;
+          chickenState.camera.updateProjectionMatrix();
+        }
+
+        function updateChickenCutState(params, result, snapshot, planeX) {
+          if (
+            !chickenState.ready ||
+            !chickenState.root ||
+            !chickenState.planeMesh
+          ) {
+            return null;
+          }
+
+          const thermalWindow = getThermalWindow(params, snapshot);
+          const section = getChickenSectionGeometry(result, planeX);
+          const planeLocalX = section.planeNorm * chickenState.modelHalfExtentX;
+          chickenState.planeLocalX = planeLocalX;
+          chickenState.currentSection = section;
+          chickenState.planeMesh.position.set(planeLocalX, 0, 0);
+
+          chickenState.planeMesh.material.color.setRGB(
+            0.68,
+            0.68,
+            0.68,
+          );
+          chickenState.planeMesh.material.opacity =
+            0.12 + (1 - section.planeNorm) * 0.1;
+
+          chickenState.meshEntries.forEach((entry) => {
+            for (let index = 0; index < entry.radiusNorms.length; index += 1) {
+              const [red, green, blue] = thermalRgb(
+                snapshot.surface,
+                thermalWindow.min,
+                thermalWindow.max,
+              );
+              const [displayRed, displayGreen, displayBlue] =
+                boostChickenDisplayColor(red, green, blue);
+              const offset = index * 3;
+              entry.colors[offset] = displayRed / 255;
+              entry.colors[offset + 1] = displayGreen / 255;
+              entry.colors[offset + 2] = displayBlue / 255;
+            }
+
+            entry.colorAttr.needsUpdate = true;
+          });
+
+          return section;
+        }
+
+        function renderChickenVolume(params, result, snapshot, planeX) {
+          if (
+            !chickenState.ready ||
+            !chickenState.THREE ||
+            !chickenState.renderer ||
+            !chickenState.scene ||
+            !chickenState.camera ||
+            !chickenState.root ||
+            !chickenState.planeMesh
+          ) {
+            return false;
+          }
+
+          resizeChickenRenderers();
+          const section = updateChickenCutState(params, result, snapshot, planeX);
+          if (!section) return false;
+
+          chickenState.renderer.render(chickenState.scene, chickenState.camera);
+          return true;
+        }
+
+        function renderVolumeCanvas(params, result, snapshot, planeX) {
+          ensureChickenScene();
+
+          if (renderChickenVolume(params, result, snapshot, planeX)) {
+            volumeStatus?.setAttribute("hidden", "");
+            return;
+          }
+
+          if (!chickenState.failed) return;
+
+          const context = volumeCanvas?.getContext("2d");
+          if (!context) return;
+          resizeCanvasToDisplaySize(volumeCanvas);
+
+          const { width, height } = volumeCanvas;
+          context.clearRect(0, 0, width, height);
+
+          const background = context.createRadialGradient(
+            width * 0.22,
+            height * 0.18,
+            10,
+            width * 0.52,
+            height * 0.52,
+            width * 0.74,
+          );
+          background.addColorStop(0, "rgba(22, 20, 16, 0.05)");
+          background.addColorStop(1, "rgba(22, 20, 16, 0)");
+          context.fillStyle = background;
+          context.fillRect(0, 0, width, height);
+
+          const outerRadius = result.outerRadius;
+          const planeNorm = clamp(planeX / outerRadius, 0, 1);
+          const sliceNorm = Math.sqrt(Math.max(0, 1 - planeNorm * planeNorm));
+          const cavityNorm =
+            planeNorm < result.innerRadius / outerRadius
+              ? Math.sqrt(
+                  Math.max(
+                    0,
+                    (result.innerRadius / outerRadius) ** 2 - planeNorm ** 2,
+                  ),
+                )
+              : 0;
+          const scale = Math.min(width * 0.24, height * 0.345);
+          const centerX = width * 0.53;
+          const centerY = height * 0.57;
+          const planeCenterX = centerX - planeNorm * scale * 0.72;
+          const planeCenterY = centerY - planeNorm * scale * 0.24;
+          const thermalWindow = getThermalWindow(params, snapshot);
+          const cutBand = 0.04;
+
+          context.strokeStyle = "rgba(30, 28, 23, 0.12)";
+          context.lineWidth = 1;
+          context.beginPath();
+          context.moveTo(centerX + scale * 0.86, centerY - scale * 0.28);
+          context.lineTo(planeCenterX + sliceNorm * scale * 0.98, planeCenterY);
+          context.stroke();
+
+          volumeGeometry.forEach((point) => {
+            if (point.x > planeNorm) return;
+
+            const x =
+              centerX + (point.z * 0.96 - point.x * 0.72) * scale;
+            const y =
+              centerY + (point.y - point.x * 0.24) * scale;
+            const [red, green, blue] = thermalRgb(
+              temperatureAtRadius(result, snapshot.profile, point.radiusMeters),
+              thermalWindow.min,
+              thermalWindow.max,
+            );
+            const cutDistance = Math.abs(point.x - planeNorm);
+            const onCut = cutDistance < cutBand;
+            const cutEmphasis = clamp(1 - cutDistance / cutBand, 0, 1);
+            const alpha = onCut
+              ? 0.88 + cutEmphasis * 0.1
+              : 0.22 + point.shellRatio * 0.26;
+            const size = onCut
+              ? 3.2 + cutEmphasis * 2.2
+              : 1.7 + point.shellRatio * 1.65;
+
+            context.fillStyle = `rgba(${red}, ${green}, ${blue}, ${alpha.toFixed(3)})`;
+            context.fillRect(x - size / 2, y - size / 2, size, size);
+          });
+
+          if (sliceNorm > 0.004) {
+            context.strokeStyle = "rgba(30, 28, 23, 0.22)";
+            context.lineWidth = 1.25;
+            context.beginPath();
+            context.ellipse(
+              planeCenterX,
+              planeCenterY,
+              sliceNorm * scale * 0.96,
+              sliceNorm * scale,
+              0,
+              0,
+              Math.PI * 2,
+            );
+            context.stroke();
+          }
+
+          if (cavityNorm > 0.004) {
+            context.setLineDash([4, 5]);
+            context.strokeStyle = "rgba(30, 28, 23, 0.18)";
+            context.beginPath();
+            context.ellipse(
+              planeCenterX,
+              planeCenterY,
+              cavityNorm * scale * 0.96,
+              cavityNorm * scale,
+              0,
+              0,
+              Math.PI * 2,
+            );
+            context.stroke();
+            context.setLineDash([]);
+          }
+
+          context.fillStyle = "rgba(30, 28, 23, 0.58)";
+          context.font = '11px "Geist Mono", monospace';
+          context.textBaseline = "bottom";
+          context.fillText("plan de coupe", planeCenterX - 38, planeCenterY - sliceNorm * scale - 12);
+        }
+
+        function renderSliceCanvas(params, result, snapshot, planeX) {
+          const context = sliceCanvas?.getContext("2d");
+          if (!context) return;
+          resizeCanvasToDisplaySize(sliceCanvas);
+
+          const { width, height } = sliceCanvas;
+          context.clearRect(0, 0, width, height);
+
+          const planeNorm = clamp(planeX / result.outerRadius, 0, 1);
+          const outerSliceNorm = Math.sqrt(Math.max(0, 1 - planeNorm * planeNorm));
+          const innerNorm = result.innerRadius / result.outerRadius;
+          const cavityNorm =
+            planeNorm < innerNorm
+              ? Math.sqrt(Math.max(0, innerNorm * innerNorm - planeNorm * planeNorm))
+              : 0;
+          const radiusPx = Math.min(width, height) * 0.425;
+          const centerX = width / 2;
+          const centerY = height / 2;
+          const scale = radiusPx / Math.max(0.001, outerSliceNorm);
+          const thermalWindow = getThermalWindow(params, snapshot);
+          const imageData = context.createImageData(width, height);
+          const { data } = imageData;
+          const outerSliceNormSquared = outerSliceNorm * outerSliceNorm;
+          const cavityNormSquared = cavityNorm * cavityNorm;
+          const startX = Math.floor(centerX - outerSliceNorm * scale);
+          const endX = Math.ceil(centerX + outerSliceNorm * scale);
+          const startY = Math.floor(centerY - outerSliceNorm * scale);
+          const endY = Math.ceil(centerY + outerSliceNorm * scale);
+
+          for (let y = startY; y <= endY; y += 1) {
+            if (y < 0 || y >= height) continue;
+
+            const v = (y - centerY) / scale;
+
+            for (let x = startX; x <= endX; x += 1) {
+              if (x < 0 || x >= width) continue;
+
+              const u = (x - centerX) / scale;
+              const radialPlaneSquared = u * u + v * v;
+              if (radialPlaneSquared > outerSliceNormSquared) continue;
+
+              const pixelIndex = (y * width + x) * 4;
+
+              if (radialPlaneSquared < cavityNormSquared) {
+                data[pixelIndex] = 0;
+                data[pixelIndex + 1] = 0;
+                data[pixelIndex + 2] = 0;
+                data[pixelIndex + 3] = 0;
+                continue;
+              }
+
+              const radiusNorm = Math.sqrt(
+                planeNorm * planeNorm + radialPlaneSquared,
+              );
+              const radius = radiusNorm * result.outerRadius;
+              const [red, green, blue] = thermalRgb(
+                temperatureAtRadius(result, snapshot.profile, radius),
+                thermalWindow.min,
+                thermalWindow.max,
+              );
+
+              data[pixelIndex] = red;
+              data[pixelIndex + 1] = green;
+              data[pixelIndex + 2] = blue;
+              data[pixelIndex + 3] = 255;
+            }
+          }
+
+          context.putImageData(imageData, 0, 0);
+
+          const backdrop = context.createRadialGradient(
+            width * 0.28,
+            height * 0.24,
+            12,
+            width * 0.5,
+            height * 0.5,
+            width * 0.78,
+          );
+          backdrop.addColorStop(0, "rgba(20, 18, 15, 0.04)");
+          backdrop.addColorStop(1, "rgba(20, 18, 15, 0)");
+          context.globalCompositeOperation = "destination-over";
+          context.fillStyle = backdrop;
+          context.fillRect(0, 0, width, height);
+          context.globalCompositeOperation = "source-over";
+
+          context.strokeStyle = "rgba(30, 28, 23, 0.26)";
+          context.lineWidth = 1.25;
+          context.beginPath();
+          context.arc(centerX, centerY, outerSliceNorm * scale, 0, Math.PI * 2);
+          context.stroke();
+
+          if (cavityNorm > 0.004) {
+            context.setLineDash([4, 5]);
+            context.strokeStyle = "rgba(30, 28, 23, 0.12)";
+            context.beginPath();
+            context.arc(centerX, centerY, cavityNorm * scale, 0, Math.PI * 2);
+            context.stroke();
+            context.setLineDash([]);
+          }
+        }
+
+        function updateSphereBounds(result) {
+          const maxIndex = Math.max(0, result.samples.length - 1);
+          if (!sphereState.initialized) {
+            sphereState.samplePosition = result.targetReached
+              ? clamp(Math.round(result.targetTime / result.sampleStep), 0, maxIndex)
+              : maxIndex;
+            sphereState.initialized = true;
+          } else if (sphereState.maxIndex > 0) {
+            const ratio = sphereState.samplePosition / sphereState.maxIndex;
+            sphereState.samplePosition = clamp(ratio * maxIndex, 0, maxIndex);
+          } else {
+            sphereState.samplePosition = clamp(sphereState.samplePosition, 0, maxIndex);
+          }
+
+          sphereState.maxIndex = maxIndex;
+          sphereTimeSlider.max = String(maxIndex);
+          sphereTimeSlider.value = String(Math.round(sphereState.samplePosition));
+        }
+
+        function describeSphereState(result, snapshot, hotFraction, planeX) {
+          const gradient = snapshot.surface - snapshot.core;
+          const gradientText =
+            gradient < 2
+              ? hotFraction <= 0.001
+                ? "le volume est encore quasiment uniforme."
+                : "le gradient radial est presque effacé."
+              : gradient > 18
+              ? "la surface garde une nette avance sur les couches profondes."
+              : gradient > 8
+                ? "le gradient radial reste très lisible."
+                : "le gradient radial commence à s'aplanir.";
+
+          return `À ${formatDuration(snapshot.timeSeconds)}, ${gradientText}`;
+        }
+
+        function renderSphere(params, result) {
+          if (!sphereTimeSlider || !sphereDepthSlider) return;
+
+          updateSphereBounds(result);
+          rebuildVolumeGeometry(result);
+          sphereState.samplePosition = clamp(
+            sphereState.samplePosition,
+            0,
+            sphereState.maxIndex,
+          );
+          sphereTimeSlider.value = String(Math.round(sphereState.samplePosition));
+
+          const snapshot = getSnapshotAtPosition(
+            result,
+            sphereState.samplePosition,
+          );
+          const cutDepth = (Number(sphereDepthSlider.value) / 1000) * result.outerRadius;
+          const planeX = clamp(result.outerRadius - cutDepth, 0, result.outerRadius);
+          const hotFraction = computeHotFraction(
+            result,
+            snapshot.profile,
+            params.targetTemp,
+          );
+          const thermalWindow = getThermalWindow(params, snapshot);
+
+          renderVolumeCanvas(params, result, snapshot, planeX);
+          renderSliceCanvas(params, result, snapshot, planeX);
+
+          const timeLabel = formatDuration(snapshot.timeSeconds);
+          const depthLabel = formatDepth(cutDepth);
+          const maxDepthLabel = formatDepth(result.outerRadius);
+
+          sphereTimeValue.textContent = timeLabel;
+          sphereDepthValue.textContent = depthLabel;
+          sphereMetricCore.textContent = formatTemperature(snapshot.core);
+          sphereMetricSurface.textContent = formatTemperature(snapshot.surface);
+          sphereMetricHot.textContent = `${Math.round(hotFraction * 100)}${NBSP}%`;
+          sphereLegendMin.textContent = formatTemperature(thermalWindow.min);
+          sphereLegendMax.textContent = formatTemperature(thermalWindow.max);
+          sphereDepthMinHint.textContent = `0${NBSP}cm`;
+          sphereDepthMaxHint.textContent = maxDepthLabel;
+          sphereNote.textContent = describeSphereState(
+            result,
+            snapshot,
+            hotFraction,
+            planeX,
+          );
+        }
 
         function render() {
           const params = readParams();
           updateDisplayedValues(params);
           const result = simulate(params);
+          latestParams = params;
+          latestResult = result;
           renderChart(params, result);
+          renderSphere(params, result);
+        }
+
+        function renderSphereOnly() {
+          if (!latestParams || !latestResult) return;
+          renderSphere(latestParams, latestResult);
         }
 
         function scheduleRender() {
@@ -1115,22 +2505,65 @@
           });
         }
 
-        inputElements.forEach((input) => {
-          input.addEventListener("input", scheduleRender);
-        });
-
-        resetButton?.addEventListener("click", () => {
-          inputElements.forEach((input) => {
-            const value = defaultParams[input.dataset.field];
-            if (value !== undefined) {
-              input.value = String(value);
-            }
+        function scheduleSphereRender() {
+          if (sphereRenderRaf) return;
+          sphereRenderRaf = requestAnimationFrame(() => {
+            sphereRenderRaf = 0;
+            renderSphereOnly();
           });
-          render();
+        }
+
+        modeRadios.forEach((radio) => {
+          radio.addEventListener("change", () => {
+            if (radio.checked) setMode(radio.value);
+          });
         });
 
-        setMode("curve");
+        window.addEventListener("hashchange", () => {
+          const modeFromHash = getModeFromHash();
+          if (!modeFromHash || modeFromHash === getSelectedMode()) return;
+          setMode(modeFromHash, { updateHash: false });
+        });
+        window.addEventListener("resize", scheduleSphereRender);
+
+        fieldNames.forEach((field) => {
+          inputGroups[field].forEach((input) => {
+            input.addEventListener("input", () => {
+              syncFieldGroup(field, input.value, input);
+              scheduleRender();
+            });
+          });
+        });
+
+        resetButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            fieldNames.forEach((field) => {
+              const value = defaultParams[field];
+              inputGroups[field]?.forEach((input) => {
+                input.value = String(value);
+              });
+            });
+            render();
+          });
+        });
+
+        sphereTimeSlider?.addEventListener("input", () => {
+          sphereState.samplePosition = Number(sphereTimeSlider.value);
+          scheduleSphereRender();
+        });
+
+        sphereDepthSlider?.addEventListener("input", scheduleSphereRender);
+
+        spherePlayButton?.addEventListener("click", () => {
+          setSpherePlaying(!sphereState.playing);
+        });
+
+        const initialModeFromHash = getModeFromHash();
+        setMode(initialModeFromHash || getSelectedMode(), {
+          updateHash: Boolean(initialModeFromHash),
+        });
         render();
+        ensureChickenScene();
       })();
     </script>
   </body>
