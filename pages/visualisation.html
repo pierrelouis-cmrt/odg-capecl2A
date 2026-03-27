@@ -2037,6 +2037,31 @@
           volumeGeometry.sort((left, right) => left.depth - right.depth);
         }
 
+        async function loadChickenModel(loader) {
+          const candidateUrls = [
+            new URL("../assets/roast_chicken.glb", window.location.href).href,
+            new URL("./assets/roast_chicken.glb", window.location.href).href,
+            new URL("/assets/roast_chicken.glb", window.location.origin).href,
+          ];
+          const triedUrls = [];
+          let lastError = null;
+
+          for (const url of [...new Set(candidateUrls)]) {
+            triedUrls.push(url);
+            try {
+              return await loader.loadAsync(url);
+            } catch (error) {
+              lastError = error;
+            }
+          }
+
+          if (lastError instanceof Error) {
+            lastError.message = `${lastError.message}\nTried GLB URLs: ${triedUrls.join(", ")}`;
+          }
+
+          throw lastError ?? new Error(`Unable to load roast_chicken.glb from ${triedUrls.join(", ")}`);
+        }
+
         async function ensureChickenScene() {
           if (!volumeCanvas) return false;
           if (chickenState.ready) return true;
@@ -2087,7 +2112,7 @@
               scene.add(rimLight);
 
               const loader = new GLTFLoader();
-              const gltf = await loader.loadAsync("/assets/roast_chicken.glb");
+              const gltf = await loadChickenModel(loader);
               const sourceRoot = gltf.scene || gltf.scenes?.[0];
               sourceRoot.updateMatrixWorld(true);
 
