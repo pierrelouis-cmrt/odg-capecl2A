@@ -635,6 +635,10 @@
     align-items: flex-start;
   }
 
+  .viz-chart-note {
+    display: none;
+  }
+
   .viz-metrics {
     grid-template-columns: 1fr;
   }
