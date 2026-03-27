@@ -416,18 +416,31 @@
                       </h4>
                       <p>
                         La chair se comporte comme un matériau viscoélastique.
-                        En modélisant la phase de compression par un ressort de
-                        raideur \(k \approx 10\) -- \(30\;\text{kN/m}\) (ordre
-                        de grandeur pour un tissu mou sous impact rapide) et une
-                        compression typique \(\delta \approx
-                        1\;\text{cm}\)&nbsp;:
+                        En reprenant l'estimation de l'article précédent,
+                        \(\delta \approx 5{,}2\;\text{cm}\) pour \(k \approx
+                        10\;\text{kN/m}\). L'énergie temporairement stockée à
+                        compression maximale vaut alors&nbsp;:
                       </p>
                       <div class="math-block">
-                        \[ E_{\text{élast}} = \tfrac{1}{2}\,k\,\delta^2 \approx
-                        \tfrac{1}{2} \times 20\,000 \times (0{,}01)^2 =
-                        1\;\text{J}, \]
+                        \[ E_{\text{stock}} = \tfrac{1}{2}\,k\,\delta^2 \approx
+                        \tfrac{1}{2} \times 10\,000 \times (0{,}052)^2 \approx
+                        13{,}5\;\text{J} \approx E_c. \]
                       </div>
-                      <p>soit quelques pourcents à peine de \(E_c\).</p>
+                      <p>
+                        Cela montre que l'énergie cinétique peut transiter
+                        presque entièrement par une phase de compression.
+                        Toutefois, comme la main ne rebondit pratiquement pas
+                        après l'impact, la part effectivement <em>restituée</em>
+                        reste négligeable à cet ordre de grandeur.
+                      </p>
+                      <p>
+                        Autrement dit, la compression n'est pas une perte
+                        concurrente de l'échauffement&nbsp;: c'est l'étape
+                        intermédiaire par laquelle l'énergie mécanique est
+                        stockée puis dissipée. En l'absence de rebond marqué,
+                        cette énergie ne repart pas sous forme de mouvement et
+                        finit donc essentiellement en chaleur.
+                      </p>
                       <h4
                         class="article-subheading article-subheading-secondary"
                       >
@@ -456,9 +469,9 @@
                         par baffe vaut donc&nbsp;:
                       </p>
                       <div class="math-block math-block-emphasis">
-                        \[ E_{\text{baffe}} \approx 0{,}50 \times (E_c -
-                        E_{\text{élast}}) = 0{,}50 \times (13{,}5 - 1) =
-                        6{,}25\;\text{J} \approx 6{,}3\;\text{J}. \]
+                        \[ E_{\text{baffe}} \approx 0{,}50 \times E_c =
+                        0{,}50 \times 13{,}5 = 6{,}75\;\text{J} \approx
+                        6{,}8\;\text{J}. \]
                       </div>
                       <h3 class="article-subheading">
                         Nombre de baffes sans pertes thermiques
@@ -470,12 +483,12 @@
                       <div class="math-block">
                         \[ N_{\min} =
                         \frac{Q_{\text{chauffe}}}{E_{\text{baffe}}} \approx
-                        \frac{4{,}2 \times 10^5}{6{,}3} \approx 6{,}6 \times
+                        \frac{4{,}2 \times 10^5}{6{,}75} \approx 6{,}2 \times
                         10^4 \]
                       </div>
                       <p>soit environ</p>
                       <div class="math-block math-block-emphasis">
-                        \[ N_{\min} \approx 67\,000\;\text{baffes}. \]
+                        \[ N_{\min} \approx 62\,000\;\text{baffes}. \]
                       </div>
                       <p>
                         C'est une <strong>borne inférieure idéale</strong>. En
@@ -524,7 +537,7 @@
                       <div class="math-block">
                         \[ \delta S_{\text{créé}} \sim
                         \frac{E_{\text{baffe}}}{\bar{T}} \approx
-                        \frac{6{,}3}{318} \approx 2{,}0 \times
+                        \frac{6{,}75}{318} \approx 2{,}1 \times
                         10^{-2}\;\text{J/K}. \]
                       </div>
                       <h4
@@ -536,12 +549,12 @@
                       <div class="math-block">
                         \[ N_{\text{entropie}} \sim \frac{\Delta
                         S_{\text{poulet}}}{\delta S_{\text{créé}}} \approx
-                        \frac{1{,}32 \times 10^3}{2{,}0 \times 10^{-2}} \approx
-                        6{,}6 \times 10^4, \]
+                        \frac{1{,}32 \times 10^3}{2{,}1 \times 10^{-2}} \approx
+                        6{,}2 \times 10^4, \]
                       </div>
                       <p>soit à nouveau</p>
                       <div class="math-block math-block-emphasis">
-                        \[ N_{\text{entropie}} \approx 67\,000\;\text{baffes}.
+                        \[ N_{\text{entropie}} \approx 62\,000\;\text{baffes}.
                         \]
                       </div>
                       <p>
@@ -772,18 +785,23 @@
                       </div>
                       <p>
                         Dans le cas le plus défavorable, en fin de cuisson
-                        (\(T_s \approx T_f = 343\;\text{K}\) et
-                        \(\dot{T}_{\text{moy}} \approx 0\))&nbsp;:
+                        (\(T_s \approx T_f = 343\;\text{K}\)), en conservant la
+                        puissance moyenne de chauffe
+                        \(\dfrac{Q_{\text{chauffe}}}{t_{\text{cuisson}}} \approx
+                        24\;\text{W}\)&nbsp;:
                       </p>
                       <div class="math-block">
-                        \[ f_{\min}^{\text{fin}} \approx \frac{h\,S\,\Delta T +
-                        \sigma\,S\,(T_f^4-T_0^4) + P_{\text{évap}}}
+                        \[ f_{\min}^{\text{fin}} \approx
+                        \frac{\dfrac{Q_{\text{chauffe}}}{t_{\text{cuisson}}} +
+                        h\,S\,\Delta T + \sigma\,S\,(T_f^4-T_0^4) +
+                        P_{\text{évap}}}
                         {E_{\text{baffe}}}. \]
                       </div>
                       <p>Application numérique&nbsp;:</p>
                       <div class="math-block math-block-emphasis">
-                        \[ f_{\min}^{\text{fin}} \approx \frac{20\times 0{,}077
-                        \times 50 + 28 + 3{,}9}{6{,}3} \approx 17\;\text{Hz}. \]
+                        \[ f_{\min}^{\text{fin}} \approx \frac{24 + 20\times
+                        0{,}077 \times 50 + 28 + 3{,}9}{6{,}75} \approx
+                        20\;\text{Hz}. \]
                       </div>
                       <p>En moyenne sur tout le processus, on a</p>
                       <div class="math-block">
@@ -809,13 +827,13 @@
                       <p>D'où une fréquence moyenne requise de l'ordre de</p>
                       <div class="math-block math-block-emphasis">
                         \[ f_{\text{moy}} \approx \frac{24 + h\,S\,\bar{\theta}
-                        + \bar{P}_{\text{rad}} + 3{,}9}{6{,}3} = \frac{24 +
-                        20\times 0{,}077 \times 25 + 13 + 3{,}9}{6{,}3} \approx
-                        13\;\text{Hz}. \]
+                        + \bar{P}_{\text{rad}} + 3{,}9}{6{,}75} = \frac{24 +
+                        20\times 0{,}077 \times 25 + 13 + 3{,}9}{6{,}75}
+                        \approx 12\;\text{Hz}. \]
                       </div>
                       <p>
                         Soit environ
-                        <strong>13 à 17&nbsp;baffes par seconde</strong>
+                        <strong>12 à 20&nbsp;baffes par seconde</strong>
                         selon l'instant considéré.
                       </p>
                     </div>
@@ -1035,12 +1053,12 @@
                       <div class="math-block math-block-emphasis">
                         \[ N_{\text{total}} =
                         \frac{Q_{\text{total}}}{E_{\text{baffe}}} \approx
-                        \frac{1{,}39 \times 10^6}{6{,}3} \approx 2{,}2 \times
+                        \frac{1{,}39 \times 10^6}{6{,}75} \approx 2{,}1 \times
                         10^5 \]
                       </div>
                       <p>soit environ</p>
                       <div class="math-block math-block-emphasis">
-                        \[ N_{\text{total}} \approx 220\,000\;\text{baffes}. \]
+                        \[ N_{\text{total}} \approx 205\,000\;\text{baffes}. \]
                       </div>
                       <h4
                         class="article-subheading article-subheading-secondary"
@@ -1050,7 +1068,7 @@
                       <p>La fréquence moyenne correspondante vaut&nbsp;:</p>
                       <div class="math-block">
                         \[ f_{\text{moy}} = \frac{N_{\text{total}}}{t_c} \approx
-                        \frac{220\,000}{17\,500} \approx 13\;\text{Hz}, \]
+                        \frac{205\,000}{17\,500} \approx 12\;\text{Hz}, \]
                       </div>
                       <p>ce qui est cohérent avec l'estimation précédente.</p>
                     </div>
@@ -1072,12 +1090,12 @@
                           <tbody>
                             <tr>
                               <td>Sans pertes (borne inférieure)</td>
-                              <td>\(\sim 67\,000\)</td>
+                              <td>\(\sim 62\,000\)</td>
                               <td>---</td>
                             </tr>
                             <tr>
                               <td>Avec pertes (conv. + rad. + évap.)</td>
-                              <td>\(\sim 220\,000\)</td>
+                              <td>\(\sim 205\,000\)</td>
                               <td>\(\sim 5\;\text{h}\)</td>
                             </tr>
                           </tbody>
@@ -1089,11 +1107,11 @@
                         faudrait de l'ordre de
                       </p>
                       <div class="math-block math-block-emphasis">
-                        \[ \mathbf{2{,}2 \times 10^5} \]
+                        \[ \mathbf{2{,}1 \times 10^5} \]
                       </div>
                       <p>baffes, à un rythme d'environ</p>
                       <div class="math-block">
-                        \[ \mathbf{13\;\text{baffes par seconde}} \]
+                        \[ \mathbf{12\;\text{baffes par seconde}} \]
                       </div>
                       <p>pendant</p>
                       <div class="math-block">
@@ -1101,7 +1119,7 @@
                       </div>
                       <p>avec des pointes proches de</p>
                       <div class="math-block">
-                        \[ \mathbf{17\;\text{baffes par seconde}} \]
+                        \[ \mathbf{20\;\text{baffes par seconde}} \]
                       </div>
                       <p>
                         en fin de cuisson. C'est donc surtout un problème
